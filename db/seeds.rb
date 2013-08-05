@@ -15,3 +15,11 @@ category = FactorCategory.where(:name => "Classes").first_or_create
 CSV.foreach(File.join(Rails.root, "db/seed_data/classes.csv")) do |row|
   Factor.create!(:description => row[1], :onet_code => row[0], :factor_category => category)
 end
+
+# FactorSelections
+User.all.each do |user|
+  selected_factors = Factor.all.to_a.shuffle.first(rand(5)+1)
+  selected_factors.each do |f|
+    user.factor_selections.create!(:factor => f)
+  end
+end
