@@ -40,3 +40,9 @@ default_program = Program.create!(:name => "Career Cheetah Default")
   default_program.program_phases.create(:phase => phase)
 end
 
+# Sections
+phase = Phase.where(:name => "Phase One").first
+["Moods", "Obstacles", "Action Steps", "Classes", "Fit", "Environment"].each do |name|
+  section = Section.create!(:name => name)
+  phase.phase_section_mappings.create!(:section => section)
+end

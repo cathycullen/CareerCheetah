@@ -10,7 +10,10 @@ A program is made up of multiple ProgramPhases (in order). Initially, we'll only
 A ProgramPhase is a join model, joining a Program to many Phases.
 
 ### Phase
-A Phase is made up of many Sections (in a particular order).
+A Phase is made up of many Sections, via PhaseSectionMappings (in a particular order).
+
+### PhaseSectionMapping
+Join model between a Phase and a Section. Also tracks the order of the Sections within a particular phase.
 
 ### Section
 Sections are comprised of a collection of Questions (in a particular order).
