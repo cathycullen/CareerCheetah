@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130805195111) do
+ActiveRecord::Schema.define(version: 20130805204633) do
 
   create_table "factor_categories", force: true do |t|
     t.string   "name"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20130805195111) do
     t.datetime "updated_at"
   end
 
-  create_table "program_phases", force: true do |t|
+  create_table "program_phase_mappings", force: true do |t|
     t.integer  "phase_id"
     t.integer  "program_id"
     t.integer  "row_order"
@@ -67,8 +67,8 @@ ActiveRecord::Schema.define(version: 20130805195111) do
     t.datetime "updated_at"
   end
 
-  add_index "program_phases", ["phase_id"], name: "index_program_phases_on_phase_id"
-  add_index "program_phases", ["program_id"], name: "index_program_phases_on_program_id"
+  add_index "program_phase_mappings", ["phase_id"], name: "index_program_phase_mappings_on_phase_id"
+  add_index "program_phase_mappings", ["program_id"], name: "index_program_phase_mappings_on_program_id"
 
   create_table "programs", force: true do |t|
     t.string   "name",                      null: false

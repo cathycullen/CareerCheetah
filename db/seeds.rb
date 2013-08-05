@@ -37,7 +37,7 @@ default_program = Program.create!(:name => "Career Cheetah Default")
 ["Phase One", "Phase Two"].each do |name|
   phase = Phase.create!(:name => name)
   # ProgramPhases
-  default_program.program_phases.create(:phase => phase)
+  default_program.program_phase_mappings.create(:phase => phase)
 end
 
 # Sections
