@@ -23,14 +23,15 @@ A Factor is a characteristic used to predict appropriate career options for a pa
 
 * slug
 * description
-* category_id
+* factory_category_id
 * onet_code (optional): This code is sourced from the government's Occupational Informational Network database
 
 ### FactorCategories
 FactorCategories include a description of the category and have many Factors.
 
-### SelectedFactors
-A SelectedFactor maps between a User and Factor. By choosing responses that map to Factors, a SelectedFactor record is created. SelectedFactors are the inputs to the prediction algorithm. The list of SelectedFactors that determine the outputs of the application. Properties include:
+### FactorSelction
+A FactorSelection is a join model that joins a User and Factor. By choosing responses that map to Factors, a FactorSelection record is created. FactorSelctions are the inputs to the prediction algorithm. The list of selected factors determine the outputs of the application. Properties include:
 
+* user_id (required)
 * factor_id (required)
 * rank (optional)
