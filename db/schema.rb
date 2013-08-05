@@ -11,18 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130805163858) do
+ActiveRecord::Schema.define(version: 20130805164820) do
+
+  create_table "factor_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "factors", force: true do |t|
-    t.string   "slug",        null: false
-    t.string   "description", null: false
-    t.integer  "category_id"
+    t.string   "slug",               null: false
+    t.string   "description",        null: false
+    t.integer  "factor_category_id"
     t.string   "onet_code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "factors", ["category_id"], name: "index_factors_on_category_id"
+  add_index "factors", ["factor_category_id"], name: "index_factors_on_factor_category_id"
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false

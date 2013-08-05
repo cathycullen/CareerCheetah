@@ -8,8 +8,10 @@ require 'csv'
                :password_confirmation => "careerC33tah")
 end
 
-
-# Import Factors
+# Factors
+#
+## Classes
+category = FactorCategory.where(:name => "Classes").first_or_create
 CSV.foreach(File.join(Rails.root, "db/seed_data/classes.csv")) do |row|
-  Factor.create!(:description => row[1], :onet_code => row[0])
+  Factor.create!(:description => row[1], :onet_code => row[0], :factor_category => category)
 end
