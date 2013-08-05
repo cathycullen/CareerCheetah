@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130805211745) do
+ActiveRecord::Schema.define(version: 20130805213735) do
 
   create_table "factor_categories", force: true do |t|
     t.string   "name"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20130805211745) do
     t.string   "slug",               null: false
     t.string   "description",        null: false
     t.integer  "factor_category_id"
-    t.string   "onet_code"
+    t.string   "element_code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
