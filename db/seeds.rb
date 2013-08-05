@@ -1,5 +1,8 @@
 require 'csv'
 
+# Prediction Models
+#
+
 # Create sample users
 3.times do
   User.create!(:email => Faker::Internet.email,
@@ -23,3 +26,17 @@ User.all.each do |user|
     user.factor_selections.create!(:factor => f)
   end
 end
+
+# Inquiry Models
+#
+
+# Programs
+default_program = Program.create!(:name => "Career Cheetah Default")
+
+# Phases
+["Phase One", "Phase Two"].each do |name|
+  phase = Phase.create!(:name => name)
+  # ProgramPhases
+  default_program.program_phases.create(:phase => phase)
+end
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130805174226) do
+ActiveRecord::Schema.define(version: 20130805184953) do
 
   create_table "factor_categories", force: true do |t|
     t.string   "name"
@@ -40,6 +40,32 @@ ActiveRecord::Schema.define(version: 20130805174226) do
   end
 
   add_index "factors", ["factor_category_id"], name: "index_factors_on_factor_category_id"
+
+  create_table "phases", force: true do |t|
+    t.string   "name",       null: false
+    t.string   "slug",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "program_phases", force: true do |t|
+    t.integer  "phase_id"
+    t.integer  "program_id"
+    t.integer  "row_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "program_phases", ["phase_id"], name: "index_program_phases_on_phase_id"
+  add_index "program_phases", ["program_id"], name: "index_program_phases_on_program_id"
+
+  create_table "programs", force: true do |t|
+    t.string   "name",                      null: false
+    t.boolean  "active",     default: true
+    t.string   "slug",                      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false

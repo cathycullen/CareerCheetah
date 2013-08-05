@@ -3,6 +3,12 @@
 ## Inquiry Models
 These models drive the data collection functionality of the application. They are used to drive the quiz that users complete.
 
+### Program
+A program is made up of multiple ProgramPhases (in order). Initially, we'll only have a single Program, the default Career Cheetah program. The Program model exists so allow for customization (choosing a variation of Phases)
+
+### ProgramPhase
+A ProgramPhase is a join model, joining a Program to many Phases.
+
 ### Phase
 A Phase is made up of many Sections (in a particular order).
 
