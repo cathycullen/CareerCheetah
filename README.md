@@ -16,7 +16,10 @@ A Phase is made up of many Sections, via PhaseSectionMappings (in a particular o
 Join model between a Phase and a Section. Also tracks the order of the Sections within a particular phase.
 
 ### Section
-Sections are comprised of a collection of Questions (in a particular order).
+Sections are comprised of a collection of Sections, via the SectionQuestionMapping join model (in a particular order).
+
+### SectionQuestionMapping
+Join model between Section and Question. Also tracks the order of a question within a section.
 
 ### Question
 A Question includes a prompt (text) and a number of ResponseOptions (in a particular order). Some questions will allow only a single ResponseOption, while others will allow muliples.
