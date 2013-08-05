@@ -1,5 +1,5 @@
 class Factor < ActiveRecord::Base
-  belongs_to :category
+  belongs_to :factor_category
 
   validates_presence_of :description, :slug
 
