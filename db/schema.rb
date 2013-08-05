@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130805160112) do
+ActiveRecord::Schema.define(version: 20130805163858) do
 
   create_table "factors", force: true do |t|
     t.string   "slug",        null: false
@@ -23,5 +23,13 @@ ActiveRecord::Schema.define(version: 20130805160112) do
   end
 
   add_index "factors", ["category_id"], name: "index_factors_on_category_id"
+
+  create_table "users", force: true do |t|
+    t.string   "email",           null: false
+    t.string   "password_digest", null: false
+    t.string   "name",            null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
