@@ -1,4 +1,4 @@
-class ProgramPhase < ActiveRecord::Base
+class ProgramPhaseMapping < ActiveRecord::Base
   include RankedModel
 
   belongs_to :phase
