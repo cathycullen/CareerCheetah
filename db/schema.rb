@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130805184953) do
+ActiveRecord::Schema.define(version: 20130805195111) do
 
   create_table "factor_categories", force: true do |t|
     t.string   "name"
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(version: 20130805184953) do
 
   add_index "factors", ["factor_category_id"], name: "index_factors_on_factor_category_id"
 
+  create_table "phase_section_mappings", force: true do |t|
+    t.integer  "phase_id"
+    t.integer  "section_id"
+    t.integer  "row_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "phase_section_mappings", ["phase_id"], name: "index_phase_section_mappings_on_phase_id"
+  add_index "phase_section_mappings", ["section_id"], name: "index_phase_section_mappings_on_section_id"
+
   create_table "phases", force: true do |t|
     t.string   "name",       null: false
     t.string   "slug",       null: false
@@ -63,6 +74,13 @@ ActiveRecord::Schema.define(version: 20130805184953) do
     t.string   "name",                      null: false
     t.boolean  "active",     default: true
     t.string   "slug",                      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sections", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
