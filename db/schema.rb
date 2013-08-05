@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130805210232) do
+ActiveRecord::Schema.define(version: 20130805211745) do
 
   create_table "factor_categories", force: true do |t|
     t.string   "name"
@@ -83,6 +83,18 @@ ActiveRecord::Schema.define(version: 20130805210232) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "response_options", force: true do |t|
+    t.text     "description", null: false
+    t.integer  "row_order",   null: false
+    t.integer  "question_id", null: false
+    t.integer  "factor_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "response_options", ["factor_id"], name: "index_response_options_on_factor_id"
+  add_index "response_options", ["question_id"], name: "index_response_options_on_question_id"
 
   create_table "section_question_mappings", force: true do |t|
     t.integer  "section_id"
