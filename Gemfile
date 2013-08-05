@@ -34,6 +34,7 @@ end
 
 gem "stringex"
 gem "faker"
+gem "ranked-model"
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
