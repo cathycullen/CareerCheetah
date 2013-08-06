@@ -1,0 +1,16 @@
+<h1><%= link_to "All Programs", admin_programs_path %> / <%= @program.name %></h1>
+
+<% @program.phases.each do |phase| %>
+  <h3><%= phase.name %></h3>
+  <% phase.sections.each do |section| %>
+    <h4><%= section.name %></h4>
+    <% section.questions.each do |question| %>
+      <p><%= question.prompt %></p>
+      <ul>
+        <% question.response_options.each do |option| %>
+          <li><%= option.description %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+<% end %>

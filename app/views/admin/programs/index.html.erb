@@ -1,0 +1,7 @@
+<h1>All Programs</h1>
+
+<ul>
+  <% @programs.each do |p| %>
+    <li><%= link_to p.name, admin_program_path(p) %></li>
+  <% end %>
+</ul>
