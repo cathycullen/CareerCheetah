@@ -76,6 +76,20 @@ def generate_sample_quiz_data
     phase.phase_section_mappings.create!(:section => section)
   end
   puts "done"
+
+  # Questions
+  print "\tCreating questions..."
+  factors = Factor.all.to_a
+  Section.all.each do |section|
+    question = Question.create!(:prompt => Faker::Lorem.sentence(8, false, 4))
+    (rand(12)+1).times do
+      factor = (rand(2) == 1) ? factors.sample : nil
+      question.response_options.create(:description => Faker::Lorem.sentence(4, false, 5), :factor => factor)
+    end
+
+    section.section_question_mappings.create(:question => question)
+  end
+  puts "done"
 end
 
 import_onet_data
