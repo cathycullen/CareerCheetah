@@ -4,5 +4,5 @@ class SectionQuestionMapping < ActiveRecord::Base
   belongs_to :section
   belongs_to :question
 
-  ranks :row_order
+  ranks :row_order, :with_same => :section_id
 end
