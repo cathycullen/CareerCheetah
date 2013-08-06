@@ -13,6 +13,26 @@
 
 ActiveRecord::Schema.define(version: 20130805213735) do
 
+  create_table "career_factor_mappings", force: true do |t|
+    t.integer  "factor_id"
+    t.integer  "career_id"
+    t.float    "weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "career_factor_mappings", ["career_id"], name: "index_career_factor_mappings_on_career_id"
+  add_index "career_factor_mappings", ["factor_id"], name: "index_career_factor_mappings_on_factor_id"
+
+  create_table "careers", force: true do |t|
+    t.string   "onet_code",   null: false
+    t.string   "title",       null: false
+    t.string   "description", null: false
+    t.integer  "job_zone",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "factor_categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
