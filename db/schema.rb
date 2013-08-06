@@ -45,11 +45,12 @@ ActiveRecord::Schema.define(version: 20130806174635) do
   add_index "factor_selections", ["user_id"], name: "index_factor_selections_on_user_id"
 
   create_table "factors", force: true do |t|
-    t.string   "slug",         null: false
-    t.string   "description",  null: false
+    t.string   "slug",                      null: false
+    t.text     "description",  limit: 2048, null: false
     t.string   "element_code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "phase_section_mappings", force: true do |t|
