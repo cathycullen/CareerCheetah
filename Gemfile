@@ -36,6 +36,7 @@ gem "stringex"
 gem "faker"
 gem "ranked-model"
 gem "rspec-rails", group: [:development, :test]
+gem "shoulda-matchers", group: [:development, :test]
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
