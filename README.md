@@ -30,18 +30,24 @@ A ResponseOption includes the response text and an optional reference to a Facto
 ## Prediction Models
 The prediction models describe the data that is used as the inputs to the prediction algorithm. As a User, the end result of preforming the quiz (see Inquiry Models) is a collection of SelectedFactors.
 
+### Career
+Careers are imported from the Onet database and include:
+
+* onet_code (required)
+* title (required)
+* description (required)
+
+### CareerFactorMappings
+CareerFactorMapping is a join model between Careers and Factors. The mapping also includes a weight of how important a factor is to a specific career.
+
 ### Factor
 A Factor is a characteristic used to predict appropriate career options for a particular user. It's factors that when chosen (or not) determine the output of the application. Factor properties include:
 
 * slug
 * description
-* factory_category_id
-* onet_code (optional): This code is sourced from the government's Occupational Informational Network database
+* element_code (optional): This code is sourced from the government's Occupational Informational Network database
 
-### FactorCategories
-FactorCategories include a description of the category and have many Factors.
-
-### FactorSelction
+### FactorSelection
 A FactorSelection is a join model that joins a User and Factor. By choosing responses that map to Factors, a FactorSelection record is created. FactorSelctions are the inputs to the prediction algorithm. The list of selected factors determine the outputs of the application. Properties include:
 
 * user_id (required)

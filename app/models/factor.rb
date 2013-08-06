@@ -1,5 +1,4 @@
 class Factor < ActiveRecord::Base
-  belongs_to :factor_category
   has_many :factor_selections
   has_many :users, :through => :factor_selections
 
