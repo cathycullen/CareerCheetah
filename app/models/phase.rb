@@ -9,4 +9,8 @@ class Phase < ActiveRecord::Base
   validates_uniqueness_of :name
 
   acts_as_url :name, :url_attribute => :slug
+
+  def to_param
+    slug
+  end
 end

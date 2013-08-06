@@ -5,7 +5,7 @@
   <% phase.sections.each do |section| %>
     <h4><%= section.name %></h4>
     <% section.questions.each do |question| %>
-      <p><%= question.prompt %></p>
+      <p><%= question.prompt %> <%= link_to "view", program_phase_section_section_question_mapping_path(@program, phase, section, question) %></p>
       <ul>
         <% question.response_options.each do |option| %>
           <li><%= option.description %></li>
