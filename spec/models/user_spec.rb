@@ -8,7 +8,10 @@ describe User do
   it {should validate_presence_of(:name)}
 
   it "validates uniqueness of email" do
-    pending "Bug in shoulda-matchers"
-    User.new.should validate_uniqueness_of(:email)
+    user = User.create!(:email => "foo@email.com",
+                        :name => "Foo Bar",
+                        :password => "password",
+                        :password_confirmation => "password")
+    user.should validate_uniqueness_of(:email)
   end
 end
