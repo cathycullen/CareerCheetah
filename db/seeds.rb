@@ -13,6 +13,7 @@ end
 
 # Factors
 #
+
 ## Classes
 category = FactorCategory.where(:name => "Classes").first_or_create
 CSV.foreach(File.join(Rails.root, "db/seed_data/classes.csv")) do |row|
@@ -46,3 +47,19 @@ phase = Phase.where(:name => "Phase One").first
   section = Section.create!(:name => name)
   phase.phase_section_mappings.create!(:section => section)
 end
+
+# Careers
+CSV.foreach(File.join(Rails.root, "db/seed_data/careers.csv")) do |row|
+  Career.create!( :onet_code => row[0],  :title => row[1],:description => row[2],  :job_zone => row[3],)
+end
+
+
+# CareerFactors
+CSV.foreach(File.join(Rails.root, "db/seed_data/career_factors.csv")) do |row|
+	career = Career.where(:onet_code => row[1]).first
+	factor = Factor.where(:element_code => row[0]).first
+	if factor
+		CareerFactorMapping.create!( :factor => factor, :career => career, :weight => row[2])
+	end
+end
+
