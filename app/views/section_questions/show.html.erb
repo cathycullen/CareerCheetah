@@ -1,0 +1,27 @@
+<div class="current-question-wrapper clearfix">
+  <div class="nav-back">
+    <
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <%= @section.name.upcase %>
+    </div>
+
+    <div class="question">
+      <p class="prompt"><%= @question.prompt %></p>
+      <ul class="question-options">
+        <% @question.response_options.each do |option| %>
+          <li>
+            <%= check_box_tag "option", option.id %>
+            <%= option.description %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="nav-forward">
+    >
+  </div>
+</div>
