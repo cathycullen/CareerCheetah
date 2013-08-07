@@ -1,6 +1,6 @@
 <div class="current-question-wrapper clearfix">
   <div class="left-nav">
-    <%= link_to "<", previous_program_phase_section_section_question_mapping_path(@program, @phase, @section, @question) %>
+    <%= link_to "<", previous_program_navigation_path({:question_id => @question.id}) %>
   </div>
 
   <div class="question">
@@ -28,6 +28,6 @@
   </div>
 
   <div class="right-nav">
-    <%= link_to ">", next_program_phase_section_section_question_mapping_path(@program, @phase, @section, @question) %>
+    <%= link_to ">", next_program_navigation_path({:question_id => @question.id}) %>
   </div>
 </div>

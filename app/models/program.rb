@@ -1,6 +1,5 @@
 class Program < ActiveRecord::Base
-  has_many :program_phase_mappings
-  has_many :phases, :through => :program_phase_mappings
+  has_many :phases
 
   validates_presence_of :name
   validates_uniqueness_of :name

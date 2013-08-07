@@ -1,11 +1,8 @@
 require 'spec_helper'
 
 describe Phase do
-  it {should have_many(:program_phase_mappings)}
-  it {should have_many(:programs).through(:program_phase_mappings)}
-
-  it {should have_many(:phase_section_mappings)}
-  it {should have_many(:sections).through(:phase_section_mappings)}
+  it {should belong_to(:program)}
+  it {should have_many(:sections)}
 
   it {should validate_presence_of(:name)}
   it "validates uniqueness of name" do

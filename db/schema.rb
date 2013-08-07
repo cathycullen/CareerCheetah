@@ -58,34 +58,16 @@ ActiveRecord::Schema.define(version: 20130806185838) do
 
   add_index "factors", ["element_code"], name: "index_factors_on_element_code"
 
-  create_table "phase_section_mappings", force: true do |t|
-    t.integer  "phase_id"
-    t.integer  "section_id"
-    t.integer  "row_order"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "phase_section_mappings", ["phase_id"], name: "index_phase_section_mappings_on_phase_id"
-  add_index "phase_section_mappings", ["section_id"], name: "index_phase_section_mappings_on_section_id"
-
   create_table "phases", force: true do |t|
+    t.integer  "program_id"
     t.string   "name",       null: false
     t.string   "slug",       null: false
+    t.integer  "row_order",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "program_phase_mappings", force: true do |t|
-    t.integer  "phase_id"
-    t.integer  "program_id"
-    t.integer  "row_order"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "program_phase_mappings", ["phase_id"], name: "index_program_phase_mappings_on_phase_id"
-  add_index "program_phase_mappings", ["program_id"], name: "index_program_phase_mappings_on_program_id"
+  add_index "phases", ["program_id"], name: "index_phases_on_program_id"
 
   create_table "programs", force: true do |t|
     t.string   "name",                      null: false
@@ -96,10 +78,14 @@ ActiveRecord::Schema.define(version: 20130806185838) do
   end
 
   create_table "questions", force: true do |t|
+    t.integer  "section_id"
     t.string   "prompt"
+    t.integer  "row_order",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "questions", ["section_id"], name: "index_questions_on_section_id"
 
   create_table "response_options", force: true do |t|
     t.text     "description", null: false
@@ -113,23 +99,16 @@ ActiveRecord::Schema.define(version: 20130806185838) do
   add_index "response_options", ["factor_id"], name: "index_response_options_on_factor_id"
   add_index "response_options", ["question_id"], name: "index_response_options_on_question_id"
 
-  create_table "section_question_mappings", force: true do |t|
-    t.integer  "section_id"
-    t.integer  "question_id"
-    t.integer  "row_order"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "section_question_mappings", ["question_id"], name: "index_section_question_mappings_on_question_id"
-  add_index "section_question_mappings", ["section_id"], name: "index_section_question_mappings_on_section_id"
-
   create_table "sections", force: true do |t|
+    t.integer  "phase_id"
     t.string   "name"
     t.string   "slug"
+    t.integer  "row_order",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "sections", ["phase_id"], name: "index_sections_on_phase_id"
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false
