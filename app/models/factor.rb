@@ -7,5 +7,5 @@ class Factor < ActiveRecord::Base
 
   validates_presence_of :description, :slug
 
-  acts_as_url :description, :url_attribute => :slug
+  acts_as_url :description, :url_attribute => :slug, :limit => 255
 end
