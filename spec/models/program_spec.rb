@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe Program do
-  it {should have_many(:program_phase_mappings)}
-  it {should have_many(:phases).through(:program_phase_mappings)}
+  it {should have_many(:phases)}
 
   it {should validate_presence_of(:name)}
   it "validates uniqueness of name" do
