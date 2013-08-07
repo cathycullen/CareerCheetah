@@ -1,20 +1,33 @@
 class ProgramNavigationsController < ApplicationController
+  include ProgramNavigationHelper
 
   def next
     load_models
-    if @question && @question.next_question
-      redirect_to program_phase_section_question_path(@question.program, @question.phase, @question.section, @question.next_question)
-    else
-      redirect_to :back
+    if @question
+      if @question.next_question
+        redirect_to full_question_path(@question.next_question)
+      elsif @question.section.next_section
+        redirect_to full_section_path(@question.section.next_section)
+      end
+    elsif @section
+      redirect_to full_question_path(@section.questions.first)
+    elsif @phase
+      redirect_to full_section_path(@phase.sections.first)
     end
   end
 
   def previous
     load_models
-    if @question && @question.previous_question
-      redirect_to program_phase_section_question_path(@question.program, @question.phase, @question.section, @question.previous_question)
-    else
-      redirect_to :back
+    if @question
+      if @question.previous_question
+        redirect_to full_question_path(@question.previous_question)
+      elsif @question.section.previous_section
+        redirect_to full_section_path(@question.section.previous_section)
+      end
+    elsif @section && @section.previous_section
+      redirect_to full_question_path(@section.previous_section.questions.last)
+    elsif @phase && @phase.previous_phase
+      redirect_to full_question_path(@phase.previous_phase.sections.last.questions.last)
     end
   end
 

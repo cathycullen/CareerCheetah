@@ -70,7 +70,7 @@ def generate_sample_quiz_data
   print "\tCreating sections..."
   phase = Phase.where(:name => "Phase One").first
   ["Moods", "Obstacles", "Action Steps", "Classes", "Fit", "Environment"].each do |name|
-    phase.sections.create!(:name => name)
+    phase.sections.create!(:name => name, :headline => Faker::Lorem.sentence(4, false, 2), :description => Faker::Lorem.sentence(7, false, 5))
   end
   puts "done"
 

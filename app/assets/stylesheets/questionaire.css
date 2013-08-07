@@ -3,37 +3,19 @@
   text-align: center;
 }
 
-
-.current-question-wrapper .question {
+.current-step-wrapper .current-step {
   width: 90%;
   float: left;
 }
 
-.current-question-wrapper .left-nav {
+.current-step-wrapper .left-nav {
   width: 5%;
   float: left;
 }
 
-.current-question-wrapper .right-nav {
+.current-step-wrapper .right-nav {
   width: 5%;
   float: left;
-}
-
-.question .section {
-  color: rgb(238, 129, 62);
-}
-
-.question .question-body {
-  margin-left: 3%;
-}
-
-.question .options {
-  list-style-type: none;
-  padding: 0;
-}
-
-.question .options li {
-  padding: .5em;
 }
 
 .progress {
@@ -46,3 +28,36 @@
   width: 77%;
   height: 20px;
 }
+
+.current-step h1 {
+  color: rgb(238, 129, 62);
+}
+
+/* Section Styling */
+.current-step.phase {
+  text-align: center;
+}
+
+/* Section Styling */
+.current-step.section {
+  text-align: center;
+}
+
+.current-step.section .intro {
+  margin-bottom: 2em;
+}
+
+/* Question Styling */
+.current-step .question {
+  margin-left: 3%;
+}
+
+.question .options {
+  list-style-type: none;
+  padding: 0;
+}
+
+.question .options li {
+  padding: .5em;
+}
+
