@@ -2,8 +2,7 @@ CareerCheetah::Application.routes.draw do
   resources :programs do
     resources :phases do
       resources :sections do
-        resources :questions do
-        end
+        resources :questions
       end
     end
   end

@@ -1,33 +1,30 @@
-<div class="current-question-wrapper clearfix">
-  <div class="left-nav">
-    <%= link_to "<", previous_program_navigation_path({:question_id => @question.id}) %>
+<% content_for :previous_url do %>
+  <%= previous_program_navigation_path({:question_id => @question.id}) %>
+<% end %>
+<% content_for :next_url do %>
+  <%= next_program_navigation_path({:question_id => @question.id}) %>
+<% end %>
+
+<div class="current-step question">
+  <div class="heading">
+    <h1><%= @section.name.upcase %></h1>
   </div>
 
   <div class="question">
-    <div class="section">
-      <%= @section.name.upcase %>
-    </div>
-
-    <div class="question-body">
-      <p class="prompt"><%= @question.prompt %></p>
-      <ul class="options">
-        <% @question.response_options.each do |option| %>
-          <li class="response-option">
-            <%= label_tag do %>
-              <%= check_box_tag "response-options[]", option.id %>
-              <%= option.description %>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="progress">
-      <div class="bar"></div>
-    </div>
+    <p class="prompt"><%= @question.prompt %></p>
+    <ul class="options">
+      <% @question.response_options.each do |option| %>
+        <li class="response-option">
+          <%= label_tag do %>
+            <%= check_box_tag "response-options[]", option.id %>
+            <%= option.description %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 
-  <div class="right-nav">
-    <%= link_to ">", next_program_navigation_path({:question_id => @question.id}) %>
+  <div class="progress">
+    <div class="bar"></div>
   </div>
 </div>

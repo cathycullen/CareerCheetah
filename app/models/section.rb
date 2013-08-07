@@ -13,4 +13,12 @@ class Section < ActiveRecord::Base
   def to_param
     slug
   end
+
+  def next_section
+    phase.sections.rank(:row_order).where(["row_order > ?", row_order]).first
+  end
+
+  def previous_section
+    phase.sections.rank(:row_order).where(["row_order < ?", row_order]).last
+  end
 end

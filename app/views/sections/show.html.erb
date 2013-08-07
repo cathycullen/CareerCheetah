@@ -1,0 +1,21 @@
+<% content_for :previous_url do %>
+  <%= previous_program_navigation_path({:section_id => @section.to_param}) %>
+<% end %>
+<% content_for :next_url do %>
+  <%= next_program_navigation_path({:section_id => @section.to_param}) %>
+<% end %>
+
+<div class="current-step section">
+  <div class="heading">
+    <h1><%= @section.name.upcase %></h1>
+    <h2><%= @section.headline %></h2>
+  </div>
+
+  <div class="intro">
+    <%= @section.description %>
+  </div>
+
+  <div class="progress">
+    <div class="bar"></div>
+  </div>
+</div>

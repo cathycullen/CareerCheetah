@@ -1,0 +1,16 @@
+<% content_for :previous_url do %>
+  <%= previous_program_navigation_path({:phase_id => @phase.to_param}) %>
+<% end %>
+<% content_for :next_url do %>
+  <%= next_program_navigation_path({:phase_id => @phase.to_param}) %>
+<% end %>
+
+<div class="current-step phase">
+  <div class="heading">
+    <h1><%= @phase.name.upcase %></h1>
+  </div>
+
+  <div class="progress">
+    <div class="bar"></div>
+  </div>
+</div>
