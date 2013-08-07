@@ -27,25 +27,26 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Use ActiveModel has_secure_password
+gem 'bcrypt-ruby', '~> 3.0.0'
+
+gem "stringex"
+gem "faker"
+gem "ranked-model"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
-gem "stringex"
-gem "faker"
-gem "ranked-model"
-gem "rspec-rails", group: [:development, :test]
-gem "shoulda-matchers", group: [:development, :test]
+group :development do
+  gem "better_errors"
+  gem "quiet_assets"
+  gem "thin"
+  gem 'debugger'
+end
 
-# Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+group :test do
+  gem "rspec-rails"
+  gem "shoulda-matchers"
+end
