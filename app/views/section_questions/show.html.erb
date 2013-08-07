@@ -1,27 +1,33 @@
 <div class="current-question-wrapper clearfix">
-  <div class="nav-back">
+  <div class="left-nav">
     <
   </div>
 
-  <div class="section">
-    <div class="section-header">
+  <div class="question">
+    <div class="section">
       <%= @section.name.upcase %>
     </div>
 
-    <div class="question">
+    <div class="question-body">
       <p class="prompt"><%= @question.prompt %></p>
-      <ul class="question-options">
+      <ul class="options">
         <% @question.response_options.each do |option| %>
-          <li>
-            <%= check_box_tag "option", option.id %>
-            <%= option.description %>
+          <li class="response-option">
+            <%= label_tag do %>
+              <%= check_box_tag "response-options[]", option.id %>
+              <%= option.description %>
+            <% end %>
           </li>
         <% end %>
       </ul>
     </div>
+
+    <div class="progress">
+      <div class="bar"></div>
+    </div>
   </div>
 
-  <div class="nav-forward">
+  <div class="right-nav">
     >
   </div>
 </div>
