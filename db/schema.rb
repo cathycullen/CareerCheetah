@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130806185838) do
+ActiveRecord::Schema.define(version: 20130807230747) do
 
   create_table "career_factor_mappings", force: true do |t|
     t.integer  "factor_id"
@@ -103,9 +103,11 @@ ActiveRecord::Schema.define(version: 20130806185838) do
     t.integer  "phase_id"
     t.string   "name"
     t.string   "slug"
-    t.integer  "row_order",  null: false
+    t.integer  "row_order",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "headline"
+    t.text     "description", limit: 1024
   end
 
   add_index "sections", ["phase_id"], name: "index_sections_on_phase_id"
