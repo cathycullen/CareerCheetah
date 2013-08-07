@@ -81,14 +81,16 @@ def generate_sample_quiz_data
   print "\tCreating questions..."
   factors = Factor.all.to_a
   Section.all.each do |section|
-    prompt = Faker::Lorem.sentence(8, false, 4).gsub(/\.$/, "?")
-    question = Question.create!(:prompt => prompt)
-    (rand(12)+1).times do
-      factor = (rand(2) == 1) ? factors.sample : nil
-      question.response_options.create(:description => Faker::Lorem.sentence(4, false, 5), :factor => factor)
-    end
+    (rand(4)+1).times do
+      prompt = Faker::Lorem.sentence(8, false, 4).gsub(/\.$/, "?")
+      question = Question.create!(:prompt => prompt)
+      (rand(12)+1).times do
+        factor = (rand(2) == 1) ? factors.sample : nil
+        question.response_options.create(:description => Faker::Lorem.sentence(4, false, 5), :factor => factor)
+      end
 
-    section.section_question_mappings.create(:question => question)
+      section.section_question_mappings.create(:question => question)
+    end
   end
   puts "done"
 end
