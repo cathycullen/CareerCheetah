@@ -4,34 +4,45 @@
 }
 
 
-.section {
+.current-question-wrapper .question {
   width: 90%;
   float: left;
 }
 
-.section-header {
+.current-question-wrapper .left-nav {
+  width: 5%;
+  float: left;
+}
+
+.current-question-wrapper .right-nav {
+  width: 5%;
+  float: left;
+}
+
+.question .section {
   color: rgb(238, 129, 62);
 }
 
-.nav-back {
-  width: 5%;
-  float: left;
-}
-
-.question {
+.question .question-body {
   margin-left: 3%;
 }
 
-.nav-forward {
-  width: 5%;
-  float: left;
-}
-
-.question-options {
+.question .options {
   list-style-type: none;
   padding: 0;
 }
 
-.question-options li {
+.question .options li {
   padding: .5em;
+}
+
+.progress {
+  padding: .5%;
+  border: solid 2px rgb(166,166,166);
+}
+
+.progress .bar {
+  background-color: rgb(238, 129, 62);
+  width: 77%;
+  height: 20px;
 }
