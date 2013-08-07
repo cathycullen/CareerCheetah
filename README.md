@@ -4,22 +4,13 @@
 These models drive the data collection functionality of the application. They are used to drive the quiz that users complete.
 
 ### Program
-A program is made up of multiple ProgramPhaseMapping (in order). Initially, we'll only have a single Program, the default Career Cheetah program. The Program model exists so allow for customization (choosing a variation of Phases)
-
-### ProgramPhaseMapping
-A ProgramPhaseMapping is a join model, joining a Program to many Phases.
+A program is made up of multiple Phases (in order). Initially, we'll only have a single Program, the default Career Cheetah program.
 
 ### Phase
-A Phase is made up of many Sections, via PhaseSectionMappings (in a particular order).
-
-### PhaseSectionMapping
-Join model between a Phase and a Section. Also tracks the order of the Sections within a particular phase.
+A Phase is made up of many Sections in a particular order.
 
 ### Section
-Sections are comprised of a collection of Sections, via the SectionQuestionMapping join model (in a particular order).
-
-### SectionQuestionMapping
-Join model between Section and Question. Also tracks the order of a question within a section.
+Sections are comprised of a collection of Questions in a particular order.
 
 ### Question
 A Question includes a prompt (text) and a number of ResponseOptions (in a particular order). Some questions will allow only a single ResponseOption, while others will allow muliples.

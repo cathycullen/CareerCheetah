@@ -62,9 +62,7 @@ def generate_sample_quiz_data
   # Phases
   print "\tCreating phases..."
   ["Phase One", "Phase Two"].each do |name|
-    phase = Phase.create!(:name => name)
-    # ProgramPhases
-    default_program.program_phase_mappings.create(:phase => phase)
+    default_program.phases.create!(:name => name)
   end
   puts "done"
 
@@ -72,8 +70,7 @@ def generate_sample_quiz_data
   print "\tCreating sections..."
   phase = Phase.where(:name => "Phase One").first
   ["Moods", "Obstacles", "Action Steps", "Classes", "Fit", "Environment"].each do |name|
-    section = Section.create!(:name => name)
-    phase.phase_section_mappings.create!(:section => section)
+    phase.sections.create!(:name => name)
   end
   puts "done"
 
@@ -83,13 +80,11 @@ def generate_sample_quiz_data
   Section.all.each do |section|
     (rand(4)+1).times do
       prompt = Faker::Lorem.sentence(8, false, 4).gsub(/\.$/, "?")
-      question = Question.create!(:prompt => prompt)
+      question = section.questions.create!(:prompt => prompt)
       (rand(12)+1).times do
         factor = (rand(2) == 1) ? factors.sample : nil
         question.response_options.create(:description => Faker::Lorem.sentence(4, false, 5), :factor => factor)
       end
-
-      section.section_question_mappings.create(:question => question)
     end
   end
   puts "done"
