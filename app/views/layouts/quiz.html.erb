@@ -6,26 +6,28 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="body">
 
   <div id="container">
     <div class="nav">
       <%= link_to "logout", logout_path, :method => :delete if current_user %>
     </div>
-    <div class="header">
+    <div class="main-header">
       <%= image_tag "cheetah-logo.png" %>
-      <p>CAREER CHEETAH&trade;</p>
     </div>
 
     <div class="current-step-wrapper clearfix">
-      <div class="left-nav">
-        <%= link_to "<", content_for(:previous_url) %>
+      <div class="nav-left">
+        <div class="nav-left-active">
+          <%= link_to(image_tag("left-nav-btn-active.png"), content_for(:previous_url)) %>
+        </div>
       </div>
 
       <%= yield %>
 
-      <div class="right-nav">
-        <%= link_to ">", content_for(:next_url) %>
+      <div class="nav-right">
+        <div class="nav-right-active">
+        <%= link_to(image_tag("right-nav-btn-active.png"), content_for(:next_url)) %>
       </div>
     </div>
   </div>
