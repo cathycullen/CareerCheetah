@@ -15,3 +15,33 @@
 .clearfix {
     *zoom: 1;
 }
+
+
+body {
+  background-color: #FFF;
+  color: #60605b;
+  font-size: 100%; /* Base font size is 14px */
+  font-family: Arial, 'Lucida Sans Unicode';
+  line-height: 1.5;
+  text-align: left;
+}
+
+.body {
+  margin: 0 auto;
+  width: 848px;
+  height: 732px;
+  clear: both;
+}
+
+.main-header img {
+  width: 200px;
+  height: 164px;
+  display: block;
+  margin: 0px auto 25px auto;
+}
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .body {
+    height: 617px;
+  }
+}

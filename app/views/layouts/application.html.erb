@@ -12,9 +12,8 @@
     <div class="nav">
       <%= link_to "logout", logout_path, :method => :delete if current_user %>
     </div>
-    <div class="header">
+    <div class="main-header">
       <%= image_tag "cheetah-logo.png" %>
-      <p>CAREER CHEETAH&trade;</p>
     </div>
 
     <%= yield %>
