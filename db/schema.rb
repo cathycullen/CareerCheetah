@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130807230747) do
+ActiveRecord::Schema.define(version: 20130807233221) do
 
   create_table "career_factor_mappings", force: true do |t|
     t.integer  "factor_id"
@@ -21,20 +21,20 @@ ActiveRecord::Schema.define(version: 20130807230747) do
     t.datetime "updated_at"
   end
 
-  add_index "career_factor_mappings", ["career_id"], name: "index_career_factor_mappings_on_career_id"
-  add_index "career_factor_mappings", ["factor_id"], name: "index_career_factor_mappings_on_factor_id"
+  add_index "career_factor_mappings", ["career_id"], name: "index_career_factor_mappings_on_career_id", using: :btree
+  add_index "career_factor_mappings", ["factor_id"], name: "index_career_factor_mappings_on_factor_id", using: :btree
 
   create_table "careers", force: true do |t|
     t.string   "onet_code",   null: false
     t.string   "title",       null: false
-    t.string   "description", null: false
+    t.text     "description", null: false
     t.integer  "job_zone",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "careers", ["job_zone"], name: "index_careers_on_job_zone"
-  add_index "careers", ["onet_code"], name: "index_careers_on_onet_code"
+  add_index "careers", ["job_zone"], name: "index_careers_on_job_zone", using: :btree
+  add_index "careers", ["onet_code"], name: "index_careers_on_onet_code", using: :btree
 
   create_table "factor_selections", force: true do |t|
     t.integer  "user_id"
@@ -44,19 +44,19 @@ ActiveRecord::Schema.define(version: 20130807230747) do
     t.datetime "updated_at"
   end
 
-  add_index "factor_selections", ["factor_id"], name: "index_factor_selections_on_factor_id"
-  add_index "factor_selections", ["user_id"], name: "index_factor_selections_on_user_id"
+  add_index "factor_selections", ["factor_id"], name: "index_factor_selections_on_factor_id", using: :btree
+  add_index "factor_selections", ["user_id"], name: "index_factor_selections_on_user_id", using: :btree
 
   create_table "factors", force: true do |t|
-    t.string   "slug",                      null: false
-    t.text     "description",  limit: 2048, null: false
+    t.string   "slug",         null: false
+    t.text     "description",  null: false
     t.string   "element_code"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
   end
 
-  add_index "factors", ["element_code"], name: "index_factors_on_element_code"
+  add_index "factors", ["element_code"], name: "index_factors_on_element_code", using: :btree
 
   create_table "phases", force: true do |t|
     t.integer  "program_id"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20130807230747) do
     t.datetime "updated_at"
   end
 
-  add_index "phases", ["program_id"], name: "index_phases_on_program_id"
+  add_index "phases", ["program_id"], name: "index_phases_on_program_id", using: :btree
 
   create_table "programs", force: true do |t|
     t.string   "name",                      null: false
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20130807230747) do
     t.datetime "updated_at"
   end
 
-  add_index "questions", ["section_id"], name: "index_questions_on_section_id"
+  add_index "questions", ["section_id"], name: "index_questions_on_section_id", using: :btree
 
   create_table "response_options", force: true do |t|
     t.text     "description", null: false
@@ -96,21 +96,21 @@ ActiveRecord::Schema.define(version: 20130807230747) do
     t.datetime "updated_at"
   end
 
-  add_index "response_options", ["factor_id"], name: "index_response_options_on_factor_id"
-  add_index "response_options", ["question_id"], name: "index_response_options_on_question_id"
+  add_index "response_options", ["factor_id"], name: "index_response_options_on_factor_id", using: :btree
+  add_index "response_options", ["question_id"], name: "index_response_options_on_question_id", using: :btree
 
   create_table "sections", force: true do |t|
     t.integer  "phase_id"
     t.string   "name"
     t.string   "slug"
-    t.integer  "row_order",                null: false
+    t.integer  "row_order",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "headline"
-    t.text     "description", limit: 1024
+    t.text     "description"
   end
 
-  add_index "sections", ["phase_id"], name: "index_sections_on_phase_id"
+  add_index "sections", ["phase_id"], name: "index_sections_on_phase_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false
@@ -120,6 +120,6 @@ ActiveRecord::Schema.define(version: 20130807230747) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email"
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
 end
