@@ -18,6 +18,18 @@ class Navigation::PhaseStrategy
   end
 
   def previous
-    full_phase_path(@phase)
+    if previous_phase = @phase.previous_phase
+      if section = previous_phase.sections.rank(:row_order).last
+        if question = section.questions.rank(:row_order).last
+          full_question_path(question)
+        else
+          full_section_path(section)
+        end
+      else
+        full_phase_path(previous_phase)
+      end
+    else
+      full_phase_path(@phase)
+    end
   end
 end
