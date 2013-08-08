@@ -1,4 +1,6 @@
 class PhasesController < ApplicationController
+  layout "quiz"
+
   def show
     load_models
   end

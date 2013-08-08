@@ -14,7 +14,13 @@ CareerCheetah::Application.routes.draw do
     end
   end
 
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/login',  to: 'sessions#new',         via: 'get'
+  match '/logout', to: 'sessions#destroy',     via: 'delete'
+
   namespace :admin do
     resources :programs
   end
+
+  root "sessions#new"
 end
