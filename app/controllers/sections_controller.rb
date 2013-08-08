@@ -1,4 +1,6 @@
 class SectionsController < ApplicationController
+  layout "quiz"
+
   def show
     load_models
   end

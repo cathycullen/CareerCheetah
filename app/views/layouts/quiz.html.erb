@@ -17,7 +17,17 @@
       <p>CAREER CHEETAH&trade;</p>
     </div>
 
-    <%= yield %>
+    <div class="current-step-wrapper clearfix">
+      <div class="left-nav">
+        <%= link_to "<", content_for(:previous_url) %>
+      </div>
+
+      <%= yield %>
+
+      <div class="right-nav">
+        <%= link_to ">", content_for(:next_url) %>
+      </div>
+    </div>
   </div>
 
 </body>
