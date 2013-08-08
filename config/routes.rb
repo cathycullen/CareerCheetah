@@ -7,6 +7,8 @@ CareerCheetah::Application.routes.draw do
     end
   end
 
+  resources :response_option_selections
+
   resource :program_navigation do
     member do
       get "next"

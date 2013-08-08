@@ -10,13 +10,13 @@
     <h1><%= @section.name.upcase %></h1>
   </div>
 
-  <div class="question">
+  <div class="question" data-id="<%= @question.id%>">
     <p class="prompt"><%= @question.prompt %></p>
     <ul class="options">
       <% @question.response_options.each do |option| %>
-        <li class="response-option">
-          <%= label_tag do %>
-            <%= check_box_tag "response-options[]", option.id %>
+        <li class="option">
+          <%= label_tag nil, :class => "response-option" do %>
+            <%= option_checkbox(option) %>
             <%= option.description %>
           <% end %>
         </li>
