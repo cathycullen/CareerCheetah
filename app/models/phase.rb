@@ -13,4 +13,12 @@ class Phase < ActiveRecord::Base
   def to_param
     slug
   end
+
+  def next_phase
+    program.phases.rank(:row_order).where(["row_order > ?", row_order]).first
+  end
+
+  def previous_phase
+    program.phases.rank(:row_order).where(["row_order < ?", row_order]).last
+  end
 end
