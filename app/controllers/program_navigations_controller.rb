@@ -22,7 +22,9 @@ class ProgramNavigationsController < ApplicationController
       if @question.previous_question
         redirect_to full_question_path(@question.previous_question)
       elsif @question.section.previous_section
-        redirect_to full_section_path(@question.section.previous_section)
+        redirect_to full_question_path(@question.section.previous_section.questions.last)
+      else
+        redirect_to full_section_path(@question.section)
       end
     elsif @section && @section.previous_section
       redirect_to full_question_path(@section.previous_section.questions.last)
