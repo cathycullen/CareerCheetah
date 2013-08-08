@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130807233221) do
+ActiveRecord::Schema.define(version: 20130808200049) do
 
   create_table "career_factor_mappings", force: true do |t|
     t.integer  "factor_id"
@@ -86,6 +86,16 @@ ActiveRecord::Schema.define(version: 20130807233221) do
   end
 
   add_index "questions", ["section_id"], name: "index_questions_on_section_id", using: :btree
+
+  create_table "response_option_selections", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "response_option_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "response_option_selections", ["response_option_id"], name: "index_response_option_selections_on_response_option_id", using: :btree
+  add_index "response_option_selections", ["user_id"], name: "index_response_option_selections_on_user_id", using: :btree
 
   create_table "response_options", force: true do |t|
     t.text     "description", null: false
