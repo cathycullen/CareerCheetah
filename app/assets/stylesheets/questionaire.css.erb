@@ -1,0 +1,113 @@
+.header {
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+.current-step-wrapper {
+  width: 100%;
+  height: auto;
+}
+
+.current-step-wrapper .current-step {
+  width: 90%;
+  float: left;
+}
+
+.current-step-wrapper .nav-left {
+  width: 27px;
+  height: auto;
+  background-image: url("<%= asset_path('left-nav-btn.png')%>");
+  background-repeat: no-repeat;
+  float: left;
+  margin: 100px 0 0 0;
+}
+
+.current-step-wrapper .nav-left-active {
+  width: 27px;
+  height: auto;
+  opacity: 0;
+    -moz-opacity: 0;
+    filter:alpha(opacity=0);
+}
+
+.current-step-wrapper .nav-left-active:hover {
+  opacity:1;
+}
+
+.current-step-wrapper .nav-right {
+  width: 27px;
+  height: auto;
+  background-image: url("<%= asset_path('right-nav-btn.png')%>");
+  background-repeat: no-repeat;
+  float: left;
+  clear: right;
+  margin: 100px 0 0 0;
+}
+
+.current-step-wrapper .nav-right-active:hover {
+  opacity:1;
+}
+
+.current-step-wrapper .nav-right-active {
+  width: 27px;
+  height: auto;
+  opacity: 0;
+    -moz-opacity: 0;
+    filter:alpha(opacity=0);
+}
+
+.progress {
+  padding: .5%;
+  border: solid 2px rgb(166,166,166);
+}
+
+.progress .bar {
+  background-color: rgb(238, 129, 62);
+  width: 77%;
+  height: 20px;
+}
+
+.current-step h1 {
+  color: rgb(238, 129, 62);
+}
+
+/* Section Styling */
+.current-step.phase {
+  text-align: center;
+}
+
+/* Section Styling */
+.current-step.section {
+  text-align: center;
+}
+
+.current-step.section .intro {
+  margin-bottom: 2em;
+}
+
+/* Question Styling */
+.question .prompt {
+  font-style: normal;
+  font-size: 140%;
+  line-height: 1.25;
+}
+
+.question ul {
+  list-style: none;
+}
+
+.current-step.question {
+  width: 694px;
+  height: auto;
+  margin: 0 50px;
+  float: left;
+}
+
+.question .options {
+  padding: 0;
+}
+
+.question .options li {
+  padding: .5em;
+}
+
