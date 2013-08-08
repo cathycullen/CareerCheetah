@@ -1,4 +1,4 @@
-module ProgramNavigationHelper
+module Navigation::PathGeneration
   def full_question_path(question)
     section = question.section
     phase = section.phase
@@ -22,5 +22,4 @@ module ProgramNavigationHelper
   def full_phase_path(phase)
     program_phase_path(phase.program, phase)
   end
-
 end
