@@ -2,8 +2,6 @@ $(document).on('page:load', bindResponseEditing);
 $(document).on('ready', bindResponseEditing);
 
 function bindResponseEditing() {
-  console.log("here");
-
   $("input[name='response-options[]']").change(function () {
     var box = $(this);
 
