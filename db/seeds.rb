@@ -4,12 +4,30 @@ require 'csv'
 #
 
 # Create sample users
-3.times do
-  User.create!(:email => Faker::Internet.email,
-               :name => Faker::Name.first_name + " " + Faker::Name.last_name,
+#3.times do
+#  User.create!(:email => Faker::Internet.email,
+#               :name => Faker::Name.first_name + " " + Faker::Name.last_name,
+#               :password => "careerC33tah",
+#               :password_confirmation => "careerC33tah")
+
+
+users = ["christine", "adam", "kelly", "rob", "chris"]
+User.all.destroy_all
+
+users.each do |u|
+  user = User.create!(:email => "#{u}@abc.com",
+	           :name => u,
                :password => "careerC33tah",
-               :password_confirmation => "careerC33tah")
+               :password_confirmation => "careerC33tah")	
+    CSV.foreach(File.join(Rails.root, "db/seed_data/#{u}.csv")) do |row|
+	  factor = Factor.where(:element_code => row[0].strip).first
+       puts "#{u} - #{row[0]}  factor #{factor.id}"
+     user.factor_selections.create!(:factor => factor)
+    end
 end
+
+
+
 
 # Factors
 #
@@ -19,12 +37,12 @@ CSV.foreach(File.join(Rails.root, "db/seed_data/onet_factors.csv")) do |row|
 end
 
 # FactorSelections
-User.all.each do |user|
-  selected_factors = Factor.all.to_a.shuffle.first(rand(5)+1)
-  selected_factors.each do |f|
-    user.factor_selections.create!(:factor => f)
-  end
-end
+# User.all.each do |user|
+#   selected_factors = Factor.all.to_a.shuffle.first(rand(10)+1)
+#   selected_factors.each do |f|
+#     user.factor_selections.create!(:factor => f)
+#   end
+# end
 
 # Inquiry Models
 #
@@ -45,6 +63,7 @@ phase = Phase.where(:name => "Phase One").first
   section = Section.create!(:name => name)
   phase.phase_section_mappings.create!(:section => section)
 end
+
 
 # Careers
 CSV.foreach(File.join(Rails.root, "db/seed_data/careers.csv")) do |row|

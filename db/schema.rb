@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130806174635) do
+ActiveRecord::Schema.define(version: 20130808154403) do
 
   create_table "career_factor_mappings", force: true do |t|
     t.integer  "factor_id"
@@ -122,6 +122,14 @@ ActiveRecord::Schema.define(version: 20130806174635) do
   create_table "sections", force: true do |t|
     t.string   "name"
     t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_careers", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "career_id"
+    t.float    "weight"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
