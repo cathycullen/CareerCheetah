@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20130808200049) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "career_factor_mappings", force: true do |t|
     t.integer  "factor_id"
     t.integer  "career_id"
@@ -121,6 +124,17 @@ ActiveRecord::Schema.define(version: 20130808200049) do
   end
 
   add_index "sections", ["phase_id"], name: "index_sections_on_phase_id", using: :btree
+
+  create_table "user_careers", force: true do |t|
+    t.integer  "user_id_id"
+    t.integer  "career_id_id"
+    t.float    "weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_careers", ["career_id_id"], name: "index_user_careers_on_career_id_id", using: :btree
+  add_index "user_careers", ["user_id_id"], name: "index_user_careers_on_user_id_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false

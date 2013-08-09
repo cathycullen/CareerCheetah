@@ -7,7 +7,6 @@ development:
   adapter: postgresql
   database: cheetah_development
   host: localhost
-  port: 15432
   encoding: UTF8
   min_messages: WARNING
 
@@ -18,7 +17,6 @@ test:
   adapter: postgresql
   database: cheetah_test
   host: localhost
-  port: 15432
   encoding: UTF8
   min_messages: WARNING
 
