@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :factor_selections
   has_many :factors, :through => :factor_selections
+  has_many :user_careers
 
   has_many :response_option_selections
 
