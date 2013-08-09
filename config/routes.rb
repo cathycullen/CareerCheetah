@@ -8,6 +8,7 @@ CareerCheetah::Application.routes.draw do
   end
 
   resources :response_option_selections
+  resources :user_careers
 
   resource :program_navigation do
     member do
