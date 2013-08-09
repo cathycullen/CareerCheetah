@@ -1,0 +1,7 @@
+sections:
+  - name: "Classes"
+    questions:
+      - prompt: "Choose the classes that interest you"
+        responses:
+          - description: "consumer studies"
+            element_code: "2.C.1.e"
