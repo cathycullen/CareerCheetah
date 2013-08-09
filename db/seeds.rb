@@ -29,25 +29,21 @@ end
 
 def generate_sample_users
   puts "Generating sample users..."
+  User.all.destroy_all
 
-  print "\tCreating sample users..."
-  # Create sample users
-  3.times do
-    User.create!(:email => Faker::Internet.email,
-                 :name => Faker::Name.first_name + " " + Faker::Name.last_name,
-                 :password => "careerC33tah",
-                 :password_confirmation => "careerC33tah")
-  end
-  puts "done"
+  users = ["christine", "adam", "kelly", "rob", "chris"]
+  users.each do |u|
+   user = User.create!(:email => "#{u}@abc.com",
+                        :name => u,
+                        :password => "careerC33tah",
+                        :password_confirmation => "careerC33tah")  
 
-  print "\tCreating factor selections for users..."
-  # FactorSelections
-  User.all.each do |user|
-    selected_factors = Factor.all.to_a.shuffle.first(rand(5)+1)
-    selected_factors.each do |f|
-      user.factor_selections.create!(:factor => f)
+    CSV.foreach(File.join(Rails.root, "db/seed_data/#{u}.csv")) do |row|
+      factor = Factor.where(:element_code => row[0].strip).first
+      user.factor_selections.create!(:factor => factor)
     end
   end
+
   puts "done"
 end
 
