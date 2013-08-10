@@ -22,4 +22,16 @@ class Question < ActiveRecord::Base
     section.questions.rank(:row_order).where(["row_order < ?", row_order]).last
   end
 
+  def multi?
+    prompt_type == "multi"
+  end
+
+  def boolean?
+    prompt_type == "boolean"
+  end
+
+  def single?
+    prompt_type == "single"
+  end
+
 end
