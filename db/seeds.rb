@@ -81,7 +81,8 @@ def generate_sample_quiz_data
 
     if section_data['questions']
       section_data['questions'].each do |question_data|
-        question = section.questions.create!(:prompt => question_data['prompt'])
+        question = section.questions.create!(:prompt => question_data['prompt'],
+                                             :prompt_type => question_data['type'])
         question_data['responses'].each do |response_data|
           question.response_options.create(:description => response_data['description'],
                                            :factor => Factor.find_by(:element_code => response_data['element_code']))

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130810154626) do
+ActiveRecord::Schema.define(version: 20130810204259) do
 
   create_table "career_factor_mappings", force: true do |t|
     t.integer  "factor_id"
@@ -80,10 +80,11 @@ ActiveRecord::Schema.define(version: 20130810154626) do
   create_table "questions", force: true do |t|
     t.integer  "section_id"
     t.string   "prompt"
-    t.integer  "row_order",  null: false
+    t.integer  "row_order",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "headline"
+    t.string   "prompt_type"
   end
 
   add_index "questions", ["section_id"], name: "index_questions_on_section_id", using: :btree

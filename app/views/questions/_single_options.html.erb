@@ -1,0 +1,10 @@
+<ul class="single-radio-options">
+  <% question.response_options.rank(:row_order).each do |option| %>
+    <li class="option">
+      <%= label_tag nil, :class => "response-option" do %>
+        <%= option_radio_button(option) %>
+        <%= option.description %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
