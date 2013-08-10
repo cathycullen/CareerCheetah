@@ -2,7 +2,7 @@ class Question < ActiveRecord::Base
   include RankedModel
 
   belongs_to :section
-  has_many :response_options
+  has_many :response_options, :dependent => :destroy
 
   ranks :row_order, :with_same => :section_id
 

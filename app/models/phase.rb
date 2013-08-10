@@ -2,7 +2,7 @@ class Phase < ActiveRecord::Base
   include RankedModel
 
   belongs_to :program
-  has_many :sections
+  has_many :sections, :dependent => :destroy
 
   validates_presence_of :name
   validates_uniqueness_of :name
