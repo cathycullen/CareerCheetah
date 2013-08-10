@@ -1,6 +1,12 @@
 module QuestionHelper
   def option_checkbox(option)
-    selection = current_user.response_option_selections.find_by(:response_option_id => option.id)
-    check_box_tag "response-options[]", option.id, !selection.nil?, {"data-response-option-selection-id" => selection.try(:id)}
+    check_box_tag "response-options[]",
+                  option.id,
+                  response_cache.response_for(option),
+                  {"data-response-option-selection-id" => "#{response_cache.response_for(option)}"}
+  end
+
+  def response_cache
+    @response_cache ||= UserResponseCache.new(current_user, @question)
   end
 end
