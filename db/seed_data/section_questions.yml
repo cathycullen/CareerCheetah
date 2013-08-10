@@ -2,6 +2,7 @@ sections:
   - name: "Moods"
     questions:
       - prompt: "What moods resonate with you right now?"
+        type: "multi"
         responses:
           - description: "Adventurous"
             type: "positive"
@@ -176,6 +177,7 @@ sections:
   - name: "Obstacles"
     questions:
       - prompt: " What are the obstacles that might get in the way of my capacity to learn and to change?"
+        type: "multi"
         responses:
           - description: "My thoughts and beliefs about change"
           - description: "My ambivalence about choosing and making a decision (remember- even the act of not choosing is choosing!)"
@@ -209,6 +211,7 @@ sections:
     headline: "Sharpening your claws"
     questions:
       - prompt: "Choose the classes that interest you"
+        type: "multi"
         responses:
           - description: "business law"
             element_code: "2.C.1.f"
@@ -350,6 +353,7 @@ sections:
     headline: "Choosing your habitat"
     questions:
       - prompt: "Choose only those factors that strongly resonate with you"
+        type: "multi"
         responses:
           - description: "I know that there are companies out there that are doing work that I would like to do."
             element_code: ""
@@ -473,126 +477,147 @@ sections:
     description: "For the next section, Environment, answer \"yes\" or \"no\" to indicate whether the statement is true for you."
     questions:
       - prompt: "Flexibility of hours is very important to me"
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "Rare weekend work is very important to me"
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "Ability to work part-time is very important to me"
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "Work - life balance is very important to me"
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "Ability to work from anywhere is very important to me"
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me to work in or with nature"
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me to be physical most of the day (not work behind a desk)"
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: "4.A.3.a.1"
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me to work in a typical office desk environment, where I spend most of my time sitting"
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: "4.C.2.d.1.a"
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me to work outside most of the time."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: "4.C.2.a.1.c"
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me to work inside most of the time, where it is temperature controlled."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: "4.C.2.a.1.a"
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that there is potential for travel in my job."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that there is low or no travel in my job "
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me to that I experience my job as  fun!"
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my workplace is a  casual dress environment."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that the environment I work in is  business professional dress."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job has an  adventure component"
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job has a very competitive work environment"
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: "4.C.3.c.1"
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that I work in  a collaborative work  environment"
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: " I don't mind working in a stressful environment."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: "1.C.4.b"
           - description: "No"
             element_code: ""
       - prompt: "it is important to me that my job is a low-stress job."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is important to me that my job is a a high stakes job (like a stockbroker or emergency room doctor), in which mistakes cannot be easily rectified and are costly."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: "4.C.3.a.1"
@@ -605,6 +630,7 @@ sections:
     headline: "The inner beast: What do you believe?"
     questions:
       - prompt: "What values resonate with you right now? (Select only those that apply.)"
+        type: "multi"
         responses:
           - description: "Abundance"
           - description: "Accomplishment"
@@ -771,103 +797,119 @@ sections:
     description: "For the next section, Engagement, answer \"yes\" or \"no\" to indicate whether the statement is true for you."
     questions:
       - prompt: "it is very important to me to be in a cutting-edge industry."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "it is very important to me to be in a fast-paced job (driven by strict deadlines)."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: "4.C.3.d.1"
           - description: "No"
             element_code: ""
       - prompt: "it is very important to me to be in a slow-paced job."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "it is very important to me that my job is results oriented."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
-      - prompt: "It is very important to me that my job is
-        customer-driven work, emphasizing customer service."
+      - prompt: "It is very important to me that my job is customer-driven work, emphasizing customer service."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job has clear roles and responsibilities."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "it is very important to me that my job is  structured for me, and doesn't allow me to determine tasks, priorities, or goals. "
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: "4.C.3.b.8"
           - description: "No"
             element_code: ""
       - prompt: "It is very important that I have autonomy in my job–no one looking over my shoulder."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me  to express initiative--have input as to how I do my job."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job has  variety--things are always changing."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that I am  multi-taking on my job--working on multiple items or projects at a time."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: "1.A.1.g.2"
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that I am  uni-tasking on the job--only having one thing on my plate at a time."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: "1.A.1.g.1"
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job is  challenging and stimulating."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: "1.C.1.a"
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that I am  exposed to new ideas and concepts."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job  sustains my interest over time."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that I am  applying new learnings and concepts to my job."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: "4.A.2.b.3"
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that the type of work I engage in is project-based work."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
@@ -877,6 +919,7 @@ sections:
     headline: "Who do you run with?"
     questions:
       - prompt: "When it comes to interfacing with others, I like to (select ONLY those that apply):"
+        type: "multi"
         responses:
           - description: "Be front & center."
             element_code: ""
@@ -912,6 +955,7 @@ sections:
             element_code: "4.C.2.a.3"
             fit_code: ""
       - prompt: "I think of myself as a (select ALL that apply):"
+        type: "multi"
         responses:
           - description: "Trusted, expert advisor"
             element_code: "4.A.4.b.6"
@@ -1011,84 +1055,98 @@ sections:
     description: "For the next section, Passions, answer \"yes\" or \"no\" to indicate whether the statement is true for you."
     questions:
       - prompt: "It is very important to me that there is  community involvement (involving active ways to help people) in my work."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: "2.B.1.f"
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job is meaningful. "
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job offers me  the opportunity to make a contribution, to have an impact."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job  involves animals."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job  involves working with food."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job has  a spiritual component to it."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job has  a \"story-telling\" component to it (PR, communication, screenwriter)."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that there is an intimacy component to my job (psychotherapist, clergy, physician)."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that there is  an environmental component to my work (green-collar jobs)."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job  involves children."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job  involves the elderly."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my work  involves low-income individuals."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my work  involves high-income individuals."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my work  involves special interest groups (immigrants, prison inmates, GLBT, etc.)."
+        type: "boolean"
         responses:
           - description: "Yes"
             element_code: ""
@@ -1098,6 +1156,7 @@ sections:
     headline: "Bite-sized pieces: How you spend your day"
     questions:
       - prompt: "I would enjoy doing these activities, they're on my wishlist of what I would like to do in my ideal career:"
+        type: "multi"
         responses:
           - description: "Install electronics or programs."
             element_code: "2.B.3.d"
@@ -1220,6 +1279,7 @@ sections:
     headline: "Caring for cubs: What you bring back"
     questions:
       - prompt: "When it comes to income level, I would like to work in a job that has a potential income of (select only one):"
+        type: "single"
         responses:
           - description: "40K +"
             element_code: ""
@@ -1248,6 +1308,7 @@ sections:
           - description: "1M +"
             element_code: ""
       - prompt: "When it comes to income level, the minimum I would consider taking a new job for--even if it was an entry-level position--would be (select only one)"
+        type: "single"
         responses:
           - description: "30K +"
             element_code: ""
@@ -1266,6 +1327,7 @@ sections:
           - description: "100K +"
             element_code: ""
       - prompt: "When it comes to income level, which is the most important to you?"
+        type: "single"
         responses:
           - description: "Results driven compensation (sales, recruiter, trader, etc.)."
             element_code: ""
@@ -1274,6 +1336,7 @@ sections:
           - description: "Potential for large income growth."
             element_code: ""
       - prompt: "When it comes to the position, I would like (select all that apply):"
+        type: "multi"
         responses:
           - description: "Certainty, security, stability."
             element_code: ""
@@ -1282,6 +1345,7 @@ sections:
           - description: "Promotions without further education (merit based/ learn on the job based/ not degree based)."
             element_code: ""
       - prompt: "Which job perks are important to you? (select all that apply):"
+        type: "multi"
         responses:
           - description: "Consistent growth and learning (science researcher, doctor, software developer)"
             element_code: ""
@@ -1290,6 +1354,7 @@ sections:
           - description: "Ample vacation time."
             element_code: ""
       - prompt: "I would like a position in which I feel (select all that apply):"
+        type: "multi"
         responses:
           - description: "Appreciated by the public."
             element_code: ""
@@ -1300,6 +1365,7 @@ sections:
           - description: "The job is prestigious."
             element_code: ""
       - prompt: "I would like a job that (choose ALL that apply):"
+        type: "multi"
         responses:
           - description: "Is entry level, not even needing a high school degree."
             element_code: ""
@@ -1312,6 +1378,7 @@ sections:
           - description: "Calls for an advanced degree (Masters, Ph.D, or J.D.)."
             element_code: ""
       - prompt: "Choose the best answer:"
+        type: "single"
         responses:
           - description: "I only want to see results that take into account on-the-job training or an associates or vocational degree or more"
             element_code: ""
