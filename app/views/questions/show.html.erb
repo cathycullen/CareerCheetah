@@ -12,15 +12,6 @@
 
   <div class="question" data-id="<%= @question.id%>">
     <p class="prompt"><%= @question.prompt %></p>
-    <ul class="options">
-      <% @question.response_options.each do |option| %>
-        <li class="option">
-          <%= label_tag nil, :class => "response-option" do %>
-            <%= option_checkbox(option) %>
-            <%= option.description %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+    <%= render partial: "#{@question.prompt_type}_options", locals: {:question => @question} %>
   </div>
 </div>

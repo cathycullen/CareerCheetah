@@ -3,6 +3,14 @@ class ResponseOptionSelectionsController < ApplicationController
     @question = Question.find(params[:question_id])
     @option = ResponseOption.find(params[:response_option_id])
 
+    # Single and boolean prompt questions can't have more than one recorded response.
+    # Delete any that might be saved previously
+    if @question.single? || @question.boolean?
+      current_user.response_option_selections
+        .where(:response_option_id => @question.response_options.pluck(:id))
+        .destroy_all
+    end
+
     @selection = current_user.response_option_selections
                     .where(:response_option_id => @option.id)
                     .first_or_create!
