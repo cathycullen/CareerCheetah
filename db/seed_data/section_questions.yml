@@ -1,5 +1,6 @@
 sections:
   - name: "Classes"
+    headline: "Sharpening your claws"
     questions:
       - prompt: "Choose the classes that interest you"
         responses:
@@ -140,6 +141,7 @@ sections:
           - description: "foreign language conversation"
             element_code: "2.C.7.b"
   - name: "Determining Fit"
+    headline: "Choosing your habitat"
     questions:
       - prompt: "Choose only those factors that strongly resonate with you"
         responses:
@@ -261,6 +263,7 @@ sections:
             element_code: ""
             fit_code: "N"
   - name: "Environment"
+    headline: "On the Savannah"
     questions:
       - prompt: "Flexibility of hours is very important to me"
         responses:
@@ -388,7 +391,8 @@ sections:
             element_code: "4.C.3.a.1"
           - description: "No"
             element_code: ""
-  - name: "Engagment"
+  - name: "Engagement"
+    headline: "Getting into the zone"
     questions:
       - prompt: "it is very important to me to be in a cutting-edge industry."
         responses:
@@ -494,6 +498,7 @@ sections:
           - description: "No"
             element_code: ""
   - name: "People"
+    headline: "Who do you run with?"
     questions:
       - prompt: "When it comes to interfacing with others, I like to (select ONLY those that apply):"
         responses:
@@ -626,6 +631,7 @@ sections:
             element_code: "1.C.2.b"
             fit_code: ""
   - name: "Passions"
+    headline: "The thrill of the hunt"
     questions:
       - prompt: "It is very important to me that there is  community involvement (involving active ways to help people) in my work."
         responses:
@@ -712,6 +718,7 @@ sections:
           - description: "No"
             element_code: ""
   - name: "Activities"
+    headline: "Bite-sized pieces: How you spend your day"
     questions:
       - prompt: "I would enjoy doing these activities, they're on my wishlist of what I would like to do in my ideal career:"
         responses:
@@ -833,6 +840,7 @@ sections:
             element_code: "2.B.4.g"
             fit_code: ""
   - name: "Pay, Perks, Prep"
+    headline: "Caring for cubs: What you bring back"
     questions:
       - prompt: "When it comes to income level, I would like to work in a job that has a potential income of (select only one):"
         responses:
