@@ -6,14 +6,19 @@ def import_onet_data
   print "\tImporting factors..."
   # Factors
   CSV.foreach(File.join(Rails.root, "db/seed_data/onet_factors.csv")) do |row|
-    Factor.create!( :element_code => row[0], :name => row[1], :description => row[2] )
+    Factor.create!(:element_code => row[0],
+                   :name => row[1],
+                   :description => row[2] )
   end
   puts "done"
 
   # Careers
   print "\tImporting careers..."
   CSV.foreach(File.join(Rails.root, "db/seed_data/careers.csv")) do |row|
-    Career.create!( :onet_code => row[0], :title => row[1], :description => row[2], :job_zone => row[3],)
+    Career.create!(:onet_code => row[0],
+                   :title => row[1],
+                   :description => row[2],
+                   :job_zone => row[3],)
   end
   puts "done"
 
@@ -22,7 +27,9 @@ def import_onet_data
   CSV.foreach(File.join(Rails.root, "db/seed_data/career_factors.csv")) do |row|
     career = Career.where(:onet_code => row[1]).first
     factor = Factor.where(:element_code => row[0]).first
-    CareerFactorMapping.create!( :factor => factor, :career => career, :weight => row[2])
+    CareerFactorMapping.create!(:factor => factor,
+                                 :career => career,
+                                 :weight => row[2])
   end
   puts "done"
 end
@@ -62,24 +69,21 @@ def generate_sample_quiz_data
   end
   puts "done"
 
-  # Sections
+  # Sections & Questions
   print "\tCreating sections..."
   phase = Phase.where(:name => "Phase One").first
-  ["Moods", "Obstacles", "Action Steps", "Classes", "Fit", "Environment"].each do |name|
-    phase.sections.create!(:name => name, :headline => Faker::Lorem.sentence(4, false, 2), :description => Faker::Lorem.sentence(7, false, 5))
-  end
-  puts "done"
+  section_data = YAML.load_file(File.join(Rails.root, "db/seed_data/section_questions.yml"))
+  section_data['sections'].each do |section_data|
+    section = phase.sections.create!(:name => section_data['name'],
+                                     :headline => Faker::Lorem.sentence(4, false, 2),
+                                     :description => Faker::Lorem.sentence(7, false, 5))
 
-  # Questions
-  print "\tCreating questions..."
-  factors = Factor.all.to_a
-  Section.all.each do |section|
-    (rand(4)+1).times do
-      prompt = Faker::Lorem.sentence(8, false, 4).gsub(/\.$/, "?")
-      question = section.questions.create!(:prompt => prompt)
-      (rand(12)+1).times do
-        factor = (rand(2) == 1) ? factors.sample : nil
-        question.response_options.create(:description => Faker::Lorem.sentence(4, false, 5), :factor => factor)
+
+    section_data['questions'].each do |question_data|
+      question = section.questions.create!(:prompt => question_data['prompt'])
+      question_data['responses'].each do |response_data|
+        question.response_options.create(:description => response_data['description'],
+                                         :factor => Factor.find_by(:element_code => response_data['element_code']))
       end
     end
   end
