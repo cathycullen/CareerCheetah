@@ -79,11 +79,13 @@ def generate_sample_quiz_data
                                      :description => section_data['description'])
 
 
-    section_data['questions'].each do |question_data|
-      question = section.questions.create!(:prompt => question_data['prompt'])
-      question_data['responses'].each do |response_data|
-        question.response_options.create(:description => response_data['description'],
-                                         :factor => Factor.find_by(:element_code => response_data['element_code']))
+    if section_data['questions']
+      section_data['questions'].each do |question_data|
+        question = section.questions.create!(:prompt => question_data['prompt'])
+        question_data['responses'].each do |response_data|
+          question.response_options.create(:description => response_data['description'],
+                                           :factor => Factor.find_by(:element_code => response_data['element_code']))
+        end
       end
     end
   end
