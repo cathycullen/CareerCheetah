@@ -13,6 +13,11 @@ class Navigation::SectionStrategy
       full_question_path(question)
     elsif next_section = @section.next_section
       full_section_path(next_section)
+    # TODO This is a hacky. We need a better way to describe the flow from
+    # one phase to another. Perhaps an attribute on when to trigger the
+    # career prediction?
+    elsif @phase == @program.phases.rank(:row_order).first
+      user_careers_path
     elsif next_phase = @section.phase.next_phase
       full_phase_path(next_phase)
     else
