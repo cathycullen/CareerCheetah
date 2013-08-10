@@ -54,12 +54,12 @@ namespace :sample do
       section = phase.sections.create!(:name => section_data['name'],
                                        :headline => section_data['headline'],
                                        :description => section_data['description'])
-
-
       if section_data['questions']
         section_data['questions'].each do |question_data|
           question = section.questions.create!(:prompt => question_data['prompt'],
-                                               :prompt_type => question_data['type'])
+                                               :prompt_type => question_data['type'],
+                                               :headline => question_data['headline'])
+
           question_data['responses'].each do |response_data|
             question.response_options.create(:description => response_data['description'],
                                              :factor => Factor.find_by(:element_code => response_data['element_code']))
