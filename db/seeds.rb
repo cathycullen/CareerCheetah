@@ -75,8 +75,8 @@ def generate_sample_quiz_data
   section_data = YAML.load_file(File.join(Rails.root, "db/seed_data/section_questions.yml"))
   section_data['sections'].each do |section_data|
     section = phase.sections.create!(:name => section_data['name'],
-                                     :headline => Faker::Lorem.sentence(4, false, 2),
-                                     :description => Faker::Lorem.sentence(7, false, 5))
+                                     :headline => section_data['headline'],
+                                     :description => section_data['description'])
 
 
     section_data['questions'].each do |question_data|
