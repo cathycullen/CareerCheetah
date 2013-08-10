@@ -4,11 +4,10 @@ class UserCareersController < ApplicationController
     current_user.user_careers.destroy_all
 
     cp = CareerPredictor.new()
-    cp.predict_careers(current_user, 4)
+    job_zone = 4
+    cp.predict_careers(current_user, job_zone)
     current_user.reload
 
-   # @careers = current_user.careers
     @careers = current_user.user_careers
-
   end
 end
