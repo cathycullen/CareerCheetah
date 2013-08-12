@@ -25,7 +25,7 @@ module QuestionHelper
     group_size = 4
     if max_length <= 15
       group_size = option_row_count*4
-    elsif max_length <= 25
+    elsif max_length <= 28
       group_size = option_row_count*3
     elsif max_length <= 38
       group_size = option_row_count*2
