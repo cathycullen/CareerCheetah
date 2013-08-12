@@ -1,10 +1,14 @@
-<ul class="single-radio-options">
-  <% question.response_options.rank(:row_order).each do |option| %>
-    <li class="option">
-      <%= label_tag nil, :class => "response-option" do %>
-        <%= option_radio_button(option) %>
-        <%= option.description %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+<% option_groups = question.response_options.rank(:row_order).each_slice(4).to_a %>
+
+<% option_groups.each_with_index do |options, index| %>
+  <ul class="options single-radio-options <%= "hidden" if index > 0 %>">
+    <% options.each do |option| %>
+      <li class="option">
+        <%= label_tag nil, :class => "response-option" do %>
+          <%= option_radio_button(option) %>
+          <%= option.description %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
