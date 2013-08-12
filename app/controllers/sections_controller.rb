@@ -12,4 +12,5 @@ class SectionsController < ApplicationController
     @phase = Phase.find_by(:slug => params[:phase_id])
     @program = Program.find_by(:slug => params[:program_id])
   end
+
 end
