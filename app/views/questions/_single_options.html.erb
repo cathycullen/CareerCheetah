@@ -1,8 +1,9 @@
 <% option_groups(question).each_with_index do |options, index| %>
   <ul class="options single-radio-options <%= "hidden" if index > 0 %>">
     <% if options.length > 4 %>
-      <% options.each_slice(4) do |sub_group| %>
-        <div class="column">
+      <% sub_groups = options.each_slice(4).to_a %>
+      <% sub_groups.each do |sub_group| %>
+        <div class="column c-<%=sub_groups.length%>">
           <% sub_group.each do |option| %>
             <%= render partial: "radio_option", locals: {option: option} %>
           <% end %>
