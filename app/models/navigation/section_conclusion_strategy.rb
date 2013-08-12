@@ -1,4 +1,4 @@
-class Navigation::SectionStrategy
+class Navigation::SectionConclusionStrategy
   include Rails.application.routes.url_helpers
   include Navigation::PathGeneration
 
@@ -9,11 +9,7 @@ class Navigation::SectionStrategy
   end
 
   def next
-    if question = @section.questions.rank(:row_order).first
-      full_question_path(question)
-    elsif @section.completion_code
-      full_section_conclusion_path(@section)
-    elsif next_section = @section.next_section
+    if next_section = @section.next_section
       full_section_path(next_section)
     # TODO This is a hacky. We need a better way to describe the flow from
     # one phase to another. Perhaps an attribute on when to trigger the
@@ -28,10 +24,10 @@ class Navigation::SectionStrategy
   end
 
   def previous
-    if previous_section = @section.previous_section
-      full_section_conclusion_path(previous_section)
+    if last_section_question = @section.questions.rank(:row_order).last
+      full_question_path(last_section_question)
     else
-      full_phase_path(@section.phase)
+      full_section_path(@section)
     end
   end
 end
