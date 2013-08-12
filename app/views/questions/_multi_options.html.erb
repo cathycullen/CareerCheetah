@@ -1,14 +1,17 @@
-<% option_groups = question.response_options.rank(:row_order).each_slice(4).to_a %>
-
-<% option_groups.each_with_index do |options, index| %>
+<% option_groups(question).each_with_index do |options, index| %>
   <ul class="options multi-checkbox-options <%= "hidden" if index > 0 %>">
-    <% options.each do |option| %>
-      <li class="option">
-        <%= label_tag nil, :class => "response-option" do %>
-          <%= option_checkbox(option) %>
-          <%= option.description %>
-        <% end %>
-      </li>
+    <% if options.length > 4 %>
+      <% options.each_slice(4) do |sub_group| %>
+        <div class="column">
+          <% sub_group.each do |option| %>
+            <%= render partial: "checkbox_option", locals: {option: option} %>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <% options.each do |option| %>
+        <%= render partial: "checkbox_option", locals: {option: option} %>
+      <% end %>
     <% end %>
   </ul>
 <% end %>
