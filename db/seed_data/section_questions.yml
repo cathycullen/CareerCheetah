@@ -1168,7 +1168,7 @@ sections:
             element_code: ""
           - description: "No"
             element_code: ""
-      - prompt: "It is very important to me that my job  involves children."
+      - prompt: "It is very important to me that my job involves children."
         headline: "PASSION"
         type: "boolean"
         responses:
@@ -1176,7 +1176,7 @@ sections:
             element_code: ""
           - description: "No"
             element_code: ""
-      - prompt: "It is very important to me that my job  involves the elderly."
+      - prompt: "It is very important to me that my job involves the elderly."
         headline: "PASSION"
         type: "boolean"
         responses:
@@ -1184,7 +1184,7 @@ sections:
             element_code: ""
           - description: "No"
             element_code: ""
-      - prompt: "It is very important to me that my work  involves low-income individuals."
+      - prompt: "It is very important to me that my work involves low-income individuals."
         headline: "PASSION"
         type: "boolean"
         responses:
@@ -1427,7 +1427,7 @@ sections:
             element_code: ""
       - prompt: "I would like a job that (choose ALL that apply):"
         headline: "PREPERATION"
-        type: "multi"
+        type: "single"
         responses:
           - description: "Is entry level, not even needing a high school degree."
             element_code: ""
