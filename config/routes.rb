@@ -4,6 +4,7 @@ CareerCheetah::Application.routes.draw do
       resources :sections do
         resources :questions
       end
+      resources :section_conclusions
     end
   end
 
