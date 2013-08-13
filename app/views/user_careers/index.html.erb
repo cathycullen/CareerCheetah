@@ -3,19 +3,25 @@
 <div class="user-career-suggestions">
  <div class="heading">
    <div class="career-result">
-       <ul>
           <% career_count = 1 %>
           <% @careers.first(25).each do |user_career|  %>
-           <% career = Career.find(user_career.career_id)   %>
-           <li>
-             <%= career_count %>
-             <%= career.onet_code %>
-             <%= career.title %>
-             <%= user_career.weight %>
+          <div class="row">
+             <% career = Career.find(user_career.career_id)   %>
+             <div class="span2">
+               <%= career_count %>
+             </div>
+             <div class="span2">
+               <%= career.onet_code %> 
+             </div>
+             <div class="span6">
+               <%= career.title %>
+             </div>
+             <div class="span2">
+               <%= user_career.weight %>
+             </div>
              <% career_count += 1 %>
-           </li>
+           </div>
           <% end %>
-     </ul>
  </div>
  </div>
 </div>

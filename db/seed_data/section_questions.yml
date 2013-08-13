@@ -478,7 +478,8 @@ sections:
     headline: "On the Savannah"
     description: "For the next section, Environment, answer \"yes\" or \"no\" to indicate whether the statement is true for you."
     questions:
-      - prompt: "Flexibility of hours is very important to me"
+      - prompt: "Flexibility of hours is very important to me"   
+        rating_prompt: "On a scale of 1-5, how important is flexibility of hours to you?"
         headline: "TIME"
         type: "boolean"
         responses:
@@ -487,6 +488,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "Rare weekend work is very important to me"
+        rating_prompt: "On a scale of 1-5, how important is it to you to have rare weekend work?"
         headline: "TIME"
         type: "boolean"
         responses:
@@ -495,6 +497,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "Ability to work part-time is very important to me"
+        rating_prompt: "On a scale of 1-5, how important is the ability to work part-time to you?" 
         headline: "TIME"
         type: "boolean"
         responses:
@@ -503,6 +506,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "Work - life balance is very important to me"
+        rating_prompt: "On a scale of 1-5, how important is work - life balance to you?"
         headline: "TIME"
         type: "boolean"
         responses:
@@ -511,6 +515,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "Ability to work from anywhere is very important to me"
+        rating_prompt: "On a scale of 1-5, how important is it to you to have the ability to work from anywhere?"
         headline: "SPACE"
         type: "boolean"
         responses:
@@ -519,6 +524,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me to work in or with nature"
+        rating_prompt: "On a scale of 1-5, how important is working in or with nature to you?"
         headline: "SPACE"
         type: "boolean"
         responses:
@@ -527,6 +533,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me to be physical most of the day (not work behind a desk)"
+        rating_prompt: "On a scale of 1-5, how important is it to you to be physical most of the day (not work behind a desk)?" 
         headline: "SPACE"
         type: "boolean"
         responses:
@@ -535,6 +542,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me to work in a typical office desk environment, where I spend most of my time sitting"
+        rating_prompt: "On a scale of 1-5, how important is it to work in a typical office desk environment where you spend most of your time sitting?"
         headline: "SPACE"
         type: "boolean"
         responses:
@@ -543,6 +551,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me to work outside most of the time."
+        rating_prompt: "On a scale of 1-5, how important is working outside most of the time to you?"
         headline: "SPACE"
         type: "boolean"
         responses:
@@ -551,6 +560,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me to work inside most of the time, where it is temperature controlled."
+        rating_prompt: "On a scale of 1-5, how important is it to you to work inside most of the time, where it is temperature controlled?" 
         headline: "SPACE"
         type: "boolean"
         responses:
@@ -559,6 +569,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that there is potential for travel in my job."
+        rating_prompt: "On a scale of 1-5, how important is potential for travel in your job to you?"
         headline: "TRAVEL"
         type: "boolean"
         responses:
@@ -567,6 +578,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that there is low or no travel in my job "
+        rating_prompt: "On a scale of 1-5, how important is it to you that there is low or no travel in your job?"
         headline: "TRAVEL"
         type: "boolean"
         responses:
@@ -575,6 +587,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me to that I experience my job as  fun!"
+        rating_prompt: "On a scale of 1-5, how important is it to you that you experience your job as fun?"
         headline: "ATMOSPHERE"
         type: "boolean"
         responses:
@@ -583,6 +596,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my workplace is a  casual dress environment."
+        rating_prompt: "On a scale of 1-5, how important is it to you that your workplace is a casual dress environment?"
         headline: "ATMOSPHERE"
         type: "boolean"
         responses:
@@ -591,6 +605,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that the environment I work in is  business professional dress."
+        rating_prompt: "On a scale of 1-5, how important is it to you that the environment you work in is business professional dress?"
         headline: "ATMOSPHERE"
         type: "boolean"
         responses:
@@ -599,6 +614,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job has an  adventure component"
+        rating_prompt: "On a scale of 1-5, how important is it to you that your job has an adventure component?"
         headline: "ATMOSPHERE"
         type: "boolean"
         responses:
@@ -607,6 +623,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job has a very competitive work environment"
+        rating_prompt: "On a scale of 1-5, how important is it to you that your job has a very competitive work environment?"
         headline: "ATMOSPHERE"
         type: "boolean"
         responses:
@@ -615,6 +632,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that I work in  a collaborative work  environment"
+        rating_prompt: "On a scale of 1-5, how important is working in a collaborative work environment to you?"
         headline: "ATMOSPHERE"
         type: "boolean"
         responses:
@@ -623,6 +641,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: " I don't mind working in a stressful environment."
+        rating_prompt: "On a scale of 1-5, how important is it that you work in a stressful environment?"
         headline: "STRESS"
         type: "boolean"
         responses:
@@ -631,6 +650,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "it is important to me that my job is a low-stress job."
+        rating_prompt: "On a scale of 1-5, how important is it that your job is a low-stress job?"
         headline: "STRESS"
         type: "boolean"
         responses:
@@ -639,6 +659,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is important to me that my job is a a high stakes job (like a stockbroker or emergency room doctor), in which mistakes cannot be easily rectified and are costly."
+        rating_prompt: "On a scale of 1-5, how important is it that your job is a high stakes job (like a stockbroker or emergency room doctor), in which mistakes cannot be easily rectified and are costly?"
         headline: "ATMOSPHERE"
         type: "boolean"
         responses:
@@ -653,6 +674,7 @@ sections:
     headline: "The inner beast: What do you believe?"
     questions:
       - prompt: "What values resonate with you right now? (Select only those that apply.)"
+        description: "Try to filter out any voices in your head that may be telling you what others (peers, parents, society, the media, your boss or organization) expect of you. Listen to your own inner voice. What’s authentically important to you?"
         type: "multi"
         responses:
           - description: "Abundance"
@@ -820,6 +842,7 @@ sections:
     description: "For the next section, Engagement, answer \"yes\" or \"no\" to indicate whether the statement is true for you."
     questions:
       - prompt: "it is very important to me to be in a cutting-edge industry."
+        rating_prompt: "On a scale of 1-5, how important is it to you to be in a cutting-edge industry?"
         headline: "TYPE OF INDUSTRY DRIVER"
         type: "boolean"
         responses:
@@ -828,6 +851,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "it is very important to me to be in a fast-paced job (driven by strict deadlines)."
+        rating_prompt: "On a scale of 1-5, how important is it to you to be in a fast-paced job (driven by strict deadlines)?"
         headline: "TYPE OF INDUSTRY DRIVER"
         type: "boolean"
         responses:
@@ -836,6 +860,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "it is very important to me to be in a slow-paced job."
+        rating_prompt: "On a scale of 1-5, how important is it to you to be in a slow-paced job?"
         headline: "TYPE OF INDUSTRY DRIVER"
         type: "boolean"
         responses:
@@ -844,6 +869,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "it is very important to me that my job is results oriented."
+        rating_prompt: "On a scale of 1-5, how important is it that your job is results oriented?" 
         headline: "TYPE OF INDUSTRY DRIVER"
         type: "boolean"
         responses:
@@ -852,6 +878,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job is customer-driven work, emphasizing customer service."
+        rating_prompt: "On a scale of 1-5, how important is it that your job is customer-driven work, emphasizing customer service?"
         headline: "TYPE OF INDUSTRY DRIVER"
         type: "boolean"
         responses:
@@ -860,6 +887,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job has clear roles and responsibilities."
+        rating_prompt: "On a scale of 1-5, how important is it to you that your job has clear roles and responsibilities?"
         headline: "STRUCTURE"
         type: "boolean"
         responses:
@@ -867,7 +895,8 @@ sections:
             element_code: ""
           - description: "No"
             element_code: ""
-      - prompt: "it is very important to me that my job is  structured for me, and doesn't allow me to determine tasks, priorities, or goals. "
+      - prompt: "it is very important to me that my job is structured for me, and doesn't allow me to determine tasks, priorities, or goals. "
+        rating_prompt: "On a scale of 1-5, how important is it that your job is structured for you, and doesn't allow you to determine tasks, priorities, or goals?"
         headline: "STRUCTURE"
         type: "boolean"
         responses:
@@ -875,7 +904,8 @@ sections:
             element_code: "4.C.3.b.8"
           - description: "No"
             element_code: ""
-      - prompt: "It is very important that I have autonomy in my job–no one looking over my shoulder."
+      - prompt: "It is very important that I have autonomy in my job‚ no one looking over my shoulder."
+        rating_prompt: "On a scale of 1-5, how important is it to have autonomy in your job, no one looking over your shoulder?" 
         headline: "STRUCTURE"
         type: "boolean"
         responses:
@@ -884,6 +914,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me  to express initiative--have input as to how I do my job."
+        rating_prompt: "On a scale of 1-5, how important is it to you to express initiative--have input as to how you do in your job?"
         headline: "STRUCTURE"
         type: "boolean"
         responses:
@@ -892,6 +923,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job has  variety--things are always changing."
+        rating_prompt: "On a scale of 1-5, how important is it to you that your job has variety (things are always changing)?"
         headline: "VARIETY"
         type: "boolean"
         responses:
@@ -899,7 +931,8 @@ sections:
             element_code: ""
           - description: "No"
             element_code: ""
-      - prompt: "It is very important to me that I am  multi-taking on my job--working on multiple items or projects at a time."
+      - prompt: "It is very important to me that I am  multi-tasking on my job--working on multiple items or projects at a time."
+        rating_prompt: "On a scale of 1-5, how important is it that you are multi-tasking on your job (working on multiple items or projects at a time)?"
         headline: "VARIETY"
         type: "boolean"
         responses:
@@ -908,6 +941,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that I am  uni-tasking on the job--only having one thing on my plate at a time."
+        rating_prompt: "On a scale of 1-5, how important is it that you are uni-tasking on the job--only having one thing on your plate at a time?" 
         headline: "VARIETY"
         type: "boolean"
         responses:
@@ -916,6 +950,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job is  challenging and stimulating."
+        rating_prompt: "On a scale of 1-5, how important is it to you that your job is challenging and stimulating?"
         headline: "INTEREST LEVEL"
         type: "boolean"
         responses:
@@ -924,6 +959,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that I am  exposed to new ideas and concepts."
+        rating_prompt: "On a scale of 1-5, how important is it to you that you are exposed to new ideas and concepts?"
         headline: "INTEREST LEVEL"
         type: "boolean"
         responses:
@@ -932,6 +968,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job  sustains my interest over time."
+        rating_prompt: "On a scale of 1-5, how important is it to you that your job sustains your interest over time?"
         headline: "INTEREST LEVEL"
         type: "boolean"
         responses:
@@ -940,6 +977,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that I am  applying new learnings and concepts to my job."
+        rating_prompt: "On a scale of 1-5, how important is it to you that you are applying new learnings and concepts to your job?"
         headline: "INTEREST LEVEL"
         type: "boolean"
         responses:
@@ -948,6 +986,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that the type of work I engage in is project-based work."
+        rating_prompt: "On a scale of 1-5, how important is it to you that the type of work you engage in is project-based work?"
         headline: "PROJECT WORK"
         type: "boolean"
         responses:
@@ -1097,6 +1136,7 @@ sections:
     description: "For the next section, Passions, answer \"yes\" or \"no\" to indicate whether the statement is true for you."
     questions:
       - prompt: "It is very important to me that there is  community involvement (involving active ways to help people) in my work."
+        rating_prompt: "On a scale of 1-5, how important is it to you that there is community involvement (involving active ways to help people) in your work?"
         headline: "PASSION"
         type: "boolean"
         responses:
@@ -1105,6 +1145,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job is meaningful. "
+        rating_prompt: "On a scale of 1-5, how important is it to you that your job is meaningful?"
         headline: "PASSION"
         type: "boolean"
         responses:
@@ -1113,6 +1154,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job offers me  the opportunity to make a contribution, to have an impact."
+        rating_prompt: "On a scale of 1-5, how important is it to you that your job offers you the opportunity to make a contribution, to have an impact?"
         headline: "PASSION"
         type: "boolean"
         responses:
@@ -1121,6 +1163,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job  involves animals."
+        rating_prompt: "On a scale of 1-5, how important is it that your job involves animals?"
         headline: "PASSION"
         type: "boolean"
         responses:
@@ -1129,6 +1172,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job  involves working with food."
+        rating_prompt: "On a scale of 1-5, how important is it that your job involves working with food?"
         headline: "PASSION"
         type: "boolean"
         responses:
@@ -1137,6 +1181,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job has  a spiritual component to it."
+        rating_prompt: "On a scale of 1-5, how important is it that your job has a spiritual component to it?"
         headline: "PASSION"
         type: "boolean"
         responses:
@@ -1145,6 +1190,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job has  a \"story-telling\" component to it (PR, communication, screenwriter)."
+        rating_prompt: "On a scale of 1-5, how important is it to you that your job has a \"story-telling\" component to it (PR, communication, screenwriter)?"
         headline: "PASSION"
         type: "boolean"
         responses:
@@ -1153,6 +1199,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that there is an intimacy component to my job (psychotherapist, clergy, physician)."
+        rating_prompt: "On a scale of 1-5, how important is it to you that there is an intimacy component to your job (psychotherapist, clergy, physician)?"
         headline: "PASSION"
         type: "boolean"
         responses:
@@ -1161,6 +1208,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that there is  an environmental component to my work (green-collar jobs)."
+        rating_prompt: "On a scale of 1-5, how important is it to you that there is an environmental component to your work (green-collar jobs)?"
         headline: "PASSION"
         type: "boolean"
         responses:
@@ -1169,6 +1217,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job  involves children."
+        rating_prompt: "On a scale of 1-5, how important is it that your job involves children?"
         headline: "PASSION"
         type: "boolean"
         responses:
@@ -1177,6 +1226,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my job  involves the elderly."
+        rating_prompt: "On a scale of 1-5, how important is it that your job involves the elderly?"
         headline: "PASSION"
         type: "boolean"
         responses:
@@ -1185,6 +1235,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my work  involves low-income individuals."
+        rating_prompt: "On a scale of 1-5, how important is it that your job involves low-income individuals?"
         headline: "PASSION"
         type: "boolean"
         responses:
@@ -1193,6 +1244,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my work  involves high-income individuals."
+        rating_prompt: "On a scale of 1-5, how important is it that your job involves high-income individuals?"
         headline: "PASSION"
         type: "boolean"
         responses:
@@ -1201,6 +1253,7 @@ sections:
           - description: "No"
             element_code: ""
       - prompt: "It is very important to me that my work  involves special interest groups (immigrants, prison inmates, GLBT, etc.)."
+        rating_prompt: "On a scale of 1-5, how important is it to you that your work involves special interest groups (immigrants, prison inmates, GLBT, etc.)?"
         headline: "PASSION"
         type: "boolean"
         responses:
@@ -1427,7 +1480,7 @@ sections:
             element_code: ""
       - prompt: "I would like a job that (choose ALL that apply):"
         headline: "PREPERATION"
-        type: "multi"
+        type: "single"
         responses:
           - description: "Is entry level, not even needing a high school degree."
             element_code: ""
