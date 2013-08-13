@@ -2,11 +2,12 @@ class Navigation::QuestionStrategy
   include Rails.application.routes.url_helpers
   include Navigation::PathGeneration
 
-  def initialize(question)
+  def initialize(question, user)
     @question = question
     @section = @question.section
     @phase = @section.phase
     @program = @phase.program
+    @user = user
   end
 
   def next

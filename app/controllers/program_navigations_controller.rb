@@ -4,12 +4,12 @@ class ProgramNavigationsController < ApplicationController
   # before_filter :verify_completion_code, :only => :next
 
   def next
-    n = Navigation::ProgramNavigator.new(@context_object)
+    n = Navigation::ProgramNavigator.new(@context_object, current_user)
     redirect_to n.next
   end
 
   def previous
-    n = Navigation::ProgramNavigator.new(@context_object)
+    n = Navigation::ProgramNavigator.new(@context_object, current_user)
     redirect_to n.previous
   end
 

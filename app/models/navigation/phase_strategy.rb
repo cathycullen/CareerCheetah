@@ -2,9 +2,10 @@ class Navigation::PhaseStrategy
   include Rails.application.routes.url_helpers
   include Navigation::PathGeneration
 
-  def initialize(phase)
+  def initialize(phase, user)
     @phase = phase
     @program = phase.program
+    @user = user
   end
 
   def next

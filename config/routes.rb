@@ -3,6 +3,7 @@ CareerCheetah::Application.routes.draw do
     resources :phases do
       resources :sections do
         resources :questions
+        resources :factor_ratings
       end
       resources :section_conclusions
     end
