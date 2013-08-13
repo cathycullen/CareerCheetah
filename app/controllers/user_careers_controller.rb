@@ -8,6 +8,6 @@ class UserCareersController < ApplicationController
     cp.predict_careers(current_user, job_zone)
     current_user.reload
 
-    @careers = current_user.user_careers
+    @careers = current_user.user_careers.order("weight DESC")
   end
 end
