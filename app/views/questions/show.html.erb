@@ -12,6 +12,7 @@
 
   <div class="question" data-id="<%= @question.id%>">
     <p class="prompt"><%= @question.prompt %></p>
+    <p><%= @question.description %></p>
     <div class="option-group">
       <%= render partial: "#{@question.prompt_type}_options", locals: {:question => @question} %>
     </div>

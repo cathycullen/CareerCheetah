@@ -58,7 +58,9 @@ namespace :sample do
         section_data['questions'].each do |question_data|
           question = section.questions.create!(:prompt => question_data['prompt'],
                                                :prompt_type => question_data['type'],
-                                               :headline => question_data['headline'])
+                                               :headline => question_data['headline'],
+                                               :description => question_data['description'],
+                                               :rating_prompt => question_data['rating_prompt'])
 
           question_data['responses'].each do |response_data|
             question.response_options.create(:description => response_data['description'],
