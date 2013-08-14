@@ -17,5 +17,12 @@ class FactorRatingsController < ApplicationController
   end
 
   def create
+    @response_selection = ResponseOptionSelection.find(params[:id])
+    @response_selection.rating = params[:rating]
+    if @response_selection.save
+      render json: @response_selection
+    else
+      render json: {message: "Unable to save rating"}
+    end
   end
 end

@@ -1,6 +1,9 @@
 $(document).on('page:load', bindResponseEditing);
 $(document).on('ready', bindResponseEditing);
 
+$(document).on('page:load', bindResponseRating);
+$(document).on('ready', bindResponseRating);
+
 $(document).on('page:load', bindResponseNavigation);
 $(document).on('ready', bindResponseNavigation);
 
@@ -57,6 +60,25 @@ function bindResponseEditing() {
           this.data('response-option-selection-id', "");
         });
       }
+    }
+  });
+};
+
+function bindResponseRating() {
+  $("input[name='factor-ratings[]']").change(function () {
+    var box = $(this);
+
+    if(box.is(':checked')){
+      var data = {id: box.data('response-option-selection-id'),
+                  rating: box.attr('value')};
+
+      $.ajax({
+        type: "POST",
+        url: "/factor_ratings",
+        data: data,
+        dataType: "JSON",
+        context: box
+      });
     }
   });
 };
