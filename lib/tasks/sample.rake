@@ -25,11 +25,6 @@ namespace :sample do
         end
     end
     puts "done"
-    user = User.create!(:email => "cathy@softwareoptions.com",
-                        :name => "cathy",
-                        :password => "cullen1",
-                        :password_confirmation => "cullen1")  
-    puts "done creating #{user.name}"
   end
 
   desc "Regenerate the default program quesionaire"
@@ -63,6 +58,7 @@ namespace :sample do
         section_data['questions'].each do |question_data|
           question = section.questions.create!(:prompt => question_data['prompt'],
                                                :prompt_type => question_data['type'],
+                                               :description => question_data['description'],
                                                :headline => question_data['headline'])
 
           question_data['responses'].each do |response_data|
