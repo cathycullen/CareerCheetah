@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :careers, :through => :user_careers
 
   has_many :response_option_selections, :dependent => :destroy
+  has_many :response_options, :through => :response_option_selections
 
   validates_presence_of :email, :name
   validates_uniqueness_of :email

@@ -1502,5 +1502,6 @@ sections:
             element_code: ""
           - description: "I only want to see results for jobs that need an advanced degree"
             element_code: ""
-  - name: "Rate Factors"
+  - name: "On the Prowl"
+    headline: "For the Ideal Job"
     questions:
