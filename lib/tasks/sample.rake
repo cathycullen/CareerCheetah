@@ -14,15 +14,15 @@ namespace :sample do
 
     # Create new sample users
     users.each do |u|
-     user = User.create!(:email => "#{u}@abc.com",
+      user = User.create!(:email => "#{u}@abc.com",
                           :name => u,
                           :password => "careerC33tah",
                           :password_confirmation => "careerC33tah")  
 
-      CSV.foreach(File.join(Rails.root, "db/seed_data/#{u}.csv")) do |row|
-        factor = Factor.where(:element_code => row[0].strip).first
-        user.factor_selections.create!(:factor => factor)
-      end
+        CSV.foreach(File.join(Rails.root, "db/seed_data/#{u}.csv")) do |row|
+          factor = Factor.where(:element_code => row[0].strip).first
+          user.factor_selections.create!(:factor => factor)
+        end
     end
     puts "done"
   end
@@ -58,13 +58,15 @@ namespace :sample do
         section_data['questions'].each do |question_data|
           question = section.questions.create!(:prompt => question_data['prompt'],
                                                :prompt_type => question_data['type'],
-                                               :headline => question_data['headline'],
                                                :description => question_data['description'],
-                                               :rating_prompt => question_data['rating_prompt'])
+                                               :headline => question_data['headline'])
 
           question_data['responses'].each do |response_data|
             question.response_options.create(:description => response_data['description'],
-                                             :factor => Factor.find_by(:element_code => response_data['element_code']))
+                                             :factor => Factor.find_by(:element_code => response_data['element_code']),
+                                             :fit_code => response_data['fit_code'],
+                                             :description => response_data['description'],
+                                             :rating_prompt => response_data['rating_prompt'])                                          
           end
         end
       end
