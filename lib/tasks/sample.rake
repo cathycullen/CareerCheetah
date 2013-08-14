@@ -79,6 +79,8 @@ namespace :sample do
                                       :headline => "DETERMINING FIT",
                                       :description => "Here are the results of your \"Determining Fit\" assessment. It will show you employment \"best fit\" based on your answers.")
       elsif section.slug == "moods"
+        # Create a third-to-last SectionStep (of type StaticStep) that will render the mood_iceberg template
+        section.section_steps.create!(:type => "StaticStep", :template => "mood_iceberg")
         section.section_steps.create!(:type => "ResponseDistributionStep")
 
       end
