@@ -14,7 +14,7 @@
 <% end %>
 
 <div class="current-step question">
-  <div class="question" data-id="<%= @response_option.id%>">
+  <div class="question">
     <p class="prompt"><%= prompt(@response_option) %></p>
     <div class="option-group">
       <ul class="rating-options">
@@ -24,8 +24,8 @@
               <span class="value-description"><%= option[:value_description]%></span><br />
               <%= radio_button_tag "factor-ratings[]",
                                    option[:value],
-                                   false,
-                                   {"data-response-option-selection-id" => "#{@response_option.id}"} %><br />
+                                   @response_selection.rating == option[:value],
+                                   {"data-response-option-selection-id" => "#{@response_selection.id}"} %><br />
               <%= option[:description] %>
             <% end %>
           </li>

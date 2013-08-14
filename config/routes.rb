@@ -9,6 +9,8 @@ CareerCheetah::Application.routes.draw do
     end
   end
 
+  resources :factor_ratings, only: [:create]
+
   resources :response_option_selections
   resources :user_careers
 
