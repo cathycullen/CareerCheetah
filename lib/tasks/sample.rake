@@ -27,8 +27,8 @@ namespace :sample do
     puts "done"
   end
 
-  desc "Regenerate the default program quesionaire"
-  task :questionaire => :environment do
+  desc "Regenerate the default program questionnaire"
+  task :questionnaire => :environment do
     puts "Generating sample quiz data..."
 
     p = Program.find_by(:name => "Career Cheetah Default")
