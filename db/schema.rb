@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130814170112) do
+ActiveRecord::Schema.define(version: 20130814192658) do
 
   create_table "career_factor_mappings", force: true do |t|
     t.integer  "factor_id"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20130814170112) do
     t.datetime "updated_at"
     t.string   "fit_code"
     t.string   "rating_prompt"
+    t.string   "response_type"
   end
 
   add_index "response_options", ["factor_id"], name: "index_response_options_on_factor_id", using: :btree

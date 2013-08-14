@@ -32,4 +32,18 @@ module UserHelper
     sum
   end
 
+  def mood_summary
+    mood_summary = []
+    moods = ['positive', 'negative', 'neutral']
+    moods.each do  |mood|
+      mood_count = 0
+      @user.response_option_selections.each do |ros|
+        mood_count += ResponseOption.where(:id => ros.response_option_id).where(:response_type => mood).size
+      end
+
+      #puts "Mood Count for #{mood} is : #{mood_count}"
+      mood_summary <<  { :mood => mood, :count => mood_count}
+    end
+  end
+
 end
