@@ -8,12 +8,18 @@ module UserHelper
     codes.each do  |code|
       code_count = 0
       @user.response_option_selections.each do |response_option|
-        code_count += response_option = ResponseOption.where(:id => response_option.response_option_id).where(:fit_code => code[0]).size
+        code_count += ResponseOption.where(:id => response_option.response_option_id).where(:fit_code => code[0]).size
       end
 
-      fit_codes_summary <<  { :fit_code => code, :count => code_count}
-      # puts "Code Count for #{code} is : #{code_count}"
+      fit_codes_summary <<  {:fit_code => code, :count => code_count}
     end
+
+    max = fit_codes_summary.max_by{ |f| f[:count]}[:count]
+    fit_codes_summary.each do |f|
+      f[:percent] = f[:count].to_f / max
+    end
+
+    fit_codes_summary
   end
 
   def fit_count_by_type(fit_code)
@@ -22,7 +28,8 @@ module UserHelper
     @user.response_option_selections.each do |ros|
       sum += ResponseOption.where(:id => ros.response_option_id).where(:fit_code => fit_code).size
     end
-  sum      
+
+    sum
   end
 
 end

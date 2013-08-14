@@ -73,6 +73,15 @@ namespace :sample do
         end
       end
 
+      if section.slug == "determining-fit"
+        section.section_steps.create!(:type => "ResponseDistributionStep",
+                                      :headline => "DETERMINING FIT",
+                                      :description => "Here are the results of your \"Determining Fit\" assessment. It will show you employment \"best fit\" based on your answers.")
+      elsif section.slug == "moods"
+        section.section_steps.create!(:type => "ResponseDistributionStep")
+
+      end
+
       section.section_steps.create!(:type => "ConclusionStep")
     end
     puts "done"

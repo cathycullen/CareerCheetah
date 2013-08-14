@@ -1,0 +1,18 @@
+<div class="current-step response-distribution">
+  <% if @section_step.section.slug == "determining-fit" %>
+    <div class="heading">
+      <h1><%= @section_step.headline %></h1>
+    </div>
+    <p class="prompt"><%= @section_step.description %></p>
+
+    <% best_work_fit.each do |fit_data| %>
+      <div class="resultsBarGreen" style="width: <%=fit_data[:percent]*100%>%;">
+        <p><%=fit_data[:fit_code]%>: <%=fit_data[:count]%></p>
+      </div>
+    <% end %>
+  <% elsif @section_step.section.slug == "mood" %>
+    <!-- Mood distribution graph goes here %>
+  <% end %>
+
+
+</div>
