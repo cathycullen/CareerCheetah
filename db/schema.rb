@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130814134236) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20130814170112) do
 
   create_table "career_factor_mappings", force: true do |t|
     t.integer  "factor_id"
@@ -81,17 +78,13 @@ ActiveRecord::Schema.define(version: 20130814134236) do
   end
 
   create_table "questions", force: true do |t|
-    t.integer  "section_id"
     t.string   "prompt"
-    t.integer  "row_order",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "headline"
     t.string   "prompt_type"
     t.string   "description"
   end
-
-  add_index "questions", ["section_id"], name: "index_questions_on_section_id", using: :btree
 
   create_table "response_option_selections", force: true do |t|
     t.integer  "user_id"
@@ -117,6 +110,21 @@ ActiveRecord::Schema.define(version: 20130814134236) do
 
   add_index "response_options", ["factor_id"], name: "index_response_options_on_factor_id", using: :btree
   add_index "response_options", ["question_id"], name: "index_response_options_on_question_id", using: :btree
+
+  create_table "section_steps", force: true do |t|
+    t.integer  "section_id"
+    t.integer  "question_id"
+    t.integer  "row_order"
+    t.string   "type"
+    t.string   "headline"
+    t.text     "description"
+    t.string   "template"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "section_steps", ["question_id"], name: "index_section_steps_on_question_id", using: :btree
+  add_index "section_steps", ["section_id"], name: "index_section_steps_on_section_id", using: :btree
 
   create_table "sections", force: true do |t|
     t.integer  "phase_id"

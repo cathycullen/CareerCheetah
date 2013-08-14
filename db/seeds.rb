@@ -31,7 +31,7 @@ CSV.foreach(File.join(Rails.root, "db/seed_data/career_factors.csv")) do |row|
 end
 puts "done"
 
-User.create!(:email => "test@careercheetah.com",
+User.create!(:email => "test@careercheetah.net",
              :name => "Test User",
              :password => "careerC33tah",
              :password_confirmation => "careerC33tah")

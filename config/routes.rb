@@ -2,10 +2,10 @@ CareerCheetah::Application.routes.draw do
   resources :programs do
     resources :phases do
       resources :sections do
-        resources :questions
+        resources :section_steps, :as => :section_step
         resources :factor_ratings
       end
-      resources :section_conclusions
+      #resources :section_conclusions
     end
   end
 
