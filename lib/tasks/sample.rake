@@ -66,7 +66,8 @@ namespace :sample do
                                              :factor => Factor.find_by(:element_code => response_data['element_code']),
                                              :fit_code => response_data['fit_code'],
                                              :description => response_data['description'],
-                                             :rating_prompt => response_data['rating_prompt'])
+                                             :rating_prompt => response_data['rating_prompt'],
+                                             :response_type => response_data['type'])
           end
 
           section.section_steps.create!(:type => "QuestionStep", :question => question)
