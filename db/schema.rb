@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130812220324) do
+ActiveRecord::Schema.define(version: 20130814134236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,13 +83,12 @@ ActiveRecord::Schema.define(version: 20130812220324) do
   create_table "questions", force: true do |t|
     t.integer  "section_id"
     t.string   "prompt"
-    t.integer  "row_order",     null: false
+    t.integer  "row_order",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "headline"
     t.string   "prompt_type"
     t.string   "description"
-    t.string   "rating_prompt"
   end
 
   add_index "questions", ["section_id"], name: "index_questions_on_section_id", using: :btree
@@ -106,12 +105,14 @@ ActiveRecord::Schema.define(version: 20130812220324) do
   add_index "response_option_selections", ["user_id"], name: "index_response_option_selections_on_user_id", using: :btree
 
   create_table "response_options", force: true do |t|
-    t.text     "description", null: false
-    t.integer  "row_order",   null: false
-    t.integer  "question_id", null: false
+    t.text     "description",   null: false
+    t.integer  "row_order",     null: false
+    t.integer  "question_id",   null: false
     t.integer  "factor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "fit_code"
+    t.string   "rating_prompt"
   end
 
   add_index "response_options", ["factor_id"], name: "index_response_options_on_factor_id", using: :btree
