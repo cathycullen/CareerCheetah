@@ -1,0 +1,14 @@
+<% question = @section_step.question %>
+
+<div class="current-step question">
+  <div class="heading">
+    <h1><%= question.headline %></h1>
+  </div>
+  <div class="question" data-id="<%= question.id%>">
+    <p class="prompt"><%= question.prompt %></p>
+    <p><%= question.description %></p>
+    <div class="option-group">
+      <%= render partial: "questions/#{question.prompt_type}_options", locals: {:question => question} %>
+    </div>
+  </div>
+</div>

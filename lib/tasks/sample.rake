@@ -17,7 +17,7 @@ namespace :sample do
       user = User.create!(:email => "#{u}@abc.com",
                           :name => u,
                           :password => "careerC33tah",
-                          :password_confirmation => "careerC33tah")  
+                          :password_confirmation => "careerC33tah")
 
         CSV.foreach(File.join(Rails.root, "db/seed_data/#{u}.csv")) do |row|
           factor = Factor.where(:element_code => row[0].strip).first
@@ -56,20 +56,24 @@ namespace :sample do
                                        :description => section_data['description'])
       if section_data['questions']
         section_data['questions'].each do |question_data|
-          question = section.questions.create!(:prompt => question_data['prompt'],
-                                               :prompt_type => question_data['type'],
-                                               :description => question_data['description'],
-                                               :headline => question_data['headline'])
+          question = Question.create!(:prompt => question_data['prompt'],
+                                      :prompt_type => question_data['type'],
+                                      :description => question_data['description'],
+                                      :headline => question_data['headline'])
 
           question_data['responses'].each do |response_data|
             question.response_options.create(:description => response_data['description'],
                                              :factor => Factor.find_by(:element_code => response_data['element_code']),
                                              :fit_code => response_data['fit_code'],
                                              :description => response_data['description'],
-                                             :rating_prompt => response_data['rating_prompt'])                                          
+                                             :rating_prompt => response_data['rating_prompt'])
           end
+
+          section.section_steps.create!(:type => "QuestionStep", :question => question)
         end
       end
+
+      section.section_steps.create!(:type => "ConclusionStep")
     end
     puts "done"
   end

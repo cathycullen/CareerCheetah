@@ -10,19 +10,24 @@ class Navigation::SectionStrategy
   end
 
   def next
-    if question = @section.questions.rank(:row_order).first
-      full_question_path(question)
+    if step = @section.section_steps.rank(:row_order).where("type != 'ConclusionStep'").first
+      full_step_path(step)
+    # TODO, consider replacing this hack with a new type of SectionStep for rating responses
     elsif @section.slug == "on-the-prowl"
       selections = RateableResponses.new(@user).response_option_selections
       program_phase_section_factor_rating_path(@program, @phase, @section, selections.first)
-    else
-      full_section_conclusion_path(@section)
+    elsif next_section = @section.next_section
+      full_section_path(next_section)
     end
   end
 
   def previous
     if previous_section = @section.previous_section
-      full_section_conclusion_path(previous_section)
+      if previous_section.section_steps.present?
+        full_step_path(previous_section.section_steps.rank(:row_order).last)
+      else
+        full_section_path(previous_section)
+      end
     else
       full_phase_path(@section.phase)
     end

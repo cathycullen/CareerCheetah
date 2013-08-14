@@ -1,0 +1,8 @@
+<% content_for :previous_url do %>
+  <%= previous_program_navigation_path({:section_step_id => @section_step.id}) %>
+<% end %>
+<% content_for :next_url do %>
+  <%= next_program_navigation_path({:section_step_id => @section_step.id}) %>
+<% end %>
+
+<%= render partial: "#{@section_step.class.model_name.singular}" %>

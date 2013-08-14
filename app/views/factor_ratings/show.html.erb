@@ -9,13 +9,13 @@
   <% if @next_selection %>
     <%= program_phase_section_factor_rating_path(@program, @section.phase, @section, @next_selection) %>
   <% else %>
-    <%= program_phase_section_conclusion_path(@section, @section.phase, @section) %>
+    <%= program_phase_section_section_step_path(@section, @section.phase, @section, @section.section_steps.find_by(:type => "ConclusionStep")) %>
   <% end %>
 <% end %>
 
 <div class="current-step question">
   <div class="question">
-    <p class="prompt"><%= prompt(@response_option) %></p>
+    <p class="prompt"><%= @response_option.rating_prompt %></p>
     <div class="option-group">
       <ul class="rating-options">
         <% rating_options.each do |option| %>

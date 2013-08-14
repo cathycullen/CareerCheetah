@@ -1,10 +1,6 @@
 class Question < ActiveRecord::Base
-  include RankedModel
-
-  belongs_to :section
   has_many :response_options, :dependent => :destroy
-
-  ranks :row_order, :with_same => :section_id
+  has_one :question_step
 
   def program
     phase.program
@@ -12,14 +8,6 @@ class Question < ActiveRecord::Base
 
   def phase
     section.phase
-  end
-
-  def next_question
-    section.questions.rank(:row_order).where(["row_order > ?", row_order]).first
-  end
-
-  def previous_question
-    section.questions.rank(:row_order).where(["row_order < ?", row_order]).last
   end
 
   def multi?

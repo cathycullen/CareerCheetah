@@ -15,12 +15,10 @@ class ProgramNavigationsController < ApplicationController
 
   private
   def load_context_object
-    if params[:question_id]
-      @context_object = Question.find(params[:question_id])
+    if params[:section_step_id]
+      @context_object = SectionStep.find(params[:section_step_id])
     elsif params[:section_id]
       @context_object = Section.find_by(:slug => params[:section_id])
-    elsif params[:section_conclusion_id]
-      @context_object = SectionConclusion.new(Section.find_by(:slug => params[:section_conclusion_id]))
     elsif params[:phase_id]
       @context_object = Phase.find_by(:slug => params[:phase_id])
     end

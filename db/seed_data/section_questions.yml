@@ -1556,7 +1556,7 @@ sections:
         type: "multi"
         responses:
           - description: "Certainty, security, stability."
-            rating_prompt: "On a scale of 1-5, how important is certainty, security and stability to you?
+            rating_prompt: "On a scale of 1-5, how important is certainty, security and stability to you?"
             element_code: ""
           - description: "Future industry growth (bright outlook for the industry)."
             rating_prompt: "On a scale of 1-5, how important is future industry growth to you?"

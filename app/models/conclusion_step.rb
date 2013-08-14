@@ -1,0 +1,3 @@
+class ConclusionStep < SectionStep
+
+end

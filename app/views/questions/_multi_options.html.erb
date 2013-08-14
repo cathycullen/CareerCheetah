@@ -5,13 +5,13 @@
       <% sub_groups.each do |sub_group| %>
         <div class="column c-<%=sub_groups.length%>">
           <% sub_group.each do |option| %>
-            <%= render partial: "checkbox_option", locals: {option: option} %>
+            <%= render partial: "questions/checkbox_option", locals: {option: option} %>
           <% end %>
         </div>
       <% end %>
     <% else %>
       <% options.each do |option| %>
-        <%= render partial: "checkbox_option", locals: {option: option} %>
+        <%= render partial: "questions/checkbox_option", locals: {option: option} %>
       <% end %>
     <% end %>
   </ul>
