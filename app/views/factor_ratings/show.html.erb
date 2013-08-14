@@ -1,0 +1,36 @@
+<% content_for :previous_url do %>
+  <% if @previous_selection %>
+    <%= program_phase_section_factor_rating_path(@program, @section.phase, @section, @previous_selection) %>
+  <% else %>
+    <%= program_phase_section_path(@section, @section.phase, @section) %>
+  <% end %>
+<% end %>
+<% content_for :next_url do %>
+  <% if @next_selection %>
+    <%= program_phase_section_factor_rating_path(@program, @section.phase, @section, @next_selection) %>
+  <% else %>
+    <%= program_phase_section_conclusion_path(@section, @section.phase, @section) %>
+  <% end %>
+<% end %>
+
+<div class="current-step question">
+  <div class="question" data-id="<%= @response_option.id%>">
+    <p class="prompt"><%= prompt(@response_option) %></p>
+    <div class="option-group">
+      <ul class="rating-options">
+        <% rating_options.each do |option| %>
+          <li class="option rating-option">
+            <%= label_tag nil, :class => "response-option" do %>
+              <span class="value-description"><%= option[:value_description]%></span><br />
+              <%= radio_button_tag "factor-ratings[]",
+                                   option[:value],
+                                   false,
+                                   {"data-response-option-selection-id" => "#{@response_option.id}"} %><br />
+              <%= option[:description] %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
