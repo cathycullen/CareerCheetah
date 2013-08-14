@@ -9,9 +9,4 @@ module FactorRating
       {value: 5, value_description: "5", description: "IT'S A MUST"}
     ]
   end
-
-  def prompt(response_option)
-    response_option.question.rating_prompt ||
-      "On a scale of 1-5, how important is " + response_option.description
-  end
 end

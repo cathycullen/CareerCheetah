@@ -1,20 +1,20 @@
-class Navigation::SectionConclusionStrategy
+class Navigation::SectionStepStrategy
   include Rails.application.routes.url_helpers
   include Navigation::PathGeneration
 
-  def initialize(section, user)
-    @section = section
+  def initialize(step, user)
+    @step = step
+    @section = @step.section
     @phase = @section.phase
     @program = @phase.program
     @user = user
   end
 
   def next
-    if next_section = @section.next_section
-      full_section_path(next_section)
-    # TODO This is a hacky. We need a better way to describe the flow from
-    # one phase to another. Perhaps an attribute on when to trigger the
-    # career prediction?
+    if next_step = @step.next_step
+      full_step_path(next_step)
+    elsif next_section = @section.next_section
+      full_section_path(@section.next_section)
     elsif @phase == @program.phases.rank(:row_order).first
       user_careers_path
     elsif next_phase = @section.phase.next_phase
@@ -25,9 +25,8 @@ class Navigation::SectionConclusionStrategy
   end
 
   def previous
-    if last_section_question = @section.questions.rank(:row_order).last
-      full_question_path(last_section_question)
-    # In an effort to avoid STI on the sections table, I'm letting this hack slide in for now
+    if previous_step = @step.previous_step
+      full_step_path(previous_step)
     elsif @section.slug == "on-the-prowl"
       selections = RateableResponses.new(@user).response_option_selections
       program_phase_section_factor_rating_path(@program, @phase, @section, selections.last)
