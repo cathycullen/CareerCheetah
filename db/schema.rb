@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20130814192658) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "career_factor_mappings", force: true do |t|
     t.integer  "factor_id"
     t.integer  "career_id"
