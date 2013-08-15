@@ -35,6 +35,10 @@ module UserHelper
   def mood_summary
     mood_summary = []
     moods = ['positive', 'negative', 'neutral']
+    mood_color = ['Green', 'Gray', 'Orange']
+    
+
+    i = 0
     moods.each do  |mood|
       mood_count = 0
       @user.response_option_selections.each do |ros|
@@ -42,8 +46,15 @@ module UserHelper
       end
 
       #puts "Mood Count for #{mood} is : #{mood_count}"
-      mood_summary <<  { :mood => mood, :count => mood_count}
+      mood_summary <<  { :mood => mood, :count => mood_count, :color => mood_color[i]}
+      i = i + 1
+    end
+
+    max = mood_summary.max_by{ |f| f[:count]}[:count]
+    mood_summary.each do |f|
+      f[:percent] = f[:count].to_f / max
     end
   end
+
 
 end

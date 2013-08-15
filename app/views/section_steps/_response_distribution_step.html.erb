@@ -10,8 +10,17 @@
         <p><%=fit_data[:fit_code]%>: <%=fit_data[:count]%></p>
       </div>
     <% end %>
-  <% elsif @section_step.section.slug == "mood" %>
-    <!-- Mood distribution graph goes here %>
+  <% elsif @section_step.section.slug == "moods" %>
+    <!-- Mood distribution graph -->
+    <div class="heading">
+      <h1><%= @section_step.headline %></h1>
+    </div>
+    <p class="prompt"><%= @section_step.description %></p>
+    <% mood_summary.each do |mood_data| %>
+      <div class="resultsBar<%=mood_data[:color]%>" style="width: <%=mood_data[:percent]*100%>%;">
+        <p><%=mood_data[:mood]%>: <%=mood_data[:count]%></p>
+      </div>
+    <% end %>
   <% end %>
 
 
