@@ -67,6 +67,7 @@ namespace :sample do
                                              :fit_code => response_data['fit_code'],
                                              :description => response_data['description'],
                                              :rating_prompt => response_data['rating_prompt'],
+                                             :work_zone => response_data['work_zone'],
                                              :response_type => response_data['type'])
           end
 
