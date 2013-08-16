@@ -7,8 +7,8 @@ module UserHelper
     codes = ['Corporate', 'Freelance', 'Entrepreneur', 'Non-profit']
     codes.each do  |code|
       code_count = 0
-      @user.response_option_selections.each do |response_option|
-        code_count += ResponseOption.where(:id => response_option.response_option_id).where(:fit_code => code[0]).size
+      @user.response_option_selections.each do |response_option_selection|
+        code_count += ResponseOption.where(:id => response_option_selection.response_option_id).where(:fit_code => code[0]).size
       end
 
       fit_codes_summary <<  {:fit_code => code, :count => code_count}

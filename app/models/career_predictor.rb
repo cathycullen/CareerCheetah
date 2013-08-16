@@ -1,10 +1,11 @@
 
 class CareerPredictor
-  def predict_careers(user, job_zone)
+  def predict_careers(user)
      factors = user.factors
+     work_zone = work_zone(user)
 
     # Find Careers that have a FactorMapping for the Factors a User has selected
-    possible_careers = Career.where(:job_zone => job_zone).joins(:career_factor_mappings).where("career_factor_mappings.factor_id" =>  factors.map(&:id)).uniq
+    possible_careers = Career.where(:job_zone => work_zone).joins(:career_factor_mappings).where("career_factor_mappings.factor_id" =>  factors.map(&:id)).uniq
 
     # Build a Hash that maps a Career#id and sum of CareerFactor weights for those factors the user has selected
     weighted_careers = []
@@ -23,8 +24,28 @@ class CareerPredictor
 	
     #traverse sorted careers and print
     results = sorted_careers.map do |c|
-#	  puts "#{Career.find(c[:career_id]).title} - #{c[:weight]}"
+    #	 puts "#{Career.find(c[:career_id]).title} - #{c[:weight]}"
 	  UserCareer.create!(:user_id => user.id, :career_id => c[:career_id], :weight => c[:weight])
+    end
+  end
+
+  def work_zone(user)
+    work_zone = 4   #default value
+
+    # get response_options for work_zones
+    response_options_for_work_zones = ResponseOption.where(:work_zone => ['1', '2', '3', '4', '5'] )
+
+    #  get response_option_selections for this user for work_zones response_options
+    work_zones_selected = user.response_option_selections.where(:response_option_id => response_options_for_work_zones.map(&:id))
+
+    # in theory there should only be one work_zone selected so one liner could do it.     if work_zones_selected.size  then work_zone = work_zones_selected.first.response_option.work_zone.to_i
+    work_zones = []
+    work_zones_selected.each do |response_option_selection|
+      response_option = response_option_selection.response_option
+      work_zones << response_option.work_zone
+    end
+    if(work_zones.size) then
+      work_zone =  work_zones.sort.reverse[0].to_i
     end
   end
 
