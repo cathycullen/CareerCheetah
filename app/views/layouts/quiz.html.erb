@@ -29,10 +29,10 @@
       <%= link_to(image_tag("right-nav-btn-active.png"), content_for(:next_url)) %>
     </div>
   </div>
-
+  <% if @percent_complete > 0 %>
   <footer class="progress">
     <div class="bar" style="width: <%=@percent_complete%>%;"></div>
   </footer>
-
+  <% end %>
 </body>
 </html>

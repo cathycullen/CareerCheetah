@@ -14,6 +14,7 @@ class FactorRatingsController < ApplicationController
     current_index = selections.index(@response_selection)
     @next_selection = selections[current_index+1] if current_index < selections.length-1
     @previous_selection = selections[current_index-1] if current_index > 0
+    @percent_complete = (( current_index+1).to_f / selections.count) * 100 -1
   end
 
   def create

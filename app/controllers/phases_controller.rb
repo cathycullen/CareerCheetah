@@ -10,5 +10,6 @@ class PhasesController < ApplicationController
   def load_models
     @phase = Phase.find_by(:slug => params[:id])
     @program = Program.find_by(:slug => params[:program_id])
+    @percent_complete = 0
   end
 end

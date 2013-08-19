@@ -11,6 +11,7 @@ class SectionsController < ApplicationController
     @section = Section.find_by(:slug => params[:id])
     @phase = Phase.find_by(:slug => params[:phase_id])
     @program = Program.find_by(:slug => params[:program_id])
+    @percent_complete = 0
   end
 
 end
