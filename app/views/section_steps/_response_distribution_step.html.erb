@@ -11,10 +11,22 @@
       </div>
     <% end %>
   <% elsif @section_step.section.slug == "moods" %>
-    <!-- Mood distribution graph -->
-    <div class="heading">
-      <h1><%= @section_step.headline %></h1>
-    </div>
+    <!-- Mood distribution graph  <% mood_summary%> -->
+ <% if @mood_summary_headline == 'positive_mood_1' %>
+      <div class="heading"><h1>Congratulations!</h1></div>
+        <p class="question">You have come to Career Cheetah with a very positive foundation for success! Research shows that positive mood states that outnumber negative mood states from a ratio of 3 to 1 or better are the foundation for better health, a strong immune system, increased confidence and overall satisfaction with life.</p>
+    <% end %>
+    <% if @mood_summary_headline == 'positive_mood_2' %>
+      <div class="heading"><h1>Congratulations!</h1></div>
+         <p class="question">You have come to career cheetah with a positive foundation for success. Ideally one positive mood state ratio to one negative mood state ratio should be 3:1 or better. Please be very mindful of your mood state while you are hunting for your career. This may seem trivial but it’s anything but. Your success in our process absolutely correlates to how positive and open you come to our career cheetah research process.</p>
+    <% end %>
+    <% if @mood_summary_headline == 'negative_mood_1' %>
+       <p class="question">While you’re on the hunt for your new career it is imperative that you are conscious and aware of your mood state and continually shift to a more positive, optimistic perspective. Your results suggest that you are at an increased risk for sabotaging your success in our career cheetah process. Results show that when negative mood states prevail it decreases probability of success in whatever endeavor lies before you. Remember, whatever you think you can you can, whatever you think you can’t you can’t. We will show you the impacts that moods have on results in a few minutes to encourage you to stay positive and hopeful to the best of your ability.</p>
+    <% end %>
+    <% if @mood_summary_headline == 'negative_mood_2' %> 
+      <div class="heading"><h1>UH OH!</h1></div>
+        <p class="question">It looks like you are coming to the workshop in very negative mood states. Please talk to your Career Cheetah coach privately today. Don’t worry, we just want to give you every opportunity possible to succeed.</p>
+    <% end %>
     <p class="prompt"><%= @section_step.description %></p>
     <% mood_summary.each do |mood_data| %>
       <div class="resultsBar<%=mood_data[:color]%>" style="width: <%=mood_data[:percent]*100%>%;">

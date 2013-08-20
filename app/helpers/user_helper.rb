@@ -33,11 +33,10 @@ module UserHelper
   end
 
   def mood_summary
-    mood_summary = []
+    mood_sum = []
     moods = ['positive', 'negative', 'neutral']
     mood_color = ['Green', 'Gray', 'Orange']
     
-
     i = 0
     moods.each do  |mood|
       mood_count = 0
@@ -46,15 +45,36 @@ module UserHelper
       end
 
       #puts "Mood Count for #{mood} is : #{mood_count}"
-      mood_summary <<  { :mood => mood, :count => mood_count, :color => mood_color[i]}
+      mood_sum <<  { :mood => mood, :count => mood_count, :color => mood_color[i]}
       i = i + 1
     end
 
-    max = mood_summary.max_by{ |f| f[:count]}[:count]
-    mood_summary.each do |f|
+    @positive_mood_count = @negative_mood_count = neutral_mood_count = 0
+    max = mood_sum.max_by{ |f| f[:count]}[:count]
+    mood_sum.each do |f|
       f[:percent] = f[:count].to_f / max
+      if f[:mood] == 'positive' then
+        @positive_mood_count = f[:count]
+      end
+       if f[:mood] == 'negative' then
+        @negative_mood_count = f[:count]
+      end
+       if f[:mood] == 'neutral' then
+        @neutral_mood_count = f[:count]
+      end
     end
+
+    # @todo  would rather have gone in to mood_sum and gotten the count for :positive :negative
+    @mood_summary_headline = 'negative_mood_1'
+    # check ratios of positive moods to negative moods to create headline text for response distribution page
+    if (@positive_mood_count.to_f / 3) >= @negative_mood_count.to_f 
+      @mood_summary_headline = 'positive_mood_1'
+        elsif @positive_mood_count > @negative_mood_count 
+        @mood_summary_headline = 'positive_mood_2'
+      elsif  (@negative_mood_count.to_f / 5) >= @positive_mood_count.to_f 
+        @mood_summary_headline = 'negative_mood_2'
+    end
+
+  mood_sum
   end
-
-
 end
