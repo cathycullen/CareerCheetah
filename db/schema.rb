@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 20130815134911) do
     t.string   "rating_prompt"
     t.string   "response_type"
     t.string   "work_zone"
+    
   end
 
   add_index "response_options", ["factor_id"], name: "index_response_options_on_factor_id", using: :btree
