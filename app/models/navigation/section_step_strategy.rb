@@ -27,7 +27,7 @@ class Navigation::SectionStepStrategy
   def previous
     if previous_step = @step.previous_step
       full_step_path(previous_step)
-    elsif @section.slug == "on-the-prowl"
+    elsif @section.slug == "action-steps"
       selections = RateableResponses.new(@user).response_option_selections
       program_phase_section_factor_rating_path(@program, @phase, @section, selections.last)
     else

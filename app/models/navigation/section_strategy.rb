@@ -13,7 +13,7 @@ class Navigation::SectionStrategy
     if step = @section.section_steps.rank(:row_order).where("type != 'ConclusionStep'").first
       full_step_path(step)
     # TODO, consider replacing this hack with a new type of SectionStep for rating responses
-    elsif @section.slug == "on-the-prowl"
+    elsif @section.slug == "action-steps"
       selections = RateableResponses.new(@user).response_option_selections
       program_phase_section_factor_rating_path(@program, @phase, @section, selections.first)
     elsif next_section = @section.next_section
