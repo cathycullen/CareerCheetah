@@ -2,5 +2,18 @@
   <div class="heading">
     <h1>Congratulations!</h1>
     <h2>You have completed the <%= @section.name %> portion of the hunt.</h2>
+    <table class="table table-bordered" border="0" padding="100" align="bottom" cellspacing="20">
+     <tbody>  
+        <tr>            
+        <% for i in 0..@section_index %>
+        <% if ((i % 6) == 0) %>
+          </tr>
+        <% end %>
+          <td> <img src="/assets/cheetah-badge.jpg" width="90" height="90" > </td> 
+        <% end %>
+        </tr>
+      </tbody> 
+    </table>
   </div>
+    <h2>Enter code to continue.</h2>
 </div>
