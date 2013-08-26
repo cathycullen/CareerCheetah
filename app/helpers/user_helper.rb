@@ -37,6 +37,11 @@ module UserHelper
     negative_moods_selected = @user.response_option_selections.where(:response_option_id => negative_responses.map(&:id))
   end
 
+  def obstacles_selected
+    response_options = SectionStep.where(:section_id => (Section.where(:name => "Obstacles"))).where(:type => 'QuestionStep').first.question.response_options
+    @user.response_option_selections.where(:response_option_id => response_options.map(&:id))
+  end
+
   def mood_summary
     mood_sum = []
     moods = ['positive', 'negative', 'neutral']
