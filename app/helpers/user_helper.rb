@@ -7,8 +7,8 @@ module UserHelper
     codes = ['Corporate', 'Freelance', 'Entrepreneur', 'Non-profit']
     codes.each do  |code|
       code_count = 0
-      @user.response_option_selections.each do |response_option|
-        code_count += ResponseOption.where(:id => response_option.response_option_id).where(:fit_code => code[0]).size
+      @user.response_option_selections.each do |response_option_selection|
+        code_count += ResponseOption.where(:id => response_option_selection.response_option_id).where(:fit_code => code[0]).size
       end
 
       fit_codes_summary <<  {:fit_code => code, :count => code_count}
@@ -44,7 +44,7 @@ module UserHelper
         mood_count += ResponseOption.where(:id => ros.response_option_id).where(:response_type => mood).size
       end
 
-      #puts "Mood Count for #{mood} is : #{mood_count}"
+#      puts "Mood Count for #{mood} is : #{mood_count}"
       mood_sum <<  { :mood => mood, :count => mood_count, :color => mood_color[i]}
       i = i + 1
     end
@@ -52,7 +52,12 @@ module UserHelper
     @positive_mood_count = @negative_mood_count = neutral_mood_count = 0
     max = mood_sum.max_by{ |f| f[:count]}[:count]
     mood_sum.each do |f|
-      f[:percent] = f[:count].to_f / max
+      if f[:count] == 0
+        f[:percent] = 0
+      else
+        f[:percent] = f[:count].to_f / max
+      end
+
       if f[:mood] == 'positive' then
         @positive_mood_count = f[:count]
       end
@@ -63,7 +68,6 @@ module UserHelper
         @neutral_mood_count = f[:count]
       end
     end
-
     # @todo  would rather have gone in to mood_sum and gotten the count for :positive :negative
     @mood_summary_headline = 'negative_mood_1'
     # check ratios of positive moods to negative moods to create headline text for response distribution page
@@ -71,7 +75,7 @@ module UserHelper
       @mood_summary_headline = 'positive_mood_3'
       elsif (@positive_mood_count.to_f / 3) >= @negative_mood_count.to_f 
         @mood_summary_headline = 'positive_mood_1'
-          elsif @positive_mood_count > @negative_mood_count 
+          elsif @positive_mood_count > 0 && @positive_mood_count > @negative_mood_count 
         @mood_summary_headline = 'positive_mood_2'
       elsif  (@negative_mood_count.to_f / 5) >= @positive_mood_count.to_f 
         @mood_summary_headline = 'negative_mood_2'
