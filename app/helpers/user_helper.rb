@@ -32,6 +32,11 @@ module UserHelper
     sum
   end
 
+  def negative_moods_selected
+    negative_responses = ResponseOption.where(:response_type => 'negative')
+    negative_moods_selected = @user.response_option_selections.where(:response_option_id => negative_responses.map(&:id))
+  end
+
   def mood_summary
     mood_sum = []
     moods = ['positive', 'negative', 'neutral']
