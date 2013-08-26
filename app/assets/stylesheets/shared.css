@@ -30,3 +30,11 @@ body {
 .hidden {
   display: none;
 }
+
+
+.sectionTitle {
+  font-style: normal;
+  font-size: 25px;
+  text-transform: uppercase;
+  color: #ff8a00;
+}
