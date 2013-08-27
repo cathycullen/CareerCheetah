@@ -40,7 +40,7 @@ namespace :sample do
     puts "done"
 
     # Phases
-    print "\tCreating phases..."
+    print "\tCreating phases... New Version"
     ["Phase One", "Phase Two"].each do |name|
       default_program.phases.create!(:name => name)
     end
@@ -54,41 +54,34 @@ namespace :sample do
       section = phase.sections.create!(:name => section_data['name'],
                                        :headline => section_data['headline'],
                                        :description => section_data['description'])
-      if section_data['questions']
-        section_data['questions'].each do |question_data|
-          question = Question.create!(:prompt => question_data['prompt'],
-                                      :prompt_type => question_data['type'],
-                                      :description => question_data['description'],
-                                      :headline => question_data['headline'])
+      if section_data['steps']
+        section_data['steps'].each do |step_data|
+          if step_data['step_type'] == "Question"
+            question = Question.create!(:prompt => step_data['prompt'],
+                                        :prompt_type => step_data['type'],
+                                        :description => step_data['description'],
+                                        :headline => step_data['headline'])
 
-          question_data['responses'].each do |response_data|
-            question.response_options.create(:description => response_data['description'],
-                                             :factor => Factor.find_by(:element_code => response_data['element_code']),
-                                             :fit_code => response_data['fit_code'],
-                                             :description => response_data['description'],
-                                             :rating_prompt => response_data['rating_prompt'],
-                                             :work_zone => response_data['work_zone'],
-                                             :response_type => response_data['type'])
+            step_data['responses'].each do |response_data|
+              question.response_options.create(:description => response_data['description'],
+                                               :factor => Factor.find_by(:element_code => response_data['element_code']),
+                                               :fit_code => response_data['fit_code'],
+                                               :description => response_data['description'],
+                                               :rating_prompt => response_data['rating_prompt'],
+                                               :work_zone => response_data['work_zone'],
+                                               :response_type => response_data['type'])
+            end
+
+            section.section_steps.create!(:type => "QuestionStep", :question => question)
+          elsif step_data['step_type'] == "Static"
+            section.section_steps.create!(:type => "StaticStep", :template => step_data['template_name'])
+          elsif step_data['step_type'] == "ResponseDistributionStep"
+            section.section_steps.create!(:type => "ResponseDistributionStep", 
+                                          :headline => step_data['headline'],  
+                                          :description => step_data['description'])
           end
-
-          section.section_steps.create!(:type => "QuestionStep", :question => question)
         end
       end
-
-      if section.slug == "determining-fit"
-        section.section_steps.create!(:type => "ResponseDistributionStep",
-                                      :headline => "DETERMINING FIT",
-                                      :description => "Here are the results of your \"Determining Fit\" assessment. It will show you employment \"best fit\" based on your answers.")
-      elsif section.slug == "moods"
-        section.section_steps.create!(:type => "ResponseDistributionStep")
-      elsif section.slug == "hunting-solo"
-        # Create 3 SectionStep (of type StaticStep) that will render the hunting solo templates
-        section.section_steps.create!(:type => "StaticStep", :template => "hunting_solo1")
-        section.section_steps.create!(:type => "StaticStep", :template => "hunting_solo2")
-        section.section_steps.create!(:type => "StaticStep", :template => "hunting_solo3")
-
-      end
-
       section.section_steps.create!(:type => "ConclusionStep")
     end
     puts "done"
