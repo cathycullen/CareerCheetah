@@ -1838,6 +1838,8 @@ sections:
             work_zone: "5"
   - name: "On the Prowl"
     headline: "For the Ideal Job"
+  - name: "Hunting Solo"
+    headline: "You're On You're Own"
     questions:
   - name: "Obstacles"
     questions:
