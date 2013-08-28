@@ -263,6 +263,13 @@ sections:
           - description: "Worried"
             definition: ""
             type: "negative"
+      - step_type: Question
+        prompt: "What are two thoughts or beliefs that you have about this process?"
+        type: "custom"
+        template_name: "thoughts"
+        responses:
+          - description: "Thought #1"
+          - description: "Thought #2"
       - step_type: ResponseDistributionStep
         headline: "Foo"
         description: "Bar"
