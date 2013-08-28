@@ -6,9 +6,13 @@
   </div>
   <div class="question" data-id="<%= question.id%>">
     <p class="prompt"><%= question.prompt %></p>
-    <p><%= question.description %></p>
-    <div class="option-group">
-      <%= render partial: "questions/#{question.prompt_type}_options", locals: {:question => question} %>
-    </div>
+    <% if @section_step.template %>
+      <%= render partial: "questions/#{@section_step.template}", locals: {question: question} %>
+    <% else %>
+      <p><%= question.description %></p>
+      <div class="option-group">
+        <%= render partial: "questions/#{question.prompt_type}_options", locals: {:question => question} %>
+      </div>
+    <% end %>
   </div>
 </div>

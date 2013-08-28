@@ -1,0 +1,23 @@
+<% question.response_options.rank(:row_order).each do |option| %>
+  <div class="mood-thought">
+    <p><%= option.description %></p>
+
+    <%= text_area_tag :thought %><br />
+    <ul class="thought-type-options">
+      <li>
+        <%= label_tag do %>
+          <%= radio_button_tag "foo", "supportive" %>
+          This is a supportive belief or thought.
+        <% end %>
+      </li>
+
+      <li>
+        <%= label_tag do %>
+          <%= radio_button_tag "foo", "negative" %>
+          This is a belief or thought that may negatively impact my performance, process or results.
+        <% end %>
+      </li>
+    </ul>
+  </div>
+
+<% end %>
