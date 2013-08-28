@@ -17,9 +17,13 @@ module QuestionHelper
 
   def option_text_area(option)
     question = option.question
-    selection = ResponseOptionSelection.find(response_cache(question).response_for(option))
+    value = nil
+    if response_selection = response_cache(question).response_for(option)
+      value = ResponseOptionSelection.find(response_selection).data[:value]
+    end
+
     text_area_tag :response,
-                  selection.data[:value],
+                  value,
                   :class => "full-textarea",
                   "data-response-option-id" => option.id
   end
