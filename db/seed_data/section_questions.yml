@@ -3,6 +3,11 @@ sections:
     code: "hunt"
     steps:
       - step_type: Question
+        prompt: "Mood Reflection"
+        type: "textbox"
+        responses:
+          - description: ""
+      - step_type: Question
         prompt: "What moods resonate with you right now?"
         type: "multi"
         responses:
