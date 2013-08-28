@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130815134911) do
+ActiveRecord::Schema.define(version: 20130828145211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,7 +111,6 @@ ActiveRecord::Schema.define(version: 20130815134911) do
     t.string   "rating_prompt"
     t.string   "response_type"
     t.string   "work_zone"
-    
   end
 
   add_index "response_options", ["factor_id"], name: "index_response_options_on_factor_id", using: :btree
@@ -142,6 +141,7 @@ ActiveRecord::Schema.define(version: 20130815134911) do
     t.string   "headline"
     t.text     "description"
     t.string   "completion_code"
+    t.string   "code"
   end
 
   add_index "sections", ["phase_id"], name: "index_sections_on_phase_id", using: :btree

@@ -53,7 +53,8 @@ namespace :sample do
     section_data['sections'].each do |section_data|
       section = phase.sections.create!(:name => section_data['name'],
                                        :headline => section_data['headline'],
-                                       :description => section_data['description'])
+                                       :description => section_data['description'],
+                                       :code => section_data['code'])
       if section_data['steps']
         section_data['steps'].each do |step_data|
           if step_data['step_type'] == "Question"

@@ -1,5 +1,6 @@
 sections:
   - name: "Moods"
+    code: "hunt"
     steps:
       - step_type: Question
         prompt: "What moods resonate with you right now?"
@@ -261,7 +262,9 @@ sections:
         headline: "Foo"
         description: "Bar"
   - name: "Thoughts"
+    code: "speed"
   - name: "Training"
+    code: "prey"
     headline: "Sharpening your claws"
     steps:
       - step_type: Question
@@ -407,6 +410,7 @@ sections:
           - description: "foreign language conversation"
             element_code: "2.C.7.b"
   - name: "Determining Fit"
+    code: "cat"
     headline: "Choosing your habitat"
     steps:
       - step_type: Question
@@ -535,6 +539,7 @@ sections:
         headline: "DETERMINING FIT"
         description: "Here are the results of your \"Determining Fit\" assessment. It will show you employment \"best fit\" based on your answers."
   - name: "Environment"
+    code: "spots"
     headline: "On the Savannah"
     description: "For the next section, Environment, answer \"yes\" or \"no\" to indicate whether the statement is true for you."
     steps:
@@ -770,9 +775,11 @@ sections:
           - description: "No"
             element_code: ""
   - name: " Skills"
+    code: "cheetah"
     headline: "Claws, teeth and speed: What do you bring?"
     steps:
   - name: "Values"
+    code: "paw"
     headline: "The inner beast: What do you believe?"
     steps:
       - step_type: Question
@@ -941,6 +948,7 @@ sections:
           - description: "Wealth"
           - description: "Wisdom"
   - name: "Engagement"
+    code: "pounce"
     headline: "Getting into the zone"
     description: "For the next section, Engagement, answer \"yes\" or \"no\" to indicate whether the statement is true for you."
     steps:
@@ -1132,6 +1140,7 @@ sections:
           - description: "No"
             element_code: ""
   - name: "People"
+    code: "purr"
     headline: "Who do you run with?"
     steps:
       - step_type: Question
@@ -1350,6 +1359,7 @@ sections:
             element_code: "1.C.2.b"
             fit_code: ""
   - name: "Passions"
+    code: "stalk"
     headline: "The thrill of the hunt"
     description: "For the next section, Passions, answer \"yes\" or \"no\" to indicate whether the statement is true for you."
     steps:
@@ -1508,6 +1518,7 @@ sections:
           - description: "No"
             element_code: ""
   - name: "Activities"
+    code: "chase"
     headline: "Bite-sized pieces: How you spend your day"
     steps:
       - step_type: Question
@@ -1711,6 +1722,7 @@ sections:
             element_code: "2.B.4.g"
             fit_code: ""
   - name: "Pay, Perks, Prep"
+    code: "wild"
     headline: "Caring for cubs: What you bring back"
     steps:
       - step_type: Question
@@ -1908,8 +1920,10 @@ sections:
             element_code: ""
             work_zone: "5"
   - name: "On the Prowl"
+    code: "fast"
     headline: "For the Ideal Job"
   - name: "Hunting Solo"
+    code: "claws"
     headline: "You're On You're Own"
     steps:
       - step_type: Static
@@ -1919,6 +1933,7 @@ sections:
       - step_type: Static
         template_name: "hunting_solo3"
   - name: "Obstacles"
+    code: "cub"
     steps:
       - step_type: Question
         prompt: " What are the obstacles that might get in the way of my capacity to learn and to change?"
@@ -1951,4 +1966,5 @@ sections:
           - description: "Not granting permission to be taught"
           - description: "Fear of failure"
   - name: "Action Steps"
+    code: "chirp"
     steps:
