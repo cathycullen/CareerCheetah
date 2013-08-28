@@ -30,6 +30,30 @@ function bindResponseNavigation() {
 }
 
 function bindResponseEditing() {
+  bindResponseSelectionEditing();
+  bindFreeformEditing();
+}
+
+function bindFreeformEditing() {
+  $(".option-group textarea").change(function () {
+    var box = $(this);
+    var data = {question_id: box.parents(".question").data('id'),
+                response_option_id: parseInt(box.data('response-option-id')),
+                value: box.val()};
+
+    $.ajax({
+      type: "POST",
+      url: "/response_option_selections",
+      data: data,
+      dataType: "JSON",
+      context: box
+    }).done(function(data) {
+      this.data('response-option-selection-id', data.id);
+    });
+  });
+}
+
+function bindResponseSelectionEditing() {
   $("input[name='response-options[]']").change(function () {
     var box = $(this);
 

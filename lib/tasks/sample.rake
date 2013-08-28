@@ -40,7 +40,7 @@ namespace :sample do
     puts "done"
 
     # Phases
-    print "\tCreating phases... New Version"
+    print "\tCreating phases..."
     ["Phase One", "Phase Two"].each do |name|
       default_program.phases.create!(:name => name)
     end
@@ -64,21 +64,21 @@ namespace :sample do
                                         :headline => step_data['headline'])
 
             step_data['responses'].each do |response_data|
-              question.response_options.create(:description => response_data['description'],
-                                               :factor => Factor.find_by(:element_code => response_data['element_code']),
-                                               :fit_code => response_data['fit_code'],
-                                               :description => response_data['description'],
-                                               :rating_prompt => response_data['rating_prompt'],
-                                               :work_zone => response_data['work_zone'],
-                                               :response_type => response_data['type'])
+              question.response_options.create!(:description => response_data['description'],
+                                                :factor => Factor.find_by(:element_code => response_data['element_code']),
+                                                :fit_code => response_data['fit_code'],
+                                                :description => response_data['description'],
+                                                :rating_prompt => response_data['rating_prompt'],
+                                                :work_zone => response_data['work_zone'],
+                                                :response_type => response_data['type'])
             end
 
             section.section_steps.create!(:type => "QuestionStep", :question => question)
           elsif step_data['step_type'] == "Static"
             section.section_steps.create!(:type => "StaticStep", :template => step_data['template_name'])
           elsif step_data['step_type'] == "ResponseDistributionStep"
-            section.section_steps.create!(:type => "ResponseDistributionStep", 
-                                          :headline => step_data['headline'],  
+            section.section_steps.create!(:type => "ResponseDistributionStep",
+                                          :headline => step_data['headline'],
                                           :description => step_data['description'])
           end
         end

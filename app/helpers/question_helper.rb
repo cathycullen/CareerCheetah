@@ -15,24 +15,32 @@ module QuestionHelper
                      {"data-response-option-selection-id" => "#{response_cache(question).response_for(option)}"}
   end
 
+  def option_text_area(option)
+    question = option.question
+    selection = ResponseOptionSelection.find(response_cache(question).response_for(option))
+    text_area_tag :response,
+                  selection.data[:value],
+                  :class => "full-textarea",
+                  "data-response-option-id" => option.id
+  end
+
   def response_cache(question)
     @response_cache ||= UserResponseCache.new(current_user, question)
   end
 
   # break response options into slices by group_size of either 4,8,12,16 depending upon length of response
-    def option_groups(question)
-      group_size = responses_per_page(question)
+  def option_groups(question)
+    group_size = responses_per_page(question)
 
-      question.response_options.rank(:row_order)
-        .each_slice(group_size).to_a
+    question.response_options.rank(:row_order)
+      .each_slice(group_size).to_a
   end
 
   def responses_per_page(question)
-
      max_length = question.response_options.map do |o|
       o.description.length
     end.max
-    
+
     group_size = 4
     if max_length <= 15
       group_size = option_row_count*4
