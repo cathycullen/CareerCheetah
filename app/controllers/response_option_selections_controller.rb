@@ -15,6 +15,11 @@ class ResponseOptionSelectionsController < ApplicationController
                     .where(:response_option_id => @option.id)
                     .first_or_create!
 
+    if params[:value]
+      @selection.data = {value: params[:value]}
+      @selection.save!
+    end
+
     if @option.factor
       @factor = current_user.factor_selections
                   .where(:factor_id => @option.factor.id)
