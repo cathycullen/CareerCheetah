@@ -83,12 +83,14 @@ namespace :sample do
             section.section_steps.create!(step_options.merge(:type => "StaticStep"))
           elsif step_data['step_type'] == "ResponseSelectionStep"
             section.section_steps.create!(step_options.merge(:type => "ResponseSelectionStep"))
+          elsif step_data['step_type'] == "ResponseSelectionSummaryStep"
+            section.section_steps.create!(step_options.merge(:type => "ResponseSelectionSummaryStep"))
           elsif step_data['step_type'] == "ResponseDistributionStep"
             section.section_steps.create!(step_options.merge(:type => "ResponseDistributionStep"))
           end
         end
       end
-      section.section_steps.create!(:type => "ConclusionStep") if section.name != "Hunting Solo"
+      section.section_steps.create!(:type => "ConclusionStep") if section.name != "obstacles"
     end
     puts "done"
   end

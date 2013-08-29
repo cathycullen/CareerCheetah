@@ -276,6 +276,9 @@ sections:
       - step_type: ResponseSelectionStep
         headline: ""
         description: "Which of these moods, thoughts or beliefs do you believe may impact you the most? Choose up to three."
+      - step_type: ResponseSelectionSummaryStep
+        headline: "Please write down these top three moods, thoughts, or beliefs on your Career Cheetah Predator sheet in your folder."
+        description: "These are the three moods, thoughts or beliefs tht I think may impact my performance results."
   - name: "Training"
     code: "prey"
     headline: "Sharpening your claws"
@@ -1998,6 +2001,8 @@ sections:
       - step_type: ResponseSelectionStep
         headline: ""
         description: "Here are obstacles that may get in he way of your learning and your capacity to change.  Please select up to two obstacles you think may impact your performance"
-  - name: "Action Steps"
-    code: "speed"
-    steps:
+      - step_type: Question
+        prompt: "What action steps will you commit to taking to minimize or eliminate these obstacles during your Career Cheetah Process?"
+        type: "textbox"
+        responses:
+          - description: ""

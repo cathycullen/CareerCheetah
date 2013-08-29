@@ -1,4 +1,4 @@
-<div class="current-step response-selection-step">
+<div class="current-step response-selection-summary-step">
   <% @percent_complete = 99 %>
 
   <div class="heading">
@@ -12,14 +12,7 @@
 
      <!-- show negative mood selections -->
       <% if @section_step.section.slug == "moods" %>
-        <% negative_moods_selected.each do |option| %>
-          <li class="option">
-            <%= check_box_tag option.description %>
-            <%= label_tag(option.description) %>
-          </li>
-      <% end %>
-
-      
+       
       <!-- show values selections-->
       <% elsif @section_step.section.slug == "values" %>
         <% values_selected.each do |option| %>
