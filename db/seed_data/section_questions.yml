@@ -271,8 +271,11 @@ sections:
           - description: "Thought #1"
           - description: "Thought #2"
       - step_type: ResponseDistributionStep
-        headline: "Foo"
-        description: "Bar"
+        headline: ""
+        description: ""
+      - step_type: ResponseSelectionStep
+        headline: ""
+        description: "Which of these moods, thoughts or beliefs do you believe may impact you the most? Choose up to three."
   - name: "Thoughts"
     code: "speed"
   - name: "Training"
@@ -965,6 +968,9 @@ sections:
           - description: "Vulnerability"
           - description: "Wealth"
           - description: "Wisdom"
+      - step_type: ResponseSelectionStep
+        headline: "VALUES"
+        description: "Here is a list of your values.  Choose your top ten."
   - name: "Engagement"
     code: "pounce"
     headline: "Getting into the zone"
@@ -1983,6 +1989,9 @@ sections:
           - description: "Stubbornness"
           - description: "Not granting permission to be taught"
           - description: "Fear of failure"
+      - step_type: ResponseSelectionStep
+        headline: ""
+        description: "Here are obstacles that may get in he way of your learning and your capacity to change.  Please select up to two obstacles you think may impact your performance"
   - name: "Action Steps"
     code: "chirp"
     steps:

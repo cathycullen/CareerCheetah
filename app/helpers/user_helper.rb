@@ -33,13 +33,32 @@ module UserHelper
   end
 
   def negative_moods_selected
+    negative_response_options =[]
     negative_responses = ResponseOption.where(:response_type => 'negative')
-    negative_moods_selected = @user.response_option_selections.where(:response_option_id => negative_responses.map(&:id))
+    negative_moods_selected = @user.response_option_selections.where(:response_option_id => negative_responses.map(&:id)). each do |ros|
+      negative_response_options << ResponseOption.find(ros.response_option_id)
+    end
+    negative_response_options
   end
 
   def obstacles_selected
+    obstalces_response_options = []
     response_options = SectionStep.where(:section_id => (Section.where(:name => "Obstacles"))).where(:type => 'QuestionStep').first.question.response_options
-    @user.response_option_selections.where(:response_option_id => response_options.map(&:id))
+    @user.response_option_selections.where(:response_option_id => response_options.map(&:id)). each do |ros|
+      obstalces_response_options << ResponseOption.find(ros.response_option_id)
+    end
+    obstalces_response_options
+  end
+
+
+
+  def values_selected
+    values_response_options = []
+    response_options = SectionStep.where(:section_id => (Section.where(:name => "Values"))).where(:type => 'QuestionStep').first.question.response_options
+    @user.response_option_selections.where(:response_option_id => response_options.map(&:id)). each do |ros|
+      values_response_options << ResponseOption.find(ros.response_option_id)
+    end
+    values_response_options
   end
 
   def mood_summary
