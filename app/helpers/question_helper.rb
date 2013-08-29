@@ -28,6 +28,18 @@ module QuestionHelper
                   "data-response-option-id" => option.id
   end
 
+  def option_text_field(option)
+    question = option.question
+    value = nil
+    if response_selection = response_cache(question).response_for(option)
+      value = ResponseOptionSelection.find(response_selection).data['value']
+    end
+
+    text_field_tag :response,
+                  value,
+                  "data-response-option-id" => option.id
+  end
+
   def response_cache(question)
     @response_cache ||= UserResponseCache.new(current_user, question)
   end

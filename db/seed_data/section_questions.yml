@@ -791,10 +791,18 @@ sections:
     headline: "Claws, teeth and speed: What do you bring?"
     steps:
       - step_type: Question
-        prompt: "Please list in order of strength, your top 5-8 skills." 
+        prompt: "Please list in order of strength, your top 5-8 skills."
         headline: "SKILLS"
-        type: "textbox"
+        type: "custom"
+        template_name: "skills"
         responses:
+        - description: ""
+        - description: ""
+        - description: ""
+        - description: ""
+        - description: ""
+        - description: ""
+        - description: ""
         - description: ""
   - name: "Values"
     code: "paw"
