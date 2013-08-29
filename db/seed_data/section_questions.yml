@@ -273,8 +273,6 @@ sections:
       - step_type: ResponseDistributionStep
         headline: "Foo"
         description: "Bar"
-  - name: "Thoughts"
-    code: "speed"
   - name: "Training"
     code: "prey"
     headline: "Sharpening your claws"
@@ -1984,5 +1982,5 @@ sections:
           - description: "Not granting permission to be taught"
           - description: "Fear of failure"
   - name: "Action Steps"
-    code: "chirp"
+    code: "speed"
     steps:
