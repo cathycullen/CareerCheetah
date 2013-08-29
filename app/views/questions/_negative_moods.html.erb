@@ -1,0 +1,6 @@
+<% negative_moods_selected.each do |option| %>
+<li class="option">
+  <%= check_box_tag option.description %>
+  <%= label_tag(option.description) %>
+</li>
+<% end %>

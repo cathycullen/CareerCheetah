@@ -81,6 +81,8 @@ namespace :sample do
             section.section_steps.create!(step_options.merge(:type => "QuestionStep", :question => question))
           elsif step_data['step_type'] == "Static"
             section.section_steps.create!(step_options.merge(:type => "StaticStep"))
+          elsif step_data['step_type'] == "ResponseSelectionStep"
+            section.section_steps.create!(step_options.merge(:type => "ResponseSelectionStep"))
           elsif step_data['step_type'] == "ResponseDistributionStep"
             section.section_steps.create!(step_options.merge(:type => "ResponseDistributionStep"))
           end
