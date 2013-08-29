@@ -1,7 +1,7 @@
 .resultsBarGreen {
   width: 70%;
   height: 35px;
-  min-width: 100px;
+  min-width: 160px;
   background-color: #7fba00;
   color: #FFF;
   padding: 15px 15px 5px 15px;
@@ -19,7 +19,7 @@
 .resultsBarGray {
   width: 20%;
   height: 35px;
-  min-width: 100px;
+  min-width: 160px;
   background-color: #60605b;
   color: #FFF;
   padding: 15px 15px 5px 15px;
@@ -37,7 +37,7 @@
 .resultsBarOrange {
   width: 30%;
   height: 35px;
-  min-width: 100px;
+  min-width: 160px;
   background-color: #ff7900;
   color: #FFF;
   padding: 15px 15px 5px 15px;
