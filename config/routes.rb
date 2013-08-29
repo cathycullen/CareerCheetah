@@ -4,16 +4,14 @@ CareerCheetah::Application.routes.draw do
       resources :sections do
         resources :section_steps, :as => :section_step
         resources :factor_ratings
+        resources :user_careers
       end
-      #resources :section_conclusions
     end
   end
 
   resources :factor_ratings, only: [:create]
 
   resources :response_option_selections
-  resources :user_careers
-
   resource :program_navigation do
     member do
       get "next"

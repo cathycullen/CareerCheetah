@@ -13,10 +13,10 @@ class Navigation::SectionStepStrategy
   def next
     if next_step = @step.next_step
       full_step_path(next_step)
+    elsif @section.slug == "hunting-solo"
+      program_phase_section_user_careers_path(@program, @phase, @section)
     elsif next_section = @section.next_section
       full_section_path(@section.next_section)
-    elsif @phase == @program.phases.rank(:row_order).first
-      user_careers_path
     elsif next_phase = @section.phase.next_phase
       full_phase_path(next_phase)
     else

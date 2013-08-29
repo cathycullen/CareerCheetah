@@ -22,7 +22,9 @@ class Navigation::SectionStrategy
 
   def previous
     if previous_section = @section.previous_section
-      if previous_section.section_steps.present?
+      if previous_section.slug == "hunting-solo"
+        program_phase_section_user_careers_path(@program, @phase, @section)
+      elsif previous_section.section_steps.present?
         full_step_path(previous_section.section_steps.rank(:row_order).last)
       else
         full_section_path(previous_section)

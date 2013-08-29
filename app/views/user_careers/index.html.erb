@@ -1,27 +1,31 @@
- <h1>Career Suggestions For <%= current_user.name %></h1>
+<% content_for :previous_url do %>
+  <%= program_phase_section_section_step_path(@program,
+                                            @phase,
+                                            @section,
+                                            @section.section_steps.last) %>
+<% end %>
+<% content_for :next_url do %>
+  <%= program_phase_section_path(@program, @phase, @section.next_section) %>
+<% end %>
 
-<div class="user-career-suggestions">
- <div class="heading">
-   <div class="career-result">
-          <% career_count = 1 %>
-          <% @careers.first(25).each do |user_career|  %>
-          <div class="row">
-             <% career = Career.find(user_career.career_id)   %>
-             <div class="span2">
-               <%= career_count %>
-             </div>
-             <div class="span2">
-               <%= career.onet_code %> 
-             </div>
-             <div class="span6">
-               <%= career.title %>
-             </div>
-             <div class="span2">
-               <%= user_career.weight %>
-             </div>
-             <% career_count += 1 %>
-           </div>
+<div class="current-step section">
+  <div class="heading">
+    <h1>Career Suggestions For <%= current_user.name %></h1>
+  </div>
+
+  <div class="career-result">
+    <ol>
+      <% @careers.first(24).each_slice(12) do |careers_group|  %>
+        <div class="career-group">
+          <% careers_group.each do |user_career| %>
+            <% career = Career.find(user_career.career_id)   %>
+            <li>
+              <%= career.title %>
+            </li>
           <% end %>
- </div>
- </div>
+        </div>
+      <% end %>
+    </ol>
+  </div>
+
 </div>

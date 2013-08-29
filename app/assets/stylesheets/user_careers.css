@@ -1,0 +1,9 @@
+.career-group {
+  float: left;
+  width: 40%;
+  text-align: left;
+}
+
+.career-group:last-of-type {
+  float: right;
+}
