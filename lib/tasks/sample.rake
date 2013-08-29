@@ -86,7 +86,7 @@ namespace :sample do
           end
         end
       end
-      section.section_steps.create!(:type => "ConclusionStep")
+      section.section_steps.create!(:type => "ConclusionStep") if section.name != "Hunting Solo"
     end
     puts "done"
   end
