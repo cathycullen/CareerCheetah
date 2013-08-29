@@ -1,0 +1,43 @@
+<div class="current-step response-summary">
+  <% @percent_complete = 99 %>
+
+  <div class="heading">
+      <h1><%= @section_step.headline %></h1>
+  </div>
+  <div class = "question"
+  <p class="prompt"><%= @section_step.description %></p>
+</div>
+  <div class="borderWrap" style="overflow: scroll;">
+    <ul class="options"
+
+     <!-- show negative mood selections -->
+      <% if @section_step.section.slug == "moods" %>
+        <% negative_moods_selected.each do |option| %>
+          <li class="option">
+            <%= check_box_tag option.description %>
+            <%= label_tag(option.description) %>
+          </li>
+      <% end %>
+
+      
+      <!-- show values selections-->
+      <% elsif @section_step.section.slug == "values" %>
+        <% values_selected.each do |option| %>
+          <li class="option">
+            <%= check_box_tag option.description %>
+            <%= label_tag(option.description) %>
+          </li>
+          <% end %>
+      
+      <!-- show values obstacles-->
+      <% elsif @section_step.section.slug == "obstacles" %>
+        <% obstacles_selected.each do |option| %>
+          <li class="option">
+            <%= check_box_tag option.description %>
+            <%= label_tag(option.description) %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
