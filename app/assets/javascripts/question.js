@@ -62,8 +62,7 @@ function bindThoughtsEditing() {
 }
 
 function bindFreeformEditing() {
-  $(".option-group textarea").change(function () {
-    var box = $(this);
+  function saveFreeFormText(box) {
     var data = {question_id: box.parents(".question").data('id'),
                 response_option_id: parseInt(box.data('response-option-id')),
                 data: {value: box.val()}};
@@ -74,10 +73,17 @@ function bindFreeformEditing() {
       data: data,
       dataType: "JSON",
       context: box
-    }).done(function(data) {
-      this.data('response-option-selection-id', data.id);
     });
+  };
+
+  $(".skills-group input[type='text']").change(function () {
+    saveFreeFormText($(this));
   });
+
+  $(".option-group textarea").change(function () {
+    saveFreeFormText($(this));
+  });
+
 }
 
 function bindResponseSelectionEditing() {

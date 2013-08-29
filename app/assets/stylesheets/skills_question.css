@@ -1,0 +1,8 @@
+.skills-group {
+  width: 50%;
+  float: left;
+}
+.skills-group li input {
+  width: 80%;
+  font-size: 1.2em;
+}
