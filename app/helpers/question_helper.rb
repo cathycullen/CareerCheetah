@@ -19,7 +19,7 @@ module QuestionHelper
     question = option.question
     value = nil
     if response_selection = response_cache(question).response_for(option)
-      value = ResponseOptionSelection.find(response_selection).data[:value]
+      value = ResponseOptionSelection.find(response_selection).data['value']
     end
 
     text_area_tag :response,
@@ -58,6 +58,14 @@ module QuestionHelper
 
   def option_row_count
     4
+  end
+
+  def response_selection_data(question, option)
+    if response_selection = response_cache(question).response_for(option)
+      ResponseOptionSelection.find(response_selection).data
+    else
+      {}
+    end
   end
 
 end

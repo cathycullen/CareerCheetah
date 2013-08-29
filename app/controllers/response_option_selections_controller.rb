@@ -15,8 +15,8 @@ class ResponseOptionSelectionsController < ApplicationController
                     .where(:response_option_id => @option.id)
                     .first_or_create!
 
-    if params[:value]
-      @selection.data = {value: params[:value]}
+    if params[:data]
+      @selection.data = params[:data].to_hash
       @selection.save!
     end
 

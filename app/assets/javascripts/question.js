@@ -32,6 +32,33 @@ function bindResponseNavigation() {
 function bindResponseEditing() {
   bindResponseSelectionEditing();
   bindFreeformEditing();
+  bindThoughtsEditing();
+}
+
+function bindThoughtsEditing() {
+
+  function saveThought(moodThought) {
+    var box = moodThought.children("textarea");
+    var data = {question_id: moodThought.parents(".question").data('id'),
+                response_option_id: moodThought.data('response-option-id'),
+                data: {value: box.val(),
+                       supportive: moodThought.find("input[value='supportive']").is(':checked'),
+                       negative: !moodThought.find("input[value='supportive']").is(':checked')}};
+
+    $.ajax({
+      type: "POST",
+      url: "/response_option_selections",
+      data: data,
+      dataType: "JSON"
+    });
+  }
+
+  $(".mood-thought textarea").change(function () {
+    saveThought($(this).parents(".mood-thought"));
+  });
+  $(".mood-thought input").change(function () {
+    saveThought($(this).parents(".mood-thought"));
+  });
 }
 
 function bindFreeformEditing() {
@@ -39,7 +66,7 @@ function bindFreeformEditing() {
     var box = $(this);
     var data = {question_id: box.parents(".question").data('id'),
                 response_option_id: parseInt(box.data('response-option-id')),
-                value: box.val()};
+                data: {value: box.val()}};
 
     $.ajax({
       type: "POST",
