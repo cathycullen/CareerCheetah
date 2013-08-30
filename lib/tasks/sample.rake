@@ -41,7 +41,7 @@ namespace :sample do
 
     # Phases
     print "\tCreating phases..."
-    ["Phase One", "Phase Two"].each do |name|
+    ["Phase One"].each do |name|
       default_program.phases.create!(:name => name)
     end
     puts "done"
