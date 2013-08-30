@@ -425,6 +425,15 @@ sections:
             element_code: "2.C.3.b"
           - description: "foreign language conversation"
             element_code: "2.C.7.b"
+      - step_type: Question
+        prompt: "Please enter up to three classes you would like to add."
+        headline: "TRAINING"
+        type: "custom"
+        template_name: "training"
+        responses:
+          - description: ""
+          - description: ""
+          - description: ""
   - name: "Determining Fit"
     code: "cat"
     headline: "Choosing your habitat"

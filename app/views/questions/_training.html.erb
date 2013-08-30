@@ -1,0 +1,11 @@
+<ol>
+  <% question.response_options.each_slice(3) do |options| %>
+    <div class="training-group">
+      <% options.each do |option| %>
+        <li>
+          <%= option_text_field(option) %>
+        </li>
+      <% end %>
+    </div>
+  <% end %>
+</ol>
