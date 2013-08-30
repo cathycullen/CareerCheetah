@@ -33,7 +33,24 @@ function bindResponseEditing() {
   bindResponseSelectionEditing();
   bindFreeformEditing();
   bindThoughtsEditing();
+  bindResponseOptionSelectionSelection();
 }
+
+
+function bindResponseOptionSelectionSelection() {
+  $("input[name='response-option-selections[]']").change(function () {
+    var box = $(this);
+    var data = {selected: box.is(':checked')};
+
+    $.ajax({
+      type: "PUT",
+      url: "/response_option_selections/" + box.attr('value'),
+      data: data,
+      dataType: "JSON"
+    });
+  });
+}
+
 
 function bindThoughtsEditing() {
 

@@ -44,4 +44,13 @@ class ResponseOptionSelectionsController < ApplicationController
       render :json => {:message => "No change"}
     end
   end
+
+  def update
+    @selection = current_user.response_option_selections
+                    .find_by(:id => params[:id])
+    @selection.selected = params[:selected]
+    @selection.save
+
+    render :json => @selection
+  end
 end

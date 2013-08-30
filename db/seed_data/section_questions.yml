@@ -931,7 +931,7 @@ sections:
           - description: "Personal growth"
           - description: "Persuading"
           - description: "Physical challenge"
-          - description: "Planing"
+          - description: "Planning"
           - description: "Playfulness"
           - description: "Pleasure"
           - description: "Power"
@@ -1391,6 +1391,12 @@ sections:
             career_rating_prompt: "On a scale of 1-5, how likely is it I will experience being a leader in the career of"
             element_code: "1.C.2.b"
             fit_code: ""
+      - step_type: Question
+        headline: "PEOPLE: KEEPING UP WITH THE PACK"
+        prompt: "Who do you admire? List five people you most admire and why"
+        type: "textbox"
+        responses:
+          - description: ""
   - name: "Passions"
     code: "stalk"
     headline: "The thrill of the hunt"
@@ -1903,7 +1909,7 @@ sections:
             element_code: ""
       - step_type: Question
         prompt: "I would like a position in which I feel (select all that apply):"
-        headline: "RECOGNIION AND CACHE"
+        headline: "RECOGNITION AND CACHE"
         type: "multi"
         responses:
           - description: "Appreciated by the public."

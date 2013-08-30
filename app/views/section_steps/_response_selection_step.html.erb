@@ -1,42 +1,29 @@
-<div class="current-step response-selection-step">
+<div class="current-step question response-selection-step">
   <% @percent_complete = 99 %>
 
   <div class="heading">
       <h1><%= @section_step.headline %></h1>
   </div>
   <div class = "question"
-  <p class="prompt"><%= @section_step.description %></p>
-</div>
+    <p class="prompt"><%= @section_step.description %></p>
+  </div>
   <div class="borderWrap" style="overflow: scroll;">
-    <ul class="options"
+    <ul class="options multi-checkbox-options"> 
 
      <!-- show negative mood selections -->
       <% if @section_step.section.slug == "moods" %>
-        <% negative_moods_selected.each do |option| %>
-          <li class="option">
-            <%= check_box_tag option.description %>
-            <%= label_tag(option.description) %>
-          </li>
+        <% options = negative_moods_selected %>
+      <% elsif @section_step.section.slug == "values" %>
+         <% options = values_selected %>
+      <% elsif @section_step.section.slug == "obstacles" %>
+         <% options = obstacles_selected %>
       <% end %>
 
-      
-      <!-- show values selections-->
-      <% elsif @section_step.section.slug == "values" %>
-        <% values_selected.each do |option| %>
-          <li class="option">
-            <%= check_box_tag option.description %>
-            <%= label_tag(option.description) %>
-          </li>
-          <% end %>
-      
-      <!-- show values obstacles-->
-      <% elsif @section_step.section.slug == "obstacles" %>
-        <% obstacles_selected.each do |option| %>
-          <li class="option">
-            <%= check_box_tag option.description %>
-            <%= label_tag(option.description) %>
-          </li>
-        <% end %>
+      <% options.each do |option| %>
+        <li class="option">
+          <%= check_box_tag "response-option-selections[]", response_cache(option.question).response_for(option), ResponseOptionSelection.find(response_cache(option.question).response_for(option)).selected %>
+          <%= label_tag(option.description) %>
+        </li>
       <% end %>
     </ul>
   </div>

@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130828145211) do
+ActiveRecord::Schema.define(version: 20130829214419) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "career_factor_mappings", force: true do |t|
     t.integer  "factor_id"
@@ -93,6 +96,7 @@ ActiveRecord::Schema.define(version: 20130828145211) do
     t.datetime "updated_at"
     t.integer  "rating"
     t.text     "data"
+    t.boolean  "selected"
   end
 
   add_index "response_option_selections", ["response_option_id"], name: "index_response_option_selections_on_response_option_id", using: :btree
