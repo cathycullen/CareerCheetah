@@ -1,4 +1,4 @@
-<div class="current-step section">
+<div class="current-step section" data-section-code="<%=@section.code%>">
   <div class="heading">
     <% if @section.slug != "obstacles" %>
     <h1>Congratulations!</h1>
@@ -19,8 +19,10 @@
       </tbody> 
     </table>
   </div>
-  <p class="transCopy" style="font-size: 20px;">
-    Enter code to continue.
-  </p>
-  <input type="text" name="other-1" class="codeField">
+  <% if @section.code %>
+    <p class="transCopy" style="font-size: 20px;">
+      Enter code to continue.
+    </p>
+    <%= text_field_tag :sectionCode, nil, :class => "sectionCode" %>
+  <% end %>
 </div>
