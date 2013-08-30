@@ -12,17 +12,17 @@
 
      <!-- show negative mood selections -->
       <% if @section_step.section.slug == "moods" %>
-        <% options = negative_moods_selected %>
+        <% option_selections = negative_moods_selected %>
       <% elsif @section_step.section.slug == "values" %>
-         <% options = values_selected %>
+         <% option_selections = values_selected %>
       <% elsif @section_step.section.slug == "obstacles" %>
-         <% options = obstacles_selected %>
+         <% option_selections = obstacles_selected %>
       <% end %>
 
-      <% options.each do |option| %>
+      <% option_selections.each do |option_selection| %>
         <li class="option">
-          <%= check_box_tag "response-option-selections[]", response_cache(option.question).response_for(option), ResponseOptionSelection.find(response_cache(option.question).response_for(option)).selected %>
-          <%= label_tag(option.description) %>
+          <%= check_box_tag "response-option-selections[]", option_selection.id, option_selection.selected %>
+          <%= label_tag(option_selection.response_option.description) %>
         </li>
       <% end %>
     </ul>

@@ -25,7 +25,7 @@ module UserHelper
   def fit_count_by_type(fit_code)
     # compute sum of fit_codes for this current_user and fit_code
     sum = 0
-    @user.response_option_selections.each do |ros|
+    current_user.response_option_selections.each do |ros|
       sum += ResponseOption.where(:id => ros.response_option_id).where(:fit_code => fit_code).size
     end
 
@@ -33,32 +33,31 @@ module UserHelper
   end
 
   def negative_moods_selected
-    negative_response_options =[]
     negative_responses = ResponseOption.where(:response_type => 'negative')
-    negative_moods_selected = @user.response_option_selections.where(:response_option_id => negative_responses.map(&:id)). each do |ros|
-      negative_response_options << ResponseOption.find(ros.response_option_id)
-    end
-    negative_response_options
+    current_user.response_option_selections.where(:response_option_id => negative_responses.map(&:id))
   end
 
   def obstacles_selected
     obstalces_response_options = []
     response_options = SectionStep.where(:section_id => (Section.where(:name => "Obstacles"))).where(:type => 'QuestionStep').first.question.response_options
-    @user.response_option_selections.where(:response_option_id => response_options.map(&:id)). each do |ros|
-      obstalces_response_options << ResponseOption.find(ros.response_option_id)
-    end
-    obstalces_response_options
+    current_user.response_option_selections.where(:response_option_id => response_options.map(&:id))
   end
-
-
 
   def values_selected
     values_response_options = []
     response_options = SectionStep.where(:section_id => (Section.where(:name => "Values"))).where(:type => 'QuestionStep').first.question.response_options
-    @user.response_option_selections.where(:response_option_id => response_options.map(&:id)). each do |ros|
-      values_response_options << ResponseOption.find(ros.response_option_id)
-    end
-    values_response_options
+    current_user.response_option_selections.where(:response_option_id => response_options.map(&:id))
+  end
+
+  def negative_moods_selections_selected
+    response_options = ResponseOption.where(:response_type => 'negative')
+    current_user.response_option_selections.where(:selected => true).where(:response_option_id => response_options.map(&:id)).first(3)
+  end
+
+
+  def value_selections_selected
+    response_options = SectionStep.where(:section_id => (Section.where(:name => "Values"))).where(:type => 'QuestionStep').first.question.response_options
+    current_user.response_option_selections.where(:selected => true).where(:response_option_id => response_options.map(&:id)).first(10)
   end
 
   def mood_summary
@@ -69,7 +68,7 @@ module UserHelper
     i = 0
     moods.each do  |mood|
       mood_count = 0
-      @user.response_option_selections.each do |ros|
+      current_user.response_option_selections.each do |ros|
         mood_count += ResponseOption.where(:id => ros.response_option_id).where(:response_type => mood).size
       end
 

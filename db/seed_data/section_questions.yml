@@ -277,8 +277,8 @@ sections:
         headline: ""
         description: "Which of these moods, thoughts or beliefs do you believe may impact you the most? Choose up to three."
       - step_type: ResponseSelectionSummaryStep
-        headline: "Please write down these top three moods, thoughts, or beliefs on your Career Cheetah Predator sheet in your folder."
-        description: "These are the three moods, thoughts or beliefs tht I think may impact my performance results."
+        headline: "These are your top Career Cheetah predators"
+        description: "Please write down these top three moods, thoughts, or beliefs on your Career Cheetah Predator sheet in your folder."
   - name: "Training"
     code: "prey"
     headline: "Sharpening your claws"
@@ -980,6 +980,8 @@ sections:
       - step_type: ResponseSelectionStep
         headline: "VALUES"
         description: "Here is a list of your values.  Choose your top ten."
+      - step_type: ResponseSelectionSummaryStep
+        headline: "MY TOP TEN VALUES"
   - name: "Engagement"
     code: "pounce"
     headline: "Getting into the zone"

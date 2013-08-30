@@ -8,29 +8,20 @@
   <p class="prompt"><%= @section_step.description %></p>
 </div>
   <div class="borderWrap" style="overflow: scroll;">
-    <ul class="options"
+    <ol class="options"
 
      <!-- show negative mood selections -->
       <% if @section_step.section.slug == "moods" %>
-       
-      <!-- show values selections-->
+        <% option_selections = negative_moods_selections_selected %>
       <% elsif @section_step.section.slug == "values" %>
-        <% values_selected.each do |option| %>
-          <li class="option">
-            <%= check_box_tag option.description %>
-            <%= label_tag(option.description) %>
-          </li>
-          <% end %>
-      
-      <!-- show values obstacles-->
-      <% elsif @section_step.section.slug == "obstacles" %>
-        <% obstacles_selected.each do |option| %>
-          <li class="option">
-            <%= check_box_tag option.description %>
-            <%= label_tag(option.description) %>
-          </li>
-        <% end %>
+         <% option_selections = value_selections_selected %>
       <% end %>
-    </ul>
+
+      <% option_selections.each do |option_selection| %>
+        <li class="option">
+              <%= option_selection.response_option.description %>
+        </li>
+      <% end %>
+    </ol>
   </div>
 </div>
