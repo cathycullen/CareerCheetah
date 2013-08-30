@@ -1392,10 +1392,15 @@ sections:
             element_code: "1.C.2.b"
             fit_code: ""
       - step_type: Question
+        prompt: "Who do you admire? List five people you most admire and why."
         headline: "PEOPLE: KEEPING UP WITH THE PACK"
-        prompt: "Who do you admire? List five people you most admire and why"
-        type: "textbox"
+        type: "custom"
+        template_name: "admire"
         responses:
+          - description: ""
+          - description: ""
+          - description: ""
+          - description: ""
           - description: ""
   - name: "Passions"
     code: "stalk"

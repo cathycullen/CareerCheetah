@@ -28,16 +28,17 @@ module QuestionHelper
                   "data-response-option-id" => option.id
   end
 
-  def option_text_field(option)
+  def option_text_field(option, tag_options={})
+    tag_options.merge(name: "response", value_key: "value")
     question = option.question
     value = nil
     if response_selection = response_cache(question).response_for(option)
-      value = ResponseOptionSelection.find(response_selection).data['value']
+      value = ResponseOptionSelection.find(response_selection).data[tag_options[:value_key]]
     end
 
-    text_field_tag :response,
-                  value,
-                  "data-response-option-id" => option.id
+    text_field_tag tag_options[:name],
+                   value,
+                   "data-response-option-id" => option.id
   end
 
   def response_cache(question)
