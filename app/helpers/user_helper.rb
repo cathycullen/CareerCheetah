@@ -98,12 +98,14 @@ def best_work_fit
     # check ratios of positive moods to negative moods to create headline text for response distribution page
     if positive_mood_count > 0 && negative_mood_count == 0
       @mood_summary_headline = 'positive_mood_3'
-      elsif (positive_mood_count.to_f / 3) >= negative_mood_count.to_f 
+      elsif (positive_mood_count > 0 && (positive_mood_count.to_f / 3) >= negative_mood_count.to_f )
         @mood_summary_headline = 'positive_mood_1'
           elsif positive_mood_count > 0 && positive_mood_count > negative_mood_count 
         @mood_summary_headline = 'positive_mood_2'
-      elsif  (negative_mood_count.to_f / 5) >= positive_mood_count.to_f 
+      elsif  (negative_mood_count > 0 && (negative_mood_count.to_f / 5) >= positive_mood_count.to_f )
         @mood_summary_headline = 'negative_mood_2'
+      elsif  (negative_mood_count == 0 &&  positive_mood_count == 0 && neutral_mood_count == 0)
+        @mood_summary_headline = 'no_moods_chosen'
     end
 
   mood_sum
