@@ -34,8 +34,8 @@ function bindResponseEditing() {
   bindFreeformEditing();
   bindThoughtsEditing();
   bindResponseOptionSelectionSelection();
+  bindAdmireEditing();
 }
-
 
 function bindResponseOptionSelectionSelection() {
   $("input[name='response-option-selections[]']").change(function () {
@@ -75,6 +75,25 @@ function bindThoughtsEditing() {
   });
   $(".mood-thought input").change(function () {
     saveThought($(this).parents(".mood-thought"));
+  });
+}
+
+function bindAdmireEditing() {
+  $(".admire-group input[type='text']").change(function () {
+    var box = $(this);
+    var data = {question_id: box.parents(".question").data('id'),
+                response_option_id: parseInt(box.data('response-option-id')),
+                data: {
+                  who: box.parents("li").find("input[name='who']").val(),
+                  why: box.parents("li").find("input[name='why']").val()
+                }};
+
+    $.ajax({
+      type: "POST",
+      url: "/response_option_selections",
+      data: data,
+      dataType: "JSON",
+    });
   });
 }
 

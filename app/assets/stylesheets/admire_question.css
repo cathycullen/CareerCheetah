@@ -1,0 +1,14 @@
+.admire-group input {
+  font-size: 1.2em;
+  width: 250px;
+
+}
+
+.why {
+  float: right;
+}
+
+.why input {
+  margin-left: 10px;
+  margin-right: 20px;
+}

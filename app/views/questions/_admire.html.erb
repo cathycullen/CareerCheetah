@@ -1,0 +1,15 @@
+<ol>
+  <% question.response_options.each_slice(4) do |options| %>
+    <div class="admire-group">
+      <% options.each do |option| %>
+        <li>
+          <%= option_text_field(option, name: "who", value_key: "who") %>
+          <span class="why">
+            Why?
+            <%= option_text_field(option, name: "why", value_key: "why") %>
+          </span>
+        </li>
+      <% end %>
+    </div>
+  <% end %>
+</ol>
