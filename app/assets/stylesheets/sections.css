@@ -1,0 +1,7 @@
+.sectionCode {
+  font-size: 1.2em;
+}
+
+.sectionCode.error {
+  border: solid red 1px;
+}
