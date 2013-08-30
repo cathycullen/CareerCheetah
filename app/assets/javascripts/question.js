@@ -4,31 +4,6 @@ $(document).on('ready', bindResponseEditing);
 $(document).on('page:load', bindResponseRating);
 $(document).on('ready', bindResponseRating);
 
-$(document).on('page:load', bindResponseNavigation);
-$(document).on('ready', bindResponseNavigation);
-
-function bindResponseNavigation() {
-  if($("ul.options").length > 0) {
-    $(".nav-right-active a").click(function(e) {
-      var currentGroup = $("ul.options:not(:hidden)");
-      if( !currentGroup.is(":last-child")) {
-        e.preventDefault();
-        currentGroup.hide();
-        currentGroup.next().show();
-      }
-    });
-
-    $(".nav-left-active a").click(function(e) {
-      var currentGroup = $("ul.options:not(:hidden)");
-      if( !currentGroup.is(":first-child")) {
-        e.preventDefault();
-        currentGroup.hide();
-        currentGroup.prev().show();
-      }
-    });
-  }
-}
-
 function bindResponseEditing() {
   bindResponseSelectionEditing();
   bindFreeformEditing();
