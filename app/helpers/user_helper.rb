@@ -1,13 +1,14 @@
 module UserHelper
-  def best_work_fit
+  
+def best_work_fit
+    response_options = SectionStep.where(:section_id => (Section.where(:name => "Determining Fit"))).where(:type => 'QuestionStep').first.question.response_options
+    selections = current_user.response_option_selections.where(:response_option_id => response_options.map(&:id))
 
-    # compute best work fit sums by categories for current_user
-    # return hash table with categories and sums
     fit_codes_summary = []
     codes = ['Corporate', 'Freelance', 'Entrepreneur', 'Non-profit']
     codes.each do  |code|
       code_count = 0
-      @user.response_option_selections.each do |response_option_selection|
+      selections.each do |response_option_selection|
         code_count += ResponseOption.where(:id => response_option_selection.response_option_id).where(:fit_code => code[0]).size
       end
 
@@ -22,19 +23,14 @@ module UserHelper
     fit_codes_summary
   end
 
-  def fit_count_by_type(fit_code)
-    # compute sum of fit_codes for this current_user and fit_code
-    sum = 0
-    current_user.response_option_selections.each do |ros|
-      sum += ResponseOption.where(:id => ros.response_option_id).where(:fit_code => fit_code).size
-    end
-
-    sum
+  def negative_moods_selected
+    response_options = ResponseOption.where(:response_type => 'negative')
+    current_user.response_option_selections.where(:response_option_id => response_options.map(&:id))
   end
 
-  def negative_moods_selected
-    negative_responses = ResponseOption.where(:response_type => 'negative')
-    current_user.response_option_selections.where(:response_option_id => negative_responses.map(&:id))
+  def get_moods_selected_by_type(mood_type)
+    response_options = ResponseOption.where(:response_type => mood_type)
+    current_user.response_option_selections.where(:response_option_id => response_options.map(&:id))
   end
 
   def obstacles_selected
@@ -44,7 +40,6 @@ module UserHelper
   end
 
   def values_selected
-    values_response_options = []
     response_options = SectionStep.where(:section_id => (Section.where(:name => "Values"))).where(:type => 'QuestionStep').first.question.response_options
     current_user.response_option_selections.where(:response_option_id => response_options.map(&:id))
   end
@@ -61,51 +56,53 @@ module UserHelper
   end
 
   def mood_summary
+    # get selected moods
+    
     mood_sum = []
     moods = ['positive', 'negative', 'neutral']
     mood_color = ['Green', 'Gray', 'Orange']
-    
-    i = 0
+
+    #count moods by category    
+    i = mood_count = total_mood_count = 0
+    total_mood_count = positive_mood_count = negative_mood_count = neutral_mood_count = 0
+
     moods.each do  |mood|
       mood_count = 0
-      current_user.response_option_selections.each do |ros|
-        mood_count += ResponseOption.where(:id => ros.response_option_id).where(:response_type => mood).size
+      if(selections = get_moods_selected_by_type(mood))
+        puts "get_moods_selected_by_type(#{mood}  #{selections.count}"
+        mood_count = selections.size
+        total_mood_count += selections.size
+        if mood == 'positive'
+          positive_mood_count = mood_count
+        elsif mood == 'negative'
+          negative_mood_count = mood_count
+        elsif mood == 'neutral'
+          neutral_mood_count = mood_count
+        end
       end
 
-#      puts "Mood Count for #{mood} is : #{mood_count}"
+      #puts "Mood Count for #{mood} is : #{mood_count} total_mood_count #{total_mood_count}"
       mood_sum <<  { :mood => mood, :count => mood_count, :color => mood_color[i]}
       i = i + 1
     end
 
-    @positive_mood_count = @negative_mood_count = neutral_mood_count = 0
-    max = mood_sum.max_by{ |f| f[:count]}[:count]
     mood_sum.each do |f|
       if f[:count] == 0
         f[:percent] = 0
       else
-        f[:percent] = f[:count].to_f / max
-      end
-
-      if f[:mood] == 'positive' then
-        @positive_mood_count = f[:count]
-      end
-       if f[:mood] == 'negative' then
-        @negative_mood_count = f[:count]
-      end
-       if f[:mood] == 'neutral' then
-        @neutral_mood_count = f[:count]
+        f[:percent] = f[:count].to_f / total_mood_count
       end
     end
     # @todo  would rather have gone in to mood_sum and gotten the count for :positive :negative
     @mood_summary_headline = 'negative_mood_1'
     # check ratios of positive moods to negative moods to create headline text for response distribution page
-    if @positive_mood_count > 0 && @negative_mood_count == 0
+    if positive_mood_count > 0 && negative_mood_count == 0
       @mood_summary_headline = 'positive_mood_3'
-      elsif (@positive_mood_count.to_f / 3) >= @negative_mood_count.to_f 
+      elsif (positive_mood_count.to_f / 3) >= negative_mood_count.to_f 
         @mood_summary_headline = 'positive_mood_1'
-          elsif @positive_mood_count > 0 && @positive_mood_count > @negative_mood_count 
+          elsif positive_mood_count > 0 && positive_mood_count > negative_mood_count 
         @mood_summary_headline = 'positive_mood_2'
-      elsif  (@negative_mood_count.to_f / 5) >= @positive_mood_count.to_f 
+      elsif  (negative_mood_count.to_f / 5) >= positive_mood_count.to_f 
         @mood_summary_headline = 'negative_mood_2'
     end
 
