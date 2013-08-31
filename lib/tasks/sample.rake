@@ -29,6 +29,11 @@ namespace :sample do
 
   desc "Regenerate the default program questionnaire"
   task :questionnaire => :environment do
+    print "Deleting all exisitng response option selections..."
+    ResponseOptionSelection.destroy_all
+    UserCareer.destroy_all
+    puts "done"
+
     puts "Generating sample quiz data..."
 
     p = Program.find_by(:name => "Career Cheetah Default")
