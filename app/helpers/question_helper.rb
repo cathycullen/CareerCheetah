@@ -29,11 +29,13 @@ module QuestionHelper
   end
 
   def option_text_field(option, tag_options={})
-    tag_options.merge(name: "response", value_key: "value")
+    tag_options = tag_options.reverse_merge(name: "response", value_key: "value")
     question = option.question
+
     value = nil
     if response_selection = response_cache(question).response_for(option)
-      value = ResponseOptionSelection.find(response_selection).data[tag_options[:value_key]]
+      selection = ResponseOptionSelection.find(response_selection)
+      value = selection.data[tag_options[:value_key]] if selection.data
     end
 
     text_field_tag tag_options[:name],

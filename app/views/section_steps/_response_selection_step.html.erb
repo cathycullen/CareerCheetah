@@ -21,8 +21,10 @@
 
       <% option_selections.each do |option_selection| %>
         <li class="option">
-          <%= check_box_tag "response-option-selections[]", option_selection.id, option_selection.selected %>
-          <%= label_tag(option_selection.response_option.description) %>
+          <%= label_tag do %>
+            <%= check_box_tag "response-option-selections[]", option_selection.id, option_selection.selected %>
+            <%= option_selection.response_option.description %>
+          <% end %>
         </li>
       <% end %>
     </ul>

@@ -13,18 +13,21 @@ function bindResponseNavigation() {
     } else if($("input.sectionCode").length > 0) {
       if($("input.sectionCode").val() != $(".current-step.section").data('section-code') ) {
         e.preventDefault();
+        $("input.sectionCode").focus();
         alert("Please enter the correct code to continue");
         $("input.sectionCode").addClass("error");
       }
     }
   });
 
-  $(".nav-left-active a").click(function(e) {
-    var currentGroup = $("ul.options:not(:hidden)");
-    if( !currentGroup.is(":first-child")) {
-      e.preventDefault();
-      currentGroup.hide();
-      currentGroup.prev().show();
-    }
-  });
+  if($("ul.options").length > 0) {
+    $(".nav-left-active a").click(function(e) {
+      var currentGroup = $("ul.options:not(:hidden)");
+      if( !currentGroup.is(":first-child")) {
+        e.preventDefault();
+        currentGroup.hide();
+        currentGroup.prev().show();
+      }
+    });
+  }
 }
