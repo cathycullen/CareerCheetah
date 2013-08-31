@@ -29,7 +29,14 @@ class Navigation::SectionStepStrategy
       full_step_path(previous_step)
     elsif @section.slug == "on-the-prowl"
       selections = RateableResponses.new(@user).response_option_selections
-      program_phase_section_factor_rating_path(@program, @phase, @section, selections.last)
+      if selections.empty?
+        full_section_path(@section)
+      else
+        program_phase_section_factor_rating_path(@program,
+                                                 @phase,
+                                                 @section,
+                                                 selections.last)
+      end
     else
       full_section_path(@section)
     end
