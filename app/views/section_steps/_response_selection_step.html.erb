@@ -23,7 +23,7 @@
         <li class="option">
           <%= label_tag do %>
             <%= check_box_tag "response-option-selections[]", option_selection.id, option_selection.selected %>
-            <%= option_selection.response_option.description %>
+            <%= option_selection.data.try(:[], "value") || option_selection.response_option.description %>
           <% end %>
         </li>
       <% end %>
