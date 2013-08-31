@@ -560,6 +560,8 @@ sections:
           - description: "The pace of work does not have to be fast, I'm satisfied to do it in a measured pace rather than experiment"
             element_code: ""
             fit_code: "N"
+      - step_type: Static
+        template_name: "determing_fit_code_check"
       - step_type: ResponseDistributionStep
         headline: "DETERMINING FIT"
         description: "Here are the results of your \"Determining Fit\" assessment. It will show you employment \"best fit\" based on your answers."
