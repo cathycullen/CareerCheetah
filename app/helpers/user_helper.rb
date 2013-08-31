@@ -126,4 +126,16 @@ def best_work_fit
 
   mood_sum
   end
+
+  def factor_rating(user, factor)
+    option = ResponseOption.find_by(:factor_id => factor.id)
+    selection = user.response_option_selections.find_by(:response_option_id => option.id)
+    selection.rating if selection
+  end
+
+  def ranked_factor_selections(user)
+    user.factor_selections.sort_by do |factor_selection|
+      factor_rating(@user, factor_selection.factor) || 0
+    end.reverse
+  end
 end
