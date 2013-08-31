@@ -20,7 +20,7 @@ class Navigation::SectionStepStrategy
     elsif next_phase = @section.phase.next_phase
       full_phase_path(next_phase)
     else
-      nil
+      :back
     end
   end
 
