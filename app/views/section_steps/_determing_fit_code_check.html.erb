@@ -1,0 +1,12 @@
+<div class="current-step section" data-section-code="<%=@section.code%>">
+  <div class="heading">
+    <h1>DETERMINING FIT</h1>
+  </div>
+
+  <% if @section.code %>
+    <p class="transCopy" style="font-size: 20px;">
+      Enter code to continue.
+    </p>
+    <%= text_field_tag :sectionCode, nil, :class => "sectionCode" %>
+  <% end %>
+</div>
