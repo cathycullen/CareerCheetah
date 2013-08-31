@@ -4,11 +4,12 @@
   <div class="heading">
       <h1><%= @section_step.headline %></h1>
   </div>
-  <div class = "question"
-  <p class="prompt"><%= @section_step.description %></p>
-</div>
+  <div class="question">
+    <p class="prompt"><%= @section_step.description %></p>
+  </div>
+
   <div class="borderWrap" style="overflow: scroll;">
-    <ol class="options"
+    <ol class="options">
 
      <!-- show negative mood selections -->
       <% if @section_step.section.slug == "moods" %>
@@ -19,7 +20,7 @@
 
       <% option_selections.each do |option_selection| %>
         <li class="option">
-              <%= option_selection.response_option.description %>
+          <%= option_selection.data.try(:[], "value") || option_selection.response_option.description %>
         </li>
       <% end %>
     </ol>
