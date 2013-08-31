@@ -6,7 +6,10 @@
   position: relative;
 }
 
-.login {
+.errors {
+  text-align: center;
+  border: solid 1px red;
+  padding: 10px;
 }
 
 .login-header {
