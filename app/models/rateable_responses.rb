@@ -12,8 +12,11 @@ class RateableResponses
 
   def response_option_selections
     @selected_responses ||= begin
-      @user.response_option_selections.order("created_at ASC").select do |s|
-        s.response_option && s.response_option.rating_prompt && sections.include?(s.response_option.question.question_step.section)
+      @user.response_option_selections.order("response_option_selections.created_at ASC")
+        .where("response_options.rating_prompt IS NOT NULL")
+        .references("response_options")
+        .includes(:response_option).select do |s|
+          s.response_option && s.response_option.rating_prompt && sections.include?(s.response_option.question.question_step.section)
       end
     end
   end
