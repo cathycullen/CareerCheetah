@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
   skip_before_filter :require_authentication, :only => [:new, :create]
 
+  layout "login", :only => :new
+
   def new
     redirect_to post_login_path if current_user
   end
