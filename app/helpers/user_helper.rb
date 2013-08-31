@@ -1,5 +1,5 @@
 module UserHelper
-  
+
 def best_work_fit
     response_options = SectionStep.where(:section_id => (Section.where(:name => "Determining Fit"))).where(:type => 'QuestionStep').first.question.response_options
     selections = current_user.response_option_selections.where(:response_option_id => response_options.map(&:id))
@@ -25,7 +25,20 @@ def best_work_fit
 
   def negative_moods_selected
     response_options = ResponseOption.where(:response_type => 'negative')
-    current_user.response_option_selections.where(:response_option_id => response_options.map(&:id))
+    current_user.response_option_selections.where(:response_option_id => response_options.map(&:id)) + negative_thoughts_selected
+  end
+
+  def negative_thoughts_selected
+    negative_thought_selections = []
+    if section = Section.find_by(:slug => "moods")
+      section.section_steps.where(:type => "QuestionStep").each do |s|
+        options = s.question.response_options
+        selections = current_user.response_option_selections.where(:response_option_id => options.map(&:id)).to_a
+        negative_thought_selections += selections.select{ |s| s.data && s.data["negative"] == "true"}
+      end
+    end
+
+    negative_thought_selections.flatten
   end
 
   def get_moods_selected_by_type(mood_type)
@@ -45,8 +58,12 @@ def best_work_fit
   end
 
   def negative_moods_selections_selected
+    selected_negative_thoughts = negative_thoughts_selected.select(&:selected)
+    negative_thought_selections = []
     response_options = ResponseOption.where(:response_type => 'negative')
-    current_user.response_option_selections.where(:selected => true).where(:response_option_id => response_options.map(&:id)).first(3)
+    all = current_user.response_option_selections.where(:selected => true).where(:response_option_id => response_options.map(&:id)) + selected_negative_thoughts
+
+    all.first(3)
   end
 
 
@@ -57,7 +74,6 @@ def best_work_fit
 
   def mood_summary
     # get selected moods
-    
     mood_sum = []
     moods = ['positive', 'negative', 'neutral']
     mood_color = ['Green', 'Gray', 'Orange']
