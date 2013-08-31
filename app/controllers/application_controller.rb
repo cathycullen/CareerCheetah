@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_filter :require_authentication
+  before_filter :reset_session_on_missing_user, :require_authentication
   helper_method :current_user
 
   def require_authentication
@@ -12,5 +12,12 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
+  def reset_session_on_missing_user
+    if session[:user_id] && ! User.exists?(session[:user_id])
+      reset_session
+      redirect_to root_path
+    end
   end
 end
