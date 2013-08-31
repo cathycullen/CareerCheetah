@@ -1,24 +1,12 @@
 <div class="current-step section" data-section-code="<%=@section.code%>">
   <div class="heading">
-    <% if @section.slug != "obstacles" %>
     <h1>Congratulations!</h1>
     <h2>You have completed the <%= @section.name %> portion of the hunt.</h2>
-    <% else %>
-    <h1>Happy Hunting!</h1>
+    <% (@section_index+1).times do %>
+      <%= image_tag('cheetah-badge.png', :size => "90x90") %>
     <% end %>
-    <table class="table table-bordered" border="0" padding="100" align="bottom" cellspacing="20">
-     <tbody>
-        <tr>
-        <% for i in 0..@section_index %>
-        <% if ((i % 6) == 0) %>
-          </tr>
-        <% end %>
-         <td><%= image_tag('cheetah-badge.png', :size => "90x90") %> </td>
-        <% end %>
-        </tr>
-      </tbody> 
-    </table>
   </div>
+
   <% if @section.code %>
     <p class="transCopy" style="font-size: 20px;">
       Enter code to continue.

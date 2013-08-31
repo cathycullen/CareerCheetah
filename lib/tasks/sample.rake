@@ -90,7 +90,7 @@ namespace :sample do
           end
         end
       end
-      section.section_steps.create!(:type => "ConclusionStep") if section.name != "obstacles"
+      section.section_steps.create!(:type => "ConclusionStep") if section.slug != "obstacles"
     end
     puts "done"
   end

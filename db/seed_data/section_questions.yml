@@ -2028,3 +2028,5 @@ sections:
         type: "textbox"
         responses:
           - description: ""
+      - step_type: Static
+        template_name: "happy_hunting"
