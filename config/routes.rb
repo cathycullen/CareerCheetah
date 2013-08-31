@@ -25,6 +25,7 @@ CareerCheetah::Application.routes.draw do
 
   namespace :admin do
     resources :programs
+    resources :users
   end
 
   root "sessions#new"

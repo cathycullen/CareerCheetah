@@ -1,0 +1,23 @@
+<h2><%= @user.name %></h2>
+
+<h3>Predicted Careers</h3>
+<ul>
+  <% @user.user_careers.order("weight DESC").first(30).each do |user_career| %>
+    <li><%= user_career.career.title%></li>
+  <% end %>
+</ul>
+
+<h3>Factors</h3>
+<p>All element codes:<p>
+<p><%= @user.factors.map(&:element_code).compact.join(", ") %></p>
+<ul>
+  <% ranked_factor_selections(@user).each do |factor_selection| %>
+    <li>
+      <%= factor_selection.factor.name %>
+      <%= factor_selection.factor.element_code %>
+      <% if factor_rating(@user, factor_selection.factor) %>
+        (<%= factor_rating(@user, factor_selection.factor) %>)
+      <% end %>
+  </li>
+  <% end %>
+</ul>
