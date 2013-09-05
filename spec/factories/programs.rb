@@ -1,6 +1,5 @@
 FactoryGirl.define do
-  factory :section do
+  factory :program do
     name Faker::Lorem.word
-    phase
   end
 end
