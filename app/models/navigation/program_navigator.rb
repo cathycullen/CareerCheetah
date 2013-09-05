@@ -1,23 +1,24 @@
-class Navigation::ProgramNavigator
+module Navigation
+  class ProgramNavigator
+    attr_reader :strategy
+    delegate :next, :to => :strategy
+    delegate :previous, :to => :strategy
 
-  def initialize(context_object, user)
-    if context_object.kind_of? Phase
-      @s = Navigation::PhaseStrategy.new(context_object, user)
-    elsif context_object.kind_of? Section
-      @s = Navigation::SectionStrategy.new(context_object, user)
-    elsif context_object.kind_of? SectionStep
-      @s = Navigation::SectionStepStrategy.new(context_object, user)
-    else
-      raise "Unsupported context object: #{context_object.class.name}"
+    def initialize(context_object, user)
+      klass = nil
+      if context_object.kind_of? Phase
+        klass = Navigation::PhaseStrategy
+      elsif context_object.kind_of? Section
+        klass = Navigation::SectionStrategy
+      elsif context_object.kind_of? SectionStep
+        klass = Navigation::SectionStepStrategy
+      else
+        raise UnsupportedContextObject.new("Unsupported context object: #{context_object.class.name}")
+      end
+
+      @strategy = klass.new(context_object, user)
     end
   end
 
-  def next
-    @s.next
-  end
-
-  def previous
-    @s.previous
-  end
-
+  class UnsupportedContextObject < Exception; end
 end
