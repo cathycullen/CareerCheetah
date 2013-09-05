@@ -1,6 +1,6 @@
 require 'spec_helper'
 
 describe Question do
-  it {should belong_to(:section)}
+  it {should have_one(:question_step)}
   it {should have_many(:response_options)}
 end
