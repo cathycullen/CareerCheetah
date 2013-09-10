@@ -31,4 +31,8 @@ module Navigation::PathGeneration
   def full_phase_path(phase)
     program_phase_path(phase.program, phase)
   end
+
+  def careers_path(section)
+    program_phase_section_user_careers_path(section.phase.program, section.phase, section)
+  end
 end
