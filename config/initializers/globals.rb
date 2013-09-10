@@ -1,1 +1,3 @@
-SHOW_USER_CAREERS = false
+def show_user_careers
+  false
+end
