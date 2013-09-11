@@ -1,4 +1,4 @@
-<div class="current-step section" data-section-code="<%=@section.code%>">
+<div class="current-step section" data-section-code="<%=@section.code unless Rails.env == 'development'%>">
   <div class="heading">
     <h1>Congratulations!</h1>
     <h2>You have completed the <%= @section.name %> portion of the hunt.</h2>
