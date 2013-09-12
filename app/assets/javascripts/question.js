@@ -133,16 +133,16 @@ function bindResponseSelectionEditing() {
 };
 
 function bindResponseRating() {
-  $("input[name='user-cheetah-factors[]']").change(function () {
+  $("input[name='cheetah-factor-rankings[]']").change(function () {
     var box = $(this);
 
     if(box.is(':checked')){
-      var data = {id: box.data('user-cheetah-factor-id'),
+      var data = {id: box.data('cheetah-factor-ranking-id'),
                   rating: box.attr('value')};
 
       $.ajax({
         type: "POST",
-        url: "/user_cheetah_factors",
+        url: "/cheetah_factor_rankings",
         data: data,
         dataType: "JSON",
         context: box
