@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130829214419) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20130911233559) do
 
   create_table "career_factor_mappings", force: true do |t|
     t.integer  "factor_id"
@@ -38,6 +35,16 @@ ActiveRecord::Schema.define(version: 20130829214419) do
 
   add_index "careers", ["job_zone"], name: "index_careers_on_job_zone", using: :btree
   add_index "careers", ["onet_code"], name: "index_careers_on_onet_code", using: :btree
+
+  create_table "cheetah_factors", force: true do |t|
+    t.string   "rating_prompt"
+    t.string   "career_rating_prompt"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cheetah_factors", ["user_id"], name: "index_cheetah_factors_on_user_id", using: :btree
 
   create_table "factor_selections", force: true do |t|
     t.integer  "user_id"
@@ -103,9 +110,9 @@ ActiveRecord::Schema.define(version: 20130829214419) do
   add_index "response_option_selections", ["user_id"], name: "index_response_option_selections_on_user_id", using: :btree
 
   create_table "response_options", force: true do |t|
-    t.text     "description",   null: false
-    t.integer  "row_order",     null: false
-    t.integer  "question_id",   null: false
+    t.text     "description",       null: false
+    t.integer  "row_order",         null: false
+    t.integer  "question_id",       null: false
     t.integer  "factor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -113,8 +120,10 @@ ActiveRecord::Schema.define(version: 20130829214419) do
     t.string   "rating_prompt"
     t.string   "response_type"
     t.string   "work_zone"
+    t.integer  "cheetah_factor_id"
   end
 
+  add_index "response_options", ["cheetah_factor_id"], name: "index_response_options_on_cheetah_factor_id", using: :btree
   add_index "response_options", ["factor_id"], name: "index_response_options_on_factor_id", using: :btree
   add_index "response_options", ["question_id"], name: "index_response_options_on_question_id", using: :btree
 
@@ -158,6 +167,18 @@ ActiveRecord::Schema.define(version: 20130829214419) do
 
   add_index "user_careers", ["career_id"], name: "index_user_careers_on_career_id", using: :btree
   add_index "user_careers", ["user_id"], name: "index_user_careers_on_user_id", using: :btree
+
+  create_table "user_cheetah_factors", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "cheetah_factor_id"
+    t.integer  "original_rating"
+    t.integer  "final_rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_cheetah_factors", ["cheetah_factor_id"], name: "index_user_cheetah_factors_on_cheetah_factor_id", using: :btree
+  add_index "user_cheetah_factors", ["user_id"], name: "index_user_cheetah_factors_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false
