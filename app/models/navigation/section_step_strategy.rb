@@ -28,14 +28,14 @@ class Navigation::SectionStepStrategy
     if previous_step = @step.previous_step
       full_step_path(previous_step)
     elsif @section.slug == "on-the-prowl"
-      factors = @user.user_cheetah_factors.order("created_at ASC")
+      factors = @user.cheetah_factor_rankings.order("created_at ASC")
       if factors.empty?
         full_section_path(@section)
       else
-        program_phase_section_user_cheetah_factor_path(@program,
-                                                       @phase,
-                                                       @section,
-                                                       factors.last)
+        program_phase_section_cheetah_factor_ranking_path(@program,
+                                                          @phase,
+                                                          @section,
+                                                          factors.last)
       end
     else
       full_section_path(@section)
