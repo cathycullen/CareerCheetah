@@ -1,13 +1,13 @@
 <% content_for :previous_url do %>
   <% if @previous_selection %>
-    <%= program_phase_section_user_cheetah_factor_path(@program, @section.phase, @section, @previous_selection) %>
+    <%= program_phase_section_cheetah_factor_ranking_path(@program, @section.phase, @section, @previous_selection) %>
   <% else %>
     <%= program_phase_section_path(@section, @section.phase, @section) %>
   <% end %>
 <% end %>
 <% content_for :next_url do %>
   <% if @next_selection %>
-    <%= program_phase_section_user_cheetah_factor_path(@program, @section.phase, @section, @next_selection) %>
+    <%= program_phase_section_cheetah_factor_ranking_path(@program, @section.phase, @section, @next_selection) %>
   <% else %>
     <%= program_phase_section_section_step_path(@section, @section.phase, @section, @section.section_steps.find_by(:type => "ConclusionStep")) %>
   <% end %>
@@ -22,10 +22,10 @@
           <li class="option rating-option">
             <%= label_tag nil, :class => "response-option" do %>
               <span class="value-description"><%= option[:value_description]%></span><br />
-              <%= radio_button_tag "user-cheetah-factors[]",
+              <%= radio_button_tag "cheetah-factor-rankings[]",
                                    option[:value],
-                                   @user_cheetah_factor.original_rating == option[:value],
-                                   {"data-user-cheetah-factor-id" => "#{@user_cheetah_factor.id}"} %><br />
+                                   @cheetah_factor_ranking.original_rating == option[:value],
+                                   {"data-cheetah-factor-ranking-id" => "#{@cheetah_factor_ranking.id}"} %><br />
               <%= option[:description] %>
             <% end %>
           </li>
