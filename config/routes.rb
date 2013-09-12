@@ -3,13 +3,13 @@ CareerCheetah::Application.routes.draw do
     resources :phases do
       resources :sections do
         resources :section_steps, :as => :section_step
-        resources :factor_ratings
+        resources :user_cheetah_factors
         resources :user_careers
       end
     end
   end
 
-  resources :factor_ratings, only: [:create]
+  resources :user_cheetah_factors, only: [:create]
 
   resources :response_option_selections
   resource :program_navigation do

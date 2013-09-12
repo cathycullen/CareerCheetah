@@ -1,5 +1,5 @@
 namespace :cheetah_factor do
-  desc "Convert existing response options with rating prompts to CheetahFactors"
+  desc "Convert existing response options with rating prompts to CheetahFactors and rated ResponseOptionSelections to UserCheetahFactors"
   task :convert => :environment do
     puts "Converting response options to CheetahFactors..."
     cheetah_factors = []
@@ -12,6 +12,17 @@ namespace :cheetah_factor do
     end
 
     puts "Created #{cheetah_factors.length} CheetahFactor records"
+
+    puts "Converting RatedResponses..."
+    User.all.each do |user|
+      r = RateableResponses.new(user)
+      r.response_option_selections.each do |s|
+        UserCheetahFactor.create!(user: user,
+                                  cheetah_factor: s.response_option.cheetah_factor,
+                                  original_rating: s.rating)
+      end
+    end
+
     puts "done"
   end
 

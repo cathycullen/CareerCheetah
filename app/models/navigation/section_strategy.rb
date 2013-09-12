@@ -13,14 +13,14 @@ class Navigation::SectionStrategy
     if step = @section.section_steps.rank(:row_order).where("type != 'ConclusionStep'").first
       full_step_path(step)
     elsif @section.slug == "on-the-prowl"
-      selections = RateableResponses.new(@user).response_option_selections
-      if selections.empty?
+      factors = @user.user_cheetah_factors.order("created_at ASC")
+      if factors.empty?
         full_step_path(@section.section_steps.last)
       else
-        program_phase_section_factor_rating_path(@program,
-                                                 @phase,
-                                                 @section,
-                                                 selections.first)
+        program_phase_section_user_cheetah_factor_path(@program,
+                                                       @phase,
+                                                       @section,
+                                                       factors.first)
       end
     elsif next_section = @section.next_section
       full_section_path(next_section)

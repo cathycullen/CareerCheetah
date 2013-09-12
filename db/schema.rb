@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130910192412) do
+ActiveRecord::Schema.define(version: 20130911233559) do
 
   create_table "career_factor_mappings", force: true do |t|
     t.integer  "factor_id"
@@ -167,6 +167,18 @@ ActiveRecord::Schema.define(version: 20130910192412) do
 
   add_index "user_careers", ["career_id"], name: "index_user_careers_on_career_id", using: :btree
   add_index "user_careers", ["user_id"], name: "index_user_careers_on_user_id", using: :btree
+
+  create_table "user_cheetah_factors", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "cheetah_factor_id"
+    t.integer  "original_rating"
+    t.integer  "final_rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_cheetah_factors", ["cheetah_factor_id"], name: "index_user_cheetah_factors_on_cheetah_factor_id", using: :btree
+  add_index "user_cheetah_factors", ["user_id"], name: "index_user_cheetah_factors_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false
