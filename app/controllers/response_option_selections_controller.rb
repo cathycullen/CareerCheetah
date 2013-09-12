@@ -20,10 +20,20 @@ class ResponseOptionSelectionsController < ApplicationController
       @selection.save!
     end
 
+    # If this option maps to a Factor, record that this user 'has' that Factor
     if @option.factor
       @factor = current_user.factor_selections
                   .where(:factor_id => @option.factor.id)
                   .first_or_create!
+    end
+
+    # This this option maps to CheetahFactor (one they will rate later), record that this
+    # user 'has' this CheetahFactor
+    if @option.cheetah_factor &&
+       UserCheetahFactor.find_by(user: current_user, cheetah_factor: @option.cheetah_factor).nil?
+
+      UserCheetahFactor.create!(user: current_user,
+                                cheetah_factor: @option.cheetah_factor)
     end
 
     render :json => @selection

@@ -73,13 +73,19 @@ namespace :sample do
                                         :headline => step_data['headline'])
             if step_data['responses']
               step_data['responses'].each do |response_data|
-                question.response_options.create!(:description => response_data['description'],
-                                                  :factor => Factor.find_by(:element_code => response_data['element_code']),
-                                                  :fit_code => response_data['fit_code'],
-                                                  :description => response_data['description'],
-                                                  :rating_prompt => response_data['rating_prompt'],
-                                                  :work_zone => response_data['work_zone'],
-                                                  :response_type => response_data['type'])
+                cheetah_factor = nil
+                if response_data['rating_prompt']
+                  cheetah_factor = CheetahFactor.create!(:rating_prompt => response_data['rating_prompt'],
+                                                         :career_rating_prompt => response_data['career_rating_prompt'])
+                end
+
+                option = question.response_options.create!(:description => response_data['description'],
+                                                           :factor => Factor.find_by(:element_code => response_data['element_code']),
+                                                           :fit_code => response_data['fit_code'],
+                                                           :description => response_data['description'],
+                                                           :work_zone => response_data['work_zone'],
+                                                           :response_type => response_data['type'],
+                                                           :cheetah_factor => cheetah_factor)
               end
             end
 

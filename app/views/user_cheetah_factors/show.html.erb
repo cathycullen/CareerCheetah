@@ -1,13 +1,13 @@
 <% content_for :previous_url do %>
   <% if @previous_selection %>
-    <%= program_phase_section_factor_rating_path(@program, @section.phase, @section, @previous_selection) %>
+    <%= program_phase_section_user_cheetah_factor_path(@program, @section.phase, @section, @previous_selection) %>
   <% else %>
     <%= program_phase_section_path(@section, @section.phase, @section) %>
   <% end %>
 <% end %>
 <% content_for :next_url do %>
   <% if @next_selection %>
-    <%= program_phase_section_factor_rating_path(@program, @section.phase, @section, @next_selection) %>
+    <%= program_phase_section_user_cheetah_factor_path(@program, @section.phase, @section, @next_selection) %>
   <% else %>
     <%= program_phase_section_section_step_path(@section, @section.phase, @section, @section.section_steps.find_by(:type => "ConclusionStep")) %>
   <% end %>
@@ -15,17 +15,17 @@
 
 <div class="current-step question">
   <div class="question">
-    <p class="prompt"><%= @response_option.rating_prompt %></p>
+    <p class="prompt"><%= @cheetah_factor.rating_prompt %></p>
     <div class="option-group">
       <ul class="rating-options">
         <% rating_options.each do |option| %>
           <li class="option rating-option">
             <%= label_tag nil, :class => "response-option" do %>
               <span class="value-description"><%= option[:value_description]%></span><br />
-              <%= radio_button_tag "factor-ratings[]",
+              <%= radio_button_tag "user-cheetah-factors[]",
                                    option[:value],
-                                   @response_selection.rating == option[:value],
-                                   {"data-response-option-selection-id" => "#{@response_selection.id}"} %><br />
+                                   @user_cheetah_factor.original_rating == option[:value],
+                                   {"data-user-cheetah-factor-id" => "#{@user_cheetah_factor.id}"} %><br />
               <%= option[:description] %>
             <% end %>
           </li>
