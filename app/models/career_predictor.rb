@@ -18,14 +18,14 @@ class CareerPredictor
     sorted_careers = weighted_careers.sort_by do |c| 
       c[:weight]
     end.reverse
-	
-	# destroy old UserCareer results for this user
-	user.user_careers.destroy_all
-	
+
+    # destroy old CareerSuggestion results for this user
+    user.career_suggestions.destroy_all
+
     #traverse sorted careers and print
     results = sorted_careers.map do |c|
-    #	 puts "#{Career.find(c[:career_id]).title} - #{c[:weight]}"
-	  UserCareer.create!(:user_id => user.id, :career_id => c[:career_id], :weight => c[:weight])
+    #puts "#{Career.find(c[:career_id]).title} - #{c[:weight]}"
+    CareerSuggestion.create!(:user_id => user.id, :career_id => c[:career_id], :weight => c[:weight])
     end
   end
 
@@ -59,11 +59,11 @@ class CareerPredictor
   #check results
   def check_predictions
     user = User.where(:name => "christine").first
-  
-    user.user_careers.first(10).each do |uc| 
-      career = Career.find(uc.career_id) 
+
+    user.career_suggestions.first(10).each do |uc|
+      career = Career.find(uc.career_id)
 #      puts "#{career.onet_code} #{career.title} weight: #{uc.weight}"
-    end 
+    end
   end
 
 end

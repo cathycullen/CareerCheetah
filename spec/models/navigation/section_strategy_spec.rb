@@ -25,16 +25,16 @@ describe Navigation::SectionStepStrategy do
         @path = double(:path)
       end
 
-      it "returns the user_careers path when careers are enabled" do
-        @s.stub(:show_user_careers).and_return true
+      it "returns the career_suggestions path when careers are enabled" do
+        @s.stub(:show_career_suggestions).and_return true
 
-        @s.should_receive(:careers_path)
+        @s.should_receive(:career_suggestions_path)
           .with(@section).and_return @path
         @s.next.should == @path
       end
 
       it "returns the next_section path when careers aren't enabled" do
-        @s.stub(:show_user_careers).and_return false
+        @s.stub(:show_career_suggestions).and_return false
 
         @s.should_receive(:full_section_path)
           .with(@section.next_section).and_return @path

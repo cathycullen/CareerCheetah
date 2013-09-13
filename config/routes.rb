@@ -4,7 +4,7 @@ CareerCheetah::Application.routes.draw do
       resources :sections do
         resources :section_steps, :as => :section_step
         resources :cheetah_factor_rankings
-        resources :user_careers
+        resources :career_suggestions
       end
     end
   end

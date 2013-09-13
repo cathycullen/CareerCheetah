@@ -1,15 +1,15 @@
-class UserCareersController < ApplicationController
+class CareerSuggestionsController < ApplicationController
   layout "quiz"
 
   def index
     load_models
-    current_user.user_careers.destroy_all
+    current_user.career_suggestions.destroy_all
 
     cp = CareerPredictor.new()
     cp.predict_careers(current_user)
     current_user.reload
 
-    @careers = current_user.user_careers.order("weight DESC")
+    @careers = current_user.career_suggestions.order("weight DESC")
   end
 
   private
