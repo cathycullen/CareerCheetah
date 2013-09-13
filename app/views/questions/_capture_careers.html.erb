@@ -1,0 +1,19 @@
+<div>
+  <p>
+    Step 1: Enter your current job or most recent job on line 1.</p>
+  <p>
+    Step 2: On lines 2-10 enter the careers you captured that are most interesting to you. If you have no prior job, start on line 1.
+  </p>
+</div>
+
+<ol>
+  <% current_user.user_careers.each_slice(5) do |careers| %>
+    <div class="group">
+      <% careers.each do |career| %>
+        <li>
+          <%= text_field_tag :career, nil %>
+        </li>
+      <% end %>
+    </div>
+  <% end %>
+</ol>
