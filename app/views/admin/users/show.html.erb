@@ -2,8 +2,8 @@
 
 <h3>Predicted Careers</h3>
 <ul>
-  <% @user.user_careers.order("weight DESC").first(30).each do |user_career| %>
-    <li><%= user_career.career.title%></li>
+  <% @user.career_suggestions.order("weight DESC").first(30).each do |career_suggestion| %>
+    <li><%= career_suggestion.career.title%></li>
   <% end %>
 </ul>
 

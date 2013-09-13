@@ -1,6 +1,6 @@
 module UserHelper
 
-def best_work_fit
+  def best_work_fit
     response_options = SectionStep.where(:section_id => (Section.where(:name => "Determining Fit"))).where(:type => 'QuestionStep').first.question.response_options
     selections = current_user.response_option_selections.where(:response_option_id => response_options.map(&:id))
 
@@ -124,13 +124,14 @@ def best_work_fit
         @mood_summary_headline = 'no_moods_chosen'
     end
 
-  mood_sum
+    mood_sum
   end
 
   def factor_rating(user, factor)
-    option = ResponseOption.find_by(:factor_id => factor.id)
-    selection = user.response_option_selections.find_by(:response_option_id => option.id)
-    selection.rating if selection
+    if option = ResponseOption.find_by(:factor_id => factor.id)
+      selection = user.response_option_selections.find_by(:response_option_id => option.id)
+      selection.rating if selection
+    end
   end
 
   def ranked_factor_selections(user)

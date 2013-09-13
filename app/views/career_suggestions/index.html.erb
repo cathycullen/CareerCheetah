@@ -1,9 +1,10 @@
 <% content_for :previous_url do %>
   <%= program_phase_section_section_step_path(@program,
-                                            @phase,
-                                            @section,
-                                            @section.section_steps.last) %>
+                                              @phase,
+                                              @section,
+                                              @section.section_steps.last) %>
 <% end %>
+
 <% content_for :next_url do %>
   <%= program_phase_section_path(@program, @phase, @section.next_section) %>
 <% end %>
@@ -17,10 +18,9 @@
     <ol>
       <% @careers.first(24).each_slice(12) do |careers_group|  %>
         <div class="career-group">
-          <% careers_group.each do |user_career| %>
-            <% career = Career.find(user_career.career_id)   %>
+          <% careers_group.each do |career_suggestion| %>
             <li>
-              <%= career.title %>
+              <%= career_suggestion.career.title %>
             </li>
           <% end %>
         </div>
