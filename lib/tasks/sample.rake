@@ -31,7 +31,7 @@ namespace :sample do
   task :questionnaire => :environment do
     print "Deleting all exisitng response option selections..."
     ResponseOptionSelection.destroy_all
-    UserCareer.destroy_all
+    CareerSuggestion.destroy_all
     puts "done"
 
     puts "Generating sample quiz data..."

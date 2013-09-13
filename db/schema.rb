@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130912012609) do
+ActiveRecord::Schema.define(version: 20130913013722) do
 
   create_table "career_factor_mappings", force: true do |t|
     t.integer  "factor_id"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20130912012609) do
 
   add_index "career_factor_mappings", ["career_id"], name: "index_career_factor_mappings_on_career_id", using: :btree
   add_index "career_factor_mappings", ["factor_id"], name: "index_career_factor_mappings_on_factor_id", using: :btree
+
+  create_table "career_suggestions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "career_id"
+    t.float    "weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "career_suggestions", ["career_id"], name: "index_career_suggestions_on_career_id", using: :btree
+  add_index "career_suggestions", ["user_id"], name: "index_career_suggestions_on_user_id", using: :btree
 
   create_table "careers", force: true do |t|
     t.string   "onet_code",   null: false
@@ -168,17 +179,6 @@ ActiveRecord::Schema.define(version: 20130912012609) do
   end
 
   add_index "sections", ["phase_id"], name: "index_sections_on_phase_id", using: :btree
-
-  create_table "user_careers", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "career_id"
-    t.float    "weight"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "user_careers", ["career_id"], name: "index_user_careers_on_career_id", using: :btree
-  add_index "user_careers", ["user_id"], name: "index_user_careers_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false

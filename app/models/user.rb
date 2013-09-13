@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   has_many :factor_selections, :dependent => :destroy
   has_many :factors, :through => :factor_selections
-  has_many :user_careers, :dependent => :destroy
-  has_many :careers, :through => :user_careers
+  has_many :career_suggestions, :dependent => :destroy
+  has_many :suggested_careers, :through => :career_suggestions
 
   has_many :response_option_selections, :dependent => :destroy
   has_many :response_options, :through => :response_option_selections

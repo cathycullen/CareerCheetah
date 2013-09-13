@@ -1,6 +1,6 @@
-class UserCareer < ActiveRecord::Base
+class CareerSuggestion < ActiveRecord::Base
   belongs_to :user
   belongs_to :career
-  
+
   validates_presence_of :user_id
 end
