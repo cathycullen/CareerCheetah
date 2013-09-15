@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130913013722) do
+ActiveRecord::Schema.define(version: 20130915184109) do
 
   create_table "career_factor_mappings", force: true do |t|
     t.integer  "factor_id"
@@ -179,6 +179,29 @@ ActiveRecord::Schema.define(version: 20130913013722) do
   end
 
   add_index "sections", ["phase_id"], name: "index_sections_on_phase_id", using: :btree
+
+  create_table "user_career_cheetah_factor_rankings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "cheetah_factor_id"
+    t.integer  "user_career_id"
+    t.integer  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_career_cheetah_factor_rankings", ["cheetah_factor_id"], name: "index_user_career_cheetah_factor_rankings_on_cheetah_factor_id", using: :btree
+  add_index "user_career_cheetah_factor_rankings", ["user_career_id"], name: "index_user_career_cheetah_factor_rankings_on_user_career_id", using: :btree
+  add_index "user_career_cheetah_factor_rankings", ["user_id"], name: "index_user_career_cheetah_factor_rankings_on_user_id", using: :btree
+
+  create_table "user_careers", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.integer  "row_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_careers", ["user_id"], name: "index_user_careers_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false

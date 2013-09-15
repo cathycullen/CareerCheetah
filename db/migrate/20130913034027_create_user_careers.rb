@@ -2,8 +2,8 @@ class CreateUserCareers < ActiveRecord::Migration
   def change
     create_table :user_careers do |t|
       t.references :user, index: true
-      t.references :career, index: true
-      t.float :weight
+      t.string :name
+      t.integer :row_order
 
       t.timestamps
     end
