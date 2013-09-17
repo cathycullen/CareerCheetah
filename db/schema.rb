@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130917151625) do
+ActiveRecord::Schema.define(version: 20130917161357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 20130917151625) do
   create_table "cheetah_factor_rankings", force: true do |t|
     t.integer  "user_id"
     t.integer  "cheetah_factor_id"
-    t.integer  "original_rating"
-    t.integer  "final_rating"
+    t.float    "original_rating"
+    t.float    "final_rating"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -189,8 +189,8 @@ ActiveRecord::Schema.define(version: 20130917151625) do
     t.integer  "user_career_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "original_rating"
-    t.integer  "final_rating"
+    t.float    "original_rating"
+    t.float    "final_rating"
   end
 
   add_index "user_career_cheetah_factor_rankings", ["cheetah_factor_id"], name: "index_user_career_cheetah_factor_rankings_on_cheetah_factor_id", using: :btree
