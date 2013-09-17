@@ -10,6 +10,7 @@ function bindResponseEditing() {
   bindThoughtsEditing();
   bindResponseOptionSelectionSelection();
   bindAdmireEditing();
+  bindUserCareerEditing();
 }
 
 function bindResponseOptionSelectionSelection() {
@@ -66,6 +67,21 @@ function bindAdmireEditing() {
     $.ajax({
       type: "POST",
       url: "/response_option_selections",
+      data: data,
+      dataType: "JSON",
+    });
+  });
+}
+
+function bindUserCareerEditing() {
+  $(".user-careers input[type='text']").change(function () {
+    var box = $(this);
+    var careerId = parseInt(box.data('user-career-id'));
+    var data = {name: box.val()};
+
+    $.ajax({
+      type: "PUT",
+      url: "/user_careers/" + careerId,
       data: data,
       dataType: "JSON",
     });

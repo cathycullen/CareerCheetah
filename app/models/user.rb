@@ -21,4 +21,12 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   has_secure_password
+
+  after_create :create_user_careers
+
+  def create_user_careers
+    10.times do
+      self.user_careers << UserCareer.new
+    end
+  end
 end

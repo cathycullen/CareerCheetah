@@ -1,6 +1,6 @@
 <ol>
   <% question.response_options.each_slice(4) do |options| %>
-    <div class="skills-group">
+    <div class="group">
       <% options.each do |option| %>
         <li>
           <%= option_text_field(option) %>
