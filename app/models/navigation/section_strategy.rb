@@ -12,16 +12,8 @@ class Navigation::SectionStrategy
   def next
     if step = @section.section_steps.rank(:row_order).where("type != 'ConclusionStep'").first
       full_step_path(step)
-    elsif @section.slug == "on-the-prowl"
-      factors = @user.cheetah_factor_rankings.order("created_at ASC")
-      if factors.empty?
-        full_step_path(@section.section_steps.last)
-      else
-        program_phase_section_cheetah_factor_ranking_path(@program,
-                                                          @phase,
-                                                          @section,
-                                                          factors.first)
-      end
+    elsif @section.slug == "on-the-prowl" || @section.slug = "something-about-factors"
+      full_factor_rating_path(@program, @phase, @section, @user)
     elsif next_section = @section.next_section
       full_section_path(next_section)
     end
@@ -29,7 +21,7 @@ class Navigation::SectionStrategy
 
   def previous
     if previous_section = @section.previous_section
-      if show__career_suggestions && previous_section.slug == "hunting-solo"
+      if show_career_suggestions && previous_section.slug == "hunting-solo"
         program_phase_section_career_suggestions_path(@program, @phase, @section)
       elsif previous_section.section_steps.present?
         full_step_path(previous_section.section_steps.rank(:row_order).last)
