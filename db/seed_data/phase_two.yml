@@ -8,6 +8,10 @@ sections:
         prompt: "Enter 10 careers"
         type: "custom"
         template_name: "capture_careers"
+      - step_type: Question
+        prompt: "Enter Up to 5 Custom Factors"
+        type: "custom"
+        template_name: "capture_custom_factors"
   - name: "Something About Factors"
     code: "fur"
     steps:

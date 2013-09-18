@@ -11,6 +11,7 @@ function bindResponseEditing() {
   bindResponseOptionSelectionSelection();
   bindAdmireEditing();
   bindUserCareerEditing();
+  bindUserFactorEditing();
 }
 
 function bindResponseOptionSelectionSelection() {
@@ -82,6 +83,21 @@ function bindUserCareerEditing() {
     $.ajax({
       type: "PUT",
       url: "/user_careers/" + careerId,
+      data: data,
+      dataType: "JSON",
+    });
+  });
+}
+
+function bindUserFactorEditing() {
+  $(".user-factors input[type='text']").change(function () {
+    var box = $(this);
+    var factorId = parseInt(box.data('user-factor-id'));
+    var data = {name: box.val()};
+
+    $.ajax({
+      type: "PUT",
+      url: "/user_factors/" + factorId,
       data: data,
       dataType: "JSON",
     });

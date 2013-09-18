@@ -1,0 +1,9 @@
+<ol>
+    <div class="group user-factors">
+  <% current_user.user_factors.rank(:row_order).each do |factor| %>
+      <li>
+        <%= text_field_tag :factor, factor.name, "data-user-factor-id" => factor.id %>
+      </li>
+  <% end %>
+    </div>
+</ol>

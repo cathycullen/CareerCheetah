@@ -10,9 +10,13 @@ class User < ActiveRecord::Base
   # These are custom careers (per user) that they enter as part of Phase II
   has_many :user_careers
 
+  # These are custom factors (per user) that they enter as part of Phase II
+  has_many :user_factors
+
   # Users rate the importance of their CheetahFactors
   has_many :cheetah_factor_rankings
-  has_many :cheetah_factors, :through => :cheetah_factor_rankings
+
+  has_many :cheetah_factors
 
   # Users also rate each CheetahFactor for each UserCareer they submit
   has_many :user_career_cheetah_factor_ranking
@@ -23,10 +27,17 @@ class User < ActiveRecord::Base
   has_secure_password
 
   after_create :create_user_careers
+  after_create :create_user_factors
 
   def create_user_careers
     10.times do
       self.user_careers << UserCareer.new
+    end
+  end
+
+  def create_user_factors
+    5.times do
+      self.user_factors << UserFactor.new
     end
   end
 end
