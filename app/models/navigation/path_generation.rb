@@ -26,4 +26,34 @@ module Navigation::PathGeneration
   def career_suggestions_path(section)
     program_phase_section_career_suggestions_path(section.phase.program, section.phase, section)
   end
+
+  def full_factor_rating_path(program, phase, section, user)
+    repeat = section.slug != "on-the-prowl"
+
+    factors = user.cheetah_factor_rankings.order("created_at ASC")
+    if factors.empty?
+      full_step_path(section.section_steps.last)
+    else
+      program_phase_section_cheetah_factor_ranking_path(program,
+                                                        phase,
+                                                        section,
+                                                        factors.first,
+                                                        :repeat => repeat)
+    end
+  end
+
+  def full_last_factor_rating_path(program, phase, section, user)
+    repeat = section.slug != "on-the-prowl"
+
+    factors = user.cheetah_factor_rankings.order("created_at ASC")
+    if factors.empty?
+      full_section_path(@section)
+    else
+      program_phase_section_cheetah_factor_ranking_path(@program,
+                                                        @phase,
+                                                        @section,
+                                                        factors.last,
+                                                        repeat: repeat)
+    end
+  end
 end
