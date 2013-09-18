@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130917232245) do
+ActiveRecord::Schema.define(version: 20130918151514) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "career_factor_mappings", force: true do |t|
     t.integer  "factor_id"
@@ -205,6 +208,16 @@ ActiveRecord::Schema.define(version: 20130917232245) do
   end
 
   add_index "user_careers", ["user_id"], name: "index_user_careers_on_user_id", using: :btree
+
+  create_table "user_factors", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.integer  "row_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_factors", ["user_id"], name: "index_user_factors_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false
