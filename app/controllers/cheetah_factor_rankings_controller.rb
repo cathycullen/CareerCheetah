@@ -21,7 +21,13 @@ class CheetahFactorRankingsController < ApplicationController
 
   def create
     @cheetah_factor_ranking = CheetahFactorRanking.find(params[:id])
-    @cheetah_factor_ranking.original_rating = params[:rating]
+
+    if params[:repeat]
+      @cheetah_factor_ranking.final_rating = params[:rating]
+    else
+      @cheetah_factor_ranking.original_rating = params[:rating]
+    end
+
     if @cheetah_factor_ranking.save
       render json: @cheetah_factor_ranking
     else

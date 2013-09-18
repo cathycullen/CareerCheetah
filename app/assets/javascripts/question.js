@@ -154,6 +154,7 @@ function bindResponseRating() {
 
     if(box.is(':checked')){
       var data = {id: box.data('cheetah-factor-ranking-id'),
+                  repeat: box.data('repeat'),
                   rating: box.attr('value')};
 
       $.ajax({
