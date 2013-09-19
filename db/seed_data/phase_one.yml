@@ -2024,7 +2024,7 @@ sections:
           - description: "Fear of failure"
       - step_type: ResponseSelectionStep
         headline: ""
-        description: "Here are obstacles that may get in he way of your learning and your capacity to change.  Please select up to two obstacles you think may impact your performance"
+        description: "Here are obstacles that may get in the way of your learning and your capacity to change.  Please select up to two obstacles you think may impact your performance"
       - step_type: Question
         prompt: "What action steps will you commit to taking to minimize or eliminate these obstacles during your Career Cheetah Process?"
         type: "textbox"
