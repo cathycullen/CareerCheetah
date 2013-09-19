@@ -5,7 +5,7 @@ namespace :cheetah_factor do
 
   task :import_career_rating_prompt => :environment do
     puts "Importing career_rating_prompts for existing CheetahFactors..."
-    program_data = YAML.load_file(File.join(Rails.root, "db/seed_data/section_questions.yml"))
+    program_data = YAML.load_file(File.join(Rails.root, "db/seed_data/phase_one.yml"))
 
     program_data['sections'].each do |section_data|
       next if section_data['steps'].nil?
