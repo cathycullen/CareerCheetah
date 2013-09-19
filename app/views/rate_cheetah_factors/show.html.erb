@@ -1,6 +1,11 @@
+<% content_for :next_url do %>
+  <%= @next %>
+<% end %>
+
+
 <div class="current-step question">
   <div class="question">
-    <p class="prompt"><%= @cheetah_factor.career_rating_prompt %> <%= @user_career.name %></p>
+    <p class="prompt"><%= @cheetah_factor.career_rating_prompt %> <span class="career-name"><%= @user_career.name %></span>?</p>
     <div class="option-group">
       <ul class="rating-options">
         <% career_rating_options.each do |option| %>

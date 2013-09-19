@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130918151514) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20130919193044) do
 
   create_table "career_factor_mappings", force: true do |t|
     t.integer  "factor_id"
@@ -68,6 +65,7 @@ ActiveRecord::Schema.define(version: 20130918151514) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "row_order",            null: false
   end
 
   add_index "cheetah_factors", ["user_id"], name: "index_cheetah_factors_on_user_id", using: :btree
