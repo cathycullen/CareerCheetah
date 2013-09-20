@@ -1,0 +1,19 @@
+<div class="current-step section">
+  <div class="heading">
+    <h1>Ranked Careers For <%= current_user.name %></h1>
+  </div>
+
+  <div class="career-result">
+    <ol>
+      <% i = 1 %>
+        <div class="career-rankings">
+      <% @career_rankings.each do |career_ranking| %>
+        <li>
+          <%= current_user.user_careers.find(career_ranking[:career_id]).name %>  Weight: <%= career_ranking[:weight] %>
+        </li>
+      <% end %>
+    </div>
+    </ol>
+  </div>
+
+</div>
