@@ -22,7 +22,7 @@ class CheetahFactorRankingsController < ApplicationController
   def create
     @cheetah_factor_ranking = CheetahFactorRanking.find(params[:id])
 
-    if params[:repeat]
+    if params[:repeat] == "true"
       @cheetah_factor_ranking.final_rating = params[:rating]
     else
       @cheetah_factor_ranking.original_rating = params[:rating]
