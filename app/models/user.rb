@@ -40,4 +40,8 @@ class User < ActiveRecord::Base
       self.user_factors << UserFactor.new
     end
   end
+
+  def rateable_user_careers
+    self.user_careers.where("name IS NOT NULL AND name != ''")
+  end
 end
