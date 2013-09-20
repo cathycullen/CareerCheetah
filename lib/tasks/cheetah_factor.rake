@@ -1,5 +1,5 @@
 namespace :cheetah_factor do
-  desc "Convert existing response options with rating prompts to CheetahFactors and rated ResponseOptionSelections to UserCheetahFactors"
+  desc "Convert existing response options with rating prompts to CheetahFactors"
   task :convert => :environment do
   end
 

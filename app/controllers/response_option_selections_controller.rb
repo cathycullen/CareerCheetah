@@ -27,13 +27,15 @@ class ResponseOptionSelectionsController < ApplicationController
                   .first_or_create!
     end
 
-    # This this option maps to CheetahFactor (one they will rate later), record that this
-    # user 'has' this CheetahFactor
+    # If this option maps to CheetahFactor (one they will rate later), record that this
+    # user 'has' this CheetahFactor by creating a CheetahFactorRaking record. We don't have
+    # a rating right now, but we save a placeholder record that we'll iterate over later when
+    # a user does their rating.
     if @option.cheetah_factor &&
-       UserCheetahFactor.find_by(user: current_user, cheetah_factor: @option.cheetah_factor).nil?
+       CheetahFactorRanking.find_by(user: current_user, cheetah_factor: @option.cheetah_factor).nil?
 
-      UserCheetahFactor.create!(user: current_user,
-                                cheetah_factor: @option.cheetah_factor)
+      CheetahFactorRanking.create!(user: current_user,
+                                  cheetah_factor: @option.cheetah_factor)
     end
 
     render :json => @selection
