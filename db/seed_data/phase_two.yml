@@ -1,5 +1,5 @@
 sections:
-  - name: "From Your Hunt"
+  - name: "Captured From Your Hunt"
     code: "tail"
     steps:
       - step_type: Static
@@ -8,6 +8,7 @@ sections:
         prompt: "Enter 10 careers"
         type: "custom"
         template_name: "capture_careers"
+        code: "fur"
       - step_type: Question
         prompt: "Enter Up to 5 Custom Factors"
         type: "custom"
