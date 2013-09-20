@@ -10,6 +10,11 @@ class RateCheetahFactorsController < ApplicationController
                                                                                  cheetah_factor: @cheetah_factor)
     @next = next_path
     @previous = previous_path
+
+
+    total_factors = current_user.cheetah_factors.count
+    current_index = current_user.cheetah_factors.rank(:row_order).to_a.index(@cheetah_factor) + 1
+    @percent_complete = (current_index.to_f / total_factors) * 100
   end
 
   def index
