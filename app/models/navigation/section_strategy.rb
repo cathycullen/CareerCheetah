@@ -12,7 +12,7 @@ class Navigation::SectionStrategy
   def next
     if step = @section.section_steps.rank(:row_order).where("type != 'ConclusionStep'").first
       full_step_path(step)
-    elsif @section.slug == "on-the-prowl" || @section.slug = "something-about-factors"
+    elsif @section.slug == "on-the-prowl" || @section.slug = "on-the-prowl-again"
       full_factor_rating_path(@program, @phase, @section, @user)
     elsif next_section = @section.next_section
       full_section_path(next_section)
