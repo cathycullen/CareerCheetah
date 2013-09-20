@@ -34,7 +34,7 @@ class RateCheetahFactorsController < ApplicationController
     elsif career = current_user.rateable_user_careers.rank(:row_order).where(["row_order > ?", @user_career.row_order]).first
       user_career_rate_cheetah_factors_path(career)
     else
-      :back
+      career_rankings_path
     end
   end
 
