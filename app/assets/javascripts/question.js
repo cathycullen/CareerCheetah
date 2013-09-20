@@ -12,6 +12,7 @@ function bindResponseEditing() {
   bindAdmireEditing();
   bindUserCareerEditing();
   bindUserFactorEditing();
+  bindUserCareerFactorResponseRating();
 }
 
 function bindResponseOptionSelectionSelection() {
@@ -176,6 +177,28 @@ function bindResponseRating() {
       $.ajax({
         type: "POST",
         url: "/cheetah_factor_rankings",
+        data: data,
+        dataType: "JSON",
+        context: box
+      });
+    }
+  });
+};
+
+function bindUserCareerFactorResponseRating() {
+  $("input[name='cheetah-factor-career-rankings[]']").change(function () {
+    var box = $(this);
+
+    if(box.is(':checked')){
+      var data = {id: box.data('user-career-cheetah-factor-ranking-id'),
+                  cheetah_factor_id: box.data('cheetah-factor-id'),
+                  user_career_id: box.data('user-career-id'),
+                  repeat: box.data('repeat'),
+                  rating: box.attr('value')};
+
+      $.ajax({
+        type: "POST",
+        url: "/user_career_cheetah_factor_rankings",
         data: data,
         dataType: "JSON",
         context: box

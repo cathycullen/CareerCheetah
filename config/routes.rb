@@ -16,6 +16,8 @@ CareerCheetah::Application.routes.draw do
     resources :rate_cheetah_factors, only: [:index, :show, :create, :update]
   end
 
+  resources :user_career_cheetah_factor_rankings
+
   resources :response_option_selections
   resource :program_navigation do
     member do
