@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   # Users rate the importance of their CheetahFactors
   has_many :cheetah_factor_rankings
 
-  has_many :cheetah_factors
+  has_many :cheetah_factors, :through => :cheetah_factor_rankings
 
   # Users also rate each CheetahFactor for each UserCareer they submit
   has_many :user_career_cheetah_factor_ranking
