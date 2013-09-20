@@ -11,14 +11,22 @@ class RateCheetahFactorsController < ApplicationController
     @next = next_path
   end
 
+  def index
+    @user_career = current_user.user_careers
+                    .find(params[:user_career_id])
+
+    next_factor = current_user.cheetah_factors.rank(:row_order).first
+    @next = user_career_rate_cheetah_factor_path(@user_career, next_factor)
+  end
+
   def next_path
     next_factor = current_user.cheetah_factors.rank(:row_order).where(["row_order > ?", @cheetah_factor.row_order]).first
     if next_factor
       user_career_rate_cheetah_factor_path(@user_career, next_factor)
+    elsif career = current_user.user_careers.rank(:row_order).where(["row_order > ?", @user_career.row_order]).first
+      user_career_rate_cheetah_factors_path(career)
     else
-      career = current_user.user_careers.rank(:row_order).where(["row_order > ?", @user_career.row_order]).first
-      factor = current_user.cheetah_factors.rank(:row_order).first
-      user_career_rate_cheetah_factor_path(career, factor)
+      :back
     end
   end
 
