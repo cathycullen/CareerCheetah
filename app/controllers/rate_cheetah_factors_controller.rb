@@ -1,5 +1,6 @@
 class RateCheetahFactorsController < ApplicationController
   layout "quiz"
+  before_filter :ensure_passion_factor_ranking_exists
 
   def show
     @user_career = current_user.rateable_user_careers
@@ -28,6 +29,8 @@ class RateCheetahFactorsController < ApplicationController
     @previous = user_career_rate_cheetah_factor_path(career, current_user.cheetah_factors.rank(:row_order).last)
   end
 
+  private
+
   def next_path
     if next_factor = current_user.cheetah_factors.rank(:row_order).where(["row_order > ?", @cheetah_factor.row_order]).first
       user_career_rate_cheetah_factor_path(@user_career, next_factor)
@@ -46,5 +49,9 @@ class RateCheetahFactorsController < ApplicationController
     else
       :back
     end
+  end
+
+  def ensure_passion_factor_ranking_exists
+    current_user.add_passion_cheetah_factor_ranking
   end
 end

@@ -1,7 +1,4 @@
 namespace :cheetah_factor do
-  desc "Convert existing response options with rating prompts to CheetahFactors"
-  task :convert => :environment do
-  end
 
   task :import_career_rating_prompt => :environment do
     puts "Importing career_rating_prompts for existing CheetahFactors..."
