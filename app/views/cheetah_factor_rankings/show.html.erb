@@ -22,7 +22,7 @@
           <li class="option rating-option">
             <%= label_tag nil, :class => "response-option" do %>
               <span class="value-description"><%= option[:value_description]%></span><br />
-              <% current_value = params[:repeat] ? @cheetah_factor_ranking.final_rating : @cheetah_factor_ranking.original_rating %>
+              <% current_value = params[:repeat] == "true" ? @cheetah_factor_ranking.final_rating : @cheetah_factor_ranking.original_rating %>
               <%= radio_button_tag "cheetah-factor-rankings[]",
                                    option[:value],
                                    current_value == option[:value],

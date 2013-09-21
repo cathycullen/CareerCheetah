@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20130918151514) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "career_factor_mappings", force: true do |t|
     t.integer  "factor_id"
     t.integer  "career_id"
@@ -66,6 +63,7 @@ ActiveRecord::Schema.define(version: 20130918151514) do
     t.string   "rating_prompt"
     t.string   "career_rating_prompt"
     t.integer  "user_id"
+    t.integer  "row_order",            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
