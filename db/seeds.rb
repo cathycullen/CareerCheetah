@@ -35,3 +35,9 @@ User.create!(:email => "test@careercheetah.net",
              :name => "Test User",
              :password => "careerC33tah",
              :password_confirmation => "careerC33tah")
+
+print "Creating passion CheetahFactor..."
+factor = CheetahFactor.create!(rating_prompt: nil,
+                               career_rating_prompt: "On a scale of 1-5, how likely is it that I will feel passionate about the career of")
+factor.update_attribute(:row_order_position, :first)
+puts "done."

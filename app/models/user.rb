@@ -43,6 +43,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  def add_passion_cheetah_factor_ranking
+    factor = CheetahFactor.passion_factor
+
+    if CheetahFactorRanking.find_by(user_id: self.id,
+                                    cheetah_factor_id: factor).nil?
+      self.cheetah_factor_rankings << CheetahFactorRanking.new(cheetah_factor: factor, original_rating: 5, final_rating: 5)
+    end
+  end
+
   def rateable_user_careers
     self.user_careers.where("name IS NOT NULL AND name != ''")
   end

@@ -78,6 +78,14 @@ namespace :sample do
     phase = Phase.where(:name => "Phase Two").first
     SectionImporter.import_sections_for_phase(phase, "db/seed_data/phase_two.yml")
     puts "done"
+
+    print "\tAdding passion factor..."
+    if CheetahFactor.passion_factor.nil?
+      factor = CheetahFactor.create!(rating_prompt: nil,
+                                     career_rating_prompt: "On a scale of 1-5, how likely is it that I will feel passionate about the career of")
+      factor.update_attribute(:row_order_position, :first)
+    end
+    puts "done"
   end
 
   desc "Sample user with a sample CheetahFactors (custom and non-custom)"
@@ -101,9 +109,8 @@ namespace :sample do
     f.custom_name = "free ice cream"
     f.save
 
-
-    user.cheetah_factor_rankings << CheetahFactorRanking.new(cheetah_factor: CheetahFactor.where(user_id: nil).first)
-    user.cheetah_factor_rankings << CheetahFactorRanking.new(cheetah_factor: CheetahFactor.where(user_id: nil).last)
+    user.cheetah_factor_rankings << CheetahFactorRanking.new(cheetah_factor: CheetahFactor.where(user_id: nil)[0])
+    user.cheetah_factor_rankings << CheetahFactorRanking.new(cheetah_factor: CheetahFactor.where(user_id: nil)[1])
   end
 end
 
