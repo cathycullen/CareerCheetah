@@ -12,6 +12,8 @@ sections:
         type: "custom"
         template_name: "capture_careers"
         code: "fur"
+  - name: "Your Custom Cheetah Factors"
+    steps:
       - step_type: Question
         prompt: "Enter Up to 5 Custom Factors"
         type: "custom"
