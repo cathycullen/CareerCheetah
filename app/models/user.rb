@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   end
 
   def non_custom_cheetah_factors
-    self.cheetah_factors.where("cheetah_factors.user_id IS NULL")
+    self.cheetah_factors.where("cheetah_factors.user_id IS NULL AND cheetah_factors.rating_prompt IS NOT NULL")
                         .rank(:row_order)
   end
 end
