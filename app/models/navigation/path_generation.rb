@@ -27,10 +27,15 @@ module Navigation::PathGeneration
     program_phase_section_career_suggestions_path(section.phase.program, section.phase, section)
   end
 
-  def full_factor_rating_path(program, phase, section, user)
+  def full_factor_rating_path(program, phase, section, user, custom=false)
     repeat = section.slug != "on-the-prowl"
 
-    factors = user.non_custom_cheetah_factors
+    if custom
+      factors = user.rateable_custom_cheetah_factors
+    else
+      factors = user.rateable_non_custom_cheetah_factors
+    end
+
     if factors.empty?
       full_step_path(section.section_steps.last)
     else
@@ -38,14 +43,15 @@ module Navigation::PathGeneration
                                                         phase,
                                                         section,
                                                         factors.first,
-                                                        :repeat => repeat)
+                                                        :repeat => repeat,
+                                                        :custom_factors => custom)
     end
   end
 
   def full_last_factor_rating_path(program, phase, section, user)
     repeat = section.slug != "on-the-prowl"
 
-    factors = user.non_custom_cheetah_factors
+    factors = user.rateable_non_custom_cheetah_factors
     if factors.empty?
       full_section_path(@section)
     else
