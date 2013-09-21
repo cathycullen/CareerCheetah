@@ -56,8 +56,12 @@ class User < ActiveRecord::Base
     self.user_careers.where("name IS NOT NULL AND name != ''")
   end
 
-  def non_custom_cheetah_factors
+  def rateable_non_custom_cheetah_factors
     self.cheetah_factors.where("cheetah_factors.user_id IS NULL AND cheetah_factors.rating_prompt IS NOT NULL")
                         .rank(:row_order)
+  end
+
+  def rateable_custom_cheetah_factors
+    custom_cheetah_factors.where("custom_name IS NOT NULL").rank(:row_order)
   end
 end

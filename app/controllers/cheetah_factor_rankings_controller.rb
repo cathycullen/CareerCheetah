@@ -8,10 +8,13 @@ class CheetahFactorRankingsController < ApplicationController
 
     @cheetah_factor = CheetahFactor.find(params[:id])
     @response_option = @cheetah_factor.response_option
-    @cheetah_factor_ranking = current_user.cheetah_factor_rankings.find_by(cheetah_factor_id: @cheetah_factor.id)
+    @cheetah_factor_ranking = current_user.cheetah_factor_rankings.find_or_create_by(cheetah_factor_id: @cheetah_factor.id)
 
-    # selections is always ordered by created_at
-    user_factors = current_user.non_custom_cheetah_factors
+    if params[:custom_factors]
+      user_factors = current_user.rateable_custom_cheetah_factors
+    else
+      user_factors = current_user.rateable_non_custom_cheetah_factors
+    end
 
     current_index = user_factors.index(@cheetah_factor)
     @next_selection = user_factors[current_index+1] if current_index < user_factors.length-1
