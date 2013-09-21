@@ -26,7 +26,8 @@
               <%= radio_button_tag "cheetah-factor-rankings[]",
                                    option[:value],
                                    current_value == option[:value],
-                                   {"data-cheetah-factor-ranking-id" => "#{@cheetah_factor_ranking.id}", "data-repeat" => params[:repeat]} %><br />
+                                   {"data-cheetah-factor-id" => "#{@cheetah_factor.id}",
+                                    "data-repeat" => params[:repeat]} %><br />
               <%= option[:description] %>
             <% end %>
           </li>

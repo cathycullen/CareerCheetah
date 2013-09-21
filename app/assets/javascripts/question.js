@@ -170,7 +170,7 @@ function bindResponseRating() {
     var box = $(this);
 
     if(box.is(':checked')){
-      var data = {id: box.data('cheetah-factor-ranking-id'),
+      var data = {id: box.data('cheetah-factor-id'),
                   repeat: box.data('repeat'),
                   rating: box.attr('value')};
 
