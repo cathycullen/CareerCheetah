@@ -91,14 +91,14 @@ function bindUserCareerEditing() {
 }
 
 function bindUserFactorEditing() {
-  $(".user-factors input[type='text']").change(function () {
+  $(".custom-cheetah-factors input[type='text']").change(function () {
     var box = $(this);
-    var factorId = parseInt(box.data('user-factor-id'));
-    var data = {name: box.val()};
+    var factorId = parseInt(box.data('cheetah-factor-id'));
+    var data = {custom_name: box.val()};
 
     $.ajax({
       type: "PUT",
-      url: "/user_factors/" + factorId,
+      url: "/cheetah_factors/" + factorId,
       data: data,
       dataType: "JSON",
     });
