@@ -10,7 +10,7 @@ class CheetahFactorRankingsController < ApplicationController
     @response_option = @cheetah_factor.response_option
     @cheetah_factor_ranking = current_user.cheetah_factor_rankings.find_or_create_by(cheetah_factor_id: @cheetah_factor.id)
 
-    if params[:custom_factors]
+    if params[:custom_factors] == "true"
       user_factors = current_user.rateable_custom_cheetah_factors
     else
       user_factors = current_user.rateable_non_custom_cheetah_factors
