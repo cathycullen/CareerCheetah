@@ -10,7 +10,7 @@ CareerCheetah::Application.routes.draw do
   end
 
   resources :cheetah_factor_rankings, only: [:create]
-  resources :user_factors, only: [:update]
+  resources :cheetah_factors, only: [:update]
   resources :career_rankings
   resources :user_careers, only: [:update] do
     resources :rate_cheetah_factors, only: [:index, :show, :create, :update]

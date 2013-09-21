@@ -1,8 +1,8 @@
 <ol>
-  <div class="group user-factors">
+  <div class="group custom-cheetah-factors">
     <% current_user.custom_cheetah_factors.rank(:row_order).each do |factor| %>
       <li>
-        <%= text_field_tag :factor, factor.custom_name, "data-user-factor-id" => factor.id %>
+        <%= text_field_tag :factor, factor.custom_name, "data-cheetah-factor-id" => factor.id %>
       </li>
     <% end %>
   </div>
