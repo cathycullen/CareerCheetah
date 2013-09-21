@@ -79,5 +79,31 @@ namespace :sample do
     SectionImporter.import_sections_for_phase(phase, "db/seed_data/phase_two.yml")
     puts "done"
   end
+
+  desc "Sample user with a sample CheetahFactors (custom and non-custom)"
+  task :rating_user => :environment do
+    puts "Generating sample user..."
+    user = User.create!(email: "rating@example.com", name: "Rating User", password: "password", password_confirmation: "password")
+
+    c = user.user_careers.rank(:row_order)[0]
+    c.name = "Butcher"
+    c.save
+
+    c = user.user_careers.rank(:row_order)[1]
+    c.name = "Mechanic"
+    c.save
+
+    f = user.custom_cheetah_factors.rank(:row_order)[0]
+    f.custom_name = "taking dog to work"
+    f.save
+
+    f = user.custom_cheetah_factors.rank(:row_order)[1]
+    f.custom_name = "free ice cream"
+    f.save
+
+
+    user.cheetah_factor_rankings << CheetahFactorRanking.new(cheetah_factor: CheetahFactor.where(user_id: nil).first)
+    user.cheetah_factor_rankings << CheetahFactorRanking.new(cheetah_factor: CheetahFactor.where(user_id: nil).last)
+  end
 end
 
