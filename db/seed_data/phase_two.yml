@@ -15,9 +15,6 @@ sections:
       - step_type: Question
         prompt: "Enter Up to 5 Custom Factors"
         type: "custom"
-<<<<<<< HEAD
-        template_name: "capture_custom_factors"
-=======
         template_name: "capture_custom_factors"
   - name: "Rate Factors Again"
     code: "fur"
@@ -25,4 +22,3 @@ sections:
   - name: "Rate Factors Per Career"
     code: "leap"
     steps:
->>>>>>> d49fbb17ef9ca9d7c1259ff9c6a12334aea0ef2d

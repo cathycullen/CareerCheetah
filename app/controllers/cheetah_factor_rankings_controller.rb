@@ -34,4 +34,11 @@ class CheetahFactorRankingsController < ApplicationController
       render json: {message: "Unable to save rating"}
     end
   end
+
+
+  private
+  def cheetah_factors
+    # the non-custom cheetah factors
+    current_user.cheetah_factors.where("cheetah_factors.user_id IS NULL").order("cheetah_factors.created_at ASC")
+  end
 end
