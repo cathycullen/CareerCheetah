@@ -46,8 +46,9 @@ namespace :sample do
 
     # Phases
     print "\tCreating phases..."
-    ["Phase One", "Phase Two"].each do |name|
-      default_program.phases.create!(:name => name)
+    [{name: "Phase One", headline: "WELCOME", description: "Preparing for the Hunt"},
+     {name: "Phase Two", headline: "WELCOME"}].each do |config|
+      default_program.phases.create!(name: config[:name], headline: config[:headline], description: config[:description])
     end
     puts "done"
 
@@ -67,9 +68,15 @@ namespace :sample do
   desc "Remove existing example users then insert sample used based on the CSVs in db/seed_data"
   task :phase_two => :environment do
     p = Program.find_by(:name => "Career Cheetah Default")
+
+    phase = p.phases.first
+    phase.headline = "WELCOME"
+    phase.description = "Preparing for the Hunt"
+    phase.save
+
     print "\tCreating phase two..."
-    ["Phase Two"].each do |name|
-      p.phases.create!(:name => name)
+    [{name: "Phase Two", headline: "WELCOME"}].each do |config|
+      p.phases.create!(name: config[:name], headline: config[:headline], description: config[:description])
     end
     puts "done"
 

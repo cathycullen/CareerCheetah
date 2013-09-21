@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130921141018) do
+ActiveRecord::Schema.define(version: 20130921211740) do
 
   create_table "career_factor_mappings", force: true do |t|
     t.integer  "factor_id"
@@ -95,11 +95,13 @@ ActiveRecord::Schema.define(version: 20130921141018) do
 
   create_table "phases", force: true do |t|
     t.integer  "program_id"
-    t.string   "name",       null: false
-    t.string   "slug",       null: false
-    t.integer  "row_order",  null: false
+    t.string   "name",        null: false
+    t.string   "slug",        null: false
+    t.integer  "row_order",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "headline"
+    t.text     "description"
   end
 
   add_index "phases", ["program_id"], name: "index_phases_on_program_id", using: :btree
