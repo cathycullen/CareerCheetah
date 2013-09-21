@@ -27,7 +27,7 @@ class Navigation::SectionStepStrategy
   def previous
     if previous_step = @step.previous_step
       full_step_path(previous_step)
-    elsif @section.slug == "on-the-prowl" || @section.slug == "rate-factors-again"
+    elsif @section.slug == "on-the-prowl" || @section.slug == "on-the-prowl-again"
       full_last_factor_rating_path(@program, @phase, @section, @user)
     else
       full_section_path(@section)

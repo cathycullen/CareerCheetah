@@ -14,8 +14,8 @@ class Navigation::SectionStrategy
       full_step_path(step)
     elsif @section.slug == "rate-factors-per-career"
       career = @user.user_careers.rank(:row_order).first
-      user_career_rate_cheetah_factors_path(career)
-    elsif @section.slug == "on-the-prowl" || @section.slug == "rate-factors-again"
+      user_career_rate_cheetah_factors_path(career, :section_id => @section.to_param)
+    elsif @section.slug == "on-the-prowl" || @section.slug == "on-the-prowl-again"
       full_factor_rating_path(@program, @phase, @section, @user)
     elsif next_section = @section.next_section
       full_section_path(next_section)
