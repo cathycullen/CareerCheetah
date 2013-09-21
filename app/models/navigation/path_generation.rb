@@ -30,7 +30,7 @@ module Navigation::PathGeneration
   def full_factor_rating_path(program, phase, section, user)
     repeat = section.slug != "on-the-prowl"
 
-    factors = user.cheetah_factor_rankings.order("created_at ASC")
+    factors = user.non_custom_cheetah_factors
     if factors.empty?
       full_step_path(section.section_steps.last)
     else
@@ -45,7 +45,7 @@ module Navigation::PathGeneration
   def full_last_factor_rating_path(program, phase, section, user)
     repeat = section.slug != "on-the-prowl"
 
-    factors = user.cheetah_factor_rankings.order("created_at ASC")
+    factors = user.non_custom_cheetah_factors
     if factors.empty?
       full_section_path(@section)
     else
