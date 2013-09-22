@@ -1,3 +1,9 @@
+<% content_for :previous_url do %>
+ <% section = Section.find_by(slug: "rate-factors-per-career") %>
+ <%= full_step_path(section.section_steps.last) %>
+<% end %>
+
+
 <div class="current-step section">
   <div class="heading">
     <h1>Ranked Careers For <%= current_user.name %></h1>
