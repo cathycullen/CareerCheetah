@@ -200,26 +200,20 @@ function bindResponseRating() {
 
 function showTiebreaker(originalRating, newRating) {
   var originalRating = parseInt(originalRating);
-  var tieRating = originalRating + Math.abs(originalRating - newRating) / 2;
+  var tieRating = Math.min(originalRating,newRating) + (Math.abs(originalRating - newRating) / 2);
 
-  var option1 = $("#tiebreaker .rating-option")[0];
-  $(option1).find(".value-description").text(originalRating);
-  $(option1).find("input").val(originalRating);
-
-  var option2 = $("#tiebreaker .rating-option")[1];
-  $(option2).find(".value-description").text(tieRating);
-  $(option2).find("input").val(tieRating);
-
-  var option3 = $("#tiebreaker .rating-option")[2];
-  $(option3).find(".value-description").text(newRating);
-  $(option3).find("input").val(newRating);
+  var options = [originalRating, tieRating, newRating].sort();
+  for(var i=0; i < options.length; i++) {
+    var option = $("#tiebreaker .rating-option")[i];
+    $(option).find(".value-description").text(options[i]);
+    $(option).find("input").val(options[i]);
+  };
 
   var p = $("#tiebreaker .tie-prompt").text();
   p = p.replace("LAST_VAL", originalRating);
   p = p.replace("NEW_VAL", newRating);
-  p = p.replace("RANGE", originalRating + " - " + tieRating + " - " + newRating);
+  p = p.replace("RANGE", options[0] + " - " + options[1] + " - " + options[2]);
   $("#tiebreaker .tie-prompt").text(p);
-
 
   $("#tiebreaker").fadeIn();
 }
