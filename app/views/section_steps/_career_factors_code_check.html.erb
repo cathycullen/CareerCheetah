@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :previous_url, flush: true do %>
-  <%= user_career_rate_cheetah_factor_path(current_user.rateable_user_careers.last, current_user.cheetah_factors.rank(:row_order).last, section_id: @section.to_param, repeat: false) %>
+  <%= user_career_rate_cheetah_factor_path(current_user.rateable_user_careers.last, current_user.rateable_cheetah_factors.last, section_id: @section.to_param, repeat: false) %>
 <% end %>
 
 

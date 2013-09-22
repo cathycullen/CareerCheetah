@@ -29,7 +29,7 @@ class Navigation::SectionStepStrategy
   def previous
     if @section.slug == "rank-factors-per-career"
       career = @user.rateable_user_careers.rank(:row_order).last
-      factor = @user.cheetah_factors.rank(:row_order).last
+      factor = @user.rateable_cheetah_factors.rank(:row_order).last
       user_career_rate_cheetah_factor_path(career, factor, section_id: @section.to_param, repeat: true)
     elsif previous_step = @step.previous_step
       full_step_path(previous_step)
