@@ -18,10 +18,12 @@ sections:
         prompt: "Enter Up to 5 Custom Factors"
         type: "custom"
         template_name: "capture_custom_factors"
-  - name: "Rate Factors Per Career"
+  - name: "Rank Factors Per Career"
     code: "leap"
     steps:
-      - step_type: ConclusionStep
+      - step_type: Static
         template_name: "career_factors_code_check"
+        headline: "Factor Ranking"
+      - step_type: ConclusionStep
         headline: "Congratulations!"
         description: "You’ve made it through the first round.  It’s probably time to stretch your legs, take a break before we advance to the next round."

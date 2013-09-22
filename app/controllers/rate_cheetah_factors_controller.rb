@@ -30,9 +30,8 @@ class RateCheetahFactorsController < ApplicationController
     if career
       @previous = user_career_rate_cheetah_factor_path(career, current_user.cheetah_factors.rank(:row_order).last, section_id: params[:section_id], repeat: params[:repeat])
     elsif params[:repeat] == "true"
-      career = current_user.rateable_user_careers.rank(:row_order).last
-      factor = current_user.cheetah_factors.rank(:row_order).last
-      @previous = user_career_rate_cheetah_factor_path(career, factor, section_id: params[:section_id])
+      section = Section.find_by(slug: params[:section_id])
+      @previous = full_step_path(section.section_steps.rank(:row_order).first)
     else
       section = Section.find_by(slug: params[:section_id])
       @previous = program_phase_section_path(section.phase.program,
@@ -49,7 +48,10 @@ class RateCheetahFactorsController < ApplicationController
     elsif career = current_user.rateable_user_careers.rank(:row_order).where(["row_order > ?", @user_career.row_order]).first
       user_career_rate_cheetah_factors_path(career, section_id: params[:section_id], repeat: params[:repeat])
     elsif params[:repeat] != "true"
-      user_career_rate_cheetah_factors_path(current_user.rateable_user_careers.first, section_id: params[:section_id], repeat: true)
+      section = Section.find_by(slug: params[:section_id])
+      full_step_path(section.section_steps.rank(:row_order).first)
+
+      #user_career_rate_cheetah_factors_path(current_user.rateable_user_careers.first, section_id: params[:section_id], repeat: true)
     else
       section = Section.find_by(slug: params[:section_id])
       full_step_path(section.section_steps.last)

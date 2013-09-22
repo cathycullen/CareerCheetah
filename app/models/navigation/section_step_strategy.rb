@@ -15,7 +15,7 @@ class Navigation::SectionStepStrategy
       full_step_path(next_step)
     elsif show_career_suggestions && @section.slug == "hunting-solo"
       career_suggestions_path(@section)
-    elsif @section.slug == "rate-factors-per-career"
+    elsif @section.slug == "rank-factors-per-career"
       career_rankings_path
     elsif next_section = @section.next_section
       full_section_path(@section.next_section)
@@ -27,14 +27,14 @@ class Navigation::SectionStepStrategy
   end
 
   def previous
-    if previous_step = @step.previous_step
-      full_step_path(previous_step)
-    elsif @section.slug == "on-the-prowl" || @section.slug == "on-the-prowl-again"
-      full_last_factor_rating_path(@program, @phase, @section, @user)
-    elsif @section.slug == "rate-factors-per-career"
+    if @section.slug == "rank-factors-per-career"
       career = @user.rateable_user_careers.rank(:row_order).last
       factor = @user.cheetah_factors.rank(:row_order).last
       user_career_rate_cheetah_factor_path(career, factor, section_id: @section.to_param, repeat: true)
+    elsif previous_step = @step.previous_step
+      full_step_path(previous_step)
+    elsif @section.slug == "on-the-prowl" || @section.slug == "on-the-prowl-again"
+      full_last_factor_rating_path(@program, @phase, @section, @user)
     else
       full_section_path(@section)
     end

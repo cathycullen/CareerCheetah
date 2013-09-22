@@ -1,0 +1,21 @@
+<% content_for :next_url, flush: true do %>
+  <%= user_career_rate_cheetah_factors_path(current_user.rateable_user_careers.first, section_id: @section.to_param, repeat: true) %>
+<% end %>
+
+<% content_for :previous_url, flush: true do %>
+  <%= user_career_rate_cheetah_factor_path(current_user.rateable_user_careers.last, current_user.cheetah_factors.rank(:row_order).last, section_id: @section.to_param, repeat: false) %>
+<% end %>
+
+
+<div class="current-step section" data-section-code="<%="chirp" unless Rails.env.development? %>">
+  <div class="heading">
+    <h1><%=@section_step.headline%></h1>
+  </div>
+
+  <% if @section.code %>
+    <p class="transCopy" style="font-size: 20px;">
+      Enter code to continue.
+    </p>
+    <%= text_field_tag :sectionCode, nil, :class => "sectionCode" %>
+  <% end %>
+</div>

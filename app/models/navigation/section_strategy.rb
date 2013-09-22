@@ -10,11 +10,11 @@ class Navigation::SectionStrategy
   end
 
   def next
-    if step = @section.section_steps.rank(:row_order).where("type != 'ConclusionStep'").first
-      full_step_path(step)
-    elsif @section.slug == "rate-factors-per-career"
+    if @section.slug == "rank-factors-per-career"
       career = @user.user_careers.rank(:row_order).first
       user_career_rate_cheetah_factors_path(career, :section_id => @section.to_param)
+    elsif step = @section.section_steps.rank(:row_order).where("type != 'ConclusionStep'").first
+      full_step_path(step)
     elsif @section.slug == "on-the-prowl" || @section.slug == "on-the-prowl-again"
       full_factor_rating_path(@program, @phase, @section, @user)
     elsif next_section = @section.next_section
