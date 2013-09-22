@@ -23,11 +23,15 @@ class RateCheetahFactorsController < ApplicationController
                     .find(params[:user_career_id])
 
     next_factor = current_user.cheetah_factors.rank(:row_order).first
-    @next = user_career_rate_cheetah_factor_path(@user_career, next_factor, section_id: params[:section_id])
+    @next = user_career_rate_cheetah_factor_path(@user_career, next_factor, section_id: params[:section_id], repeat: params[:repeat])
 
     career = current_user.rateable_user_careers.rank(:row_order).where(["row_order < ?", @user_career.row_order]).last
     if career
-      @previous = user_career_rate_cheetah_factor_path(career, current_user.cheetah_factors.rank(:row_order).last)
+      @previous = user_career_rate_cheetah_factor_path(career, current_user.cheetah_factors.rank(:row_order).last, section_id: params[:section_id], repeat: params[:repeat])
+    elsif params[:repeat] == "true"
+      career = current_user.rateable_user_careers.rank(:row_order).last
+      factor = current_user.cheetah_factors.rank(:row_order).last
+      @previous = user_career_rate_cheetah_factor_path(career, factor, section_id: params[:section_id])
     else
       section = Section.find_by(slug: params[:section_id])
       @previous = program_phase_section_path(section.phase.program,
@@ -40,9 +44,11 @@ class RateCheetahFactorsController < ApplicationController
 
   def next_path
     if next_factor = current_user.cheetah_factors.rank(:row_order).where(["row_order > ?", @cheetah_factor.row_order]).first
-      user_career_rate_cheetah_factor_path(@user_career, next_factor, section_id: params[:section_id])
+      user_career_rate_cheetah_factor_path(@user_career, next_factor, section_id: params[:section_id], repeat: params[:repeat])
     elsif career = current_user.rateable_user_careers.rank(:row_order).where(["row_order > ?", @user_career.row_order]).first
-      user_career_rate_cheetah_factors_path(career, section_id: params[:section_id])
+      user_career_rate_cheetah_factors_path(career, section_id: params[:section_id], repeat: params[:repeat])
+    elsif params[:repeat] != "true"
+      user_career_rate_cheetah_factors_path(current_user.rateable_user_careers.first, section_id: params[:section_id], repeat: true)
     else
       career_rankings_path
     end
@@ -50,9 +56,9 @@ class RateCheetahFactorsController < ApplicationController
 
   def previous_path
     if previous_factor = current_user.cheetah_factors.rank(:row_order).where(["row_order < ?", @cheetah_factor.row_order]).last
-      user_career_rate_cheetah_factor_path(@user_career, previous_factor, section_id: params[:section_id])
+      user_career_rate_cheetah_factor_path(@user_career, previous_factor, section_id: params[:section_id], repeat: params[:repeat])
     else
-      user_career_rate_cheetah_factors_path(@user_career, section_id: params[:section_id])
+      user_career_rate_cheetah_factors_path(@user_career, section_id: params[:section_id], repeat: params[:repeat])
     end
   end
 
