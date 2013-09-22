@@ -13,9 +13,14 @@ class CheetahFactor < ActiveRecord::Base
   end
 
   def set_rating_prompts
-    if self.respond_to?(:custom_name) && self.custom_name.present?
-      self.career_rating_prompt = "On a scale of 1-5, how likely is it that I will experience the factor \"#{self.custom_name}\" in the career of"
-      self.rating_prompt = "On a scale of 1-5, how important is \"#{self.custom_name}\"?"
+    if self.respond_to?(:custom_name) && self.custom_name_changed?
+      if self.custom_name.present?
+        self.career_rating_prompt = "On a scale of 1-5, how likely is it that I will experience the factor \"#{self.custom_name}\" in the career of"
+        self.rating_prompt = "On a scale of 1-5, how important is \"#{self.custom_name}\"?"
+      else
+        self.career_rating_prompt = nil
+        self.rating_prompt = nil
+      end
     end
   end
 end

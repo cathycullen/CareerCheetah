@@ -3,7 +3,11 @@ CareerCheetah::Application.routes.draw do
     resources :phases do
       resources :sections do
         resources :section_steps, :as => :section_step
-        resources :cheetah_factor_rankings
+        resources :cheetah_factor_rankings do
+          collection do
+            get :first_custom
+          end
+        end
         resources :career_suggestions
       end
     end

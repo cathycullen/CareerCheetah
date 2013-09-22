@@ -120,4 +120,3 @@ namespace :sample do
     user.cheetah_factor_rankings << CheetahFactorRanking.new(cheetah_factor: CheetahFactor.where(user_id: nil)[1])
   end
 end
-
