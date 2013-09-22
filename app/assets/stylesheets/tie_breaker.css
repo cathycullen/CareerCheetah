@@ -1,0 +1,28 @@
+.current-step.question .question {
+  position: relative;
+}
+
+#tiebreaker {
+  position: absolute;
+  width: 70%;
+  top: 25%;
+  left: 15%;
+  border: solid 1px #bbbbbb;
+  background: white;
+  padding: 10px;
+  display: none;
+}
+
+#tiebreaker .rating-options {
+  padding: 0;
+  text-align: center;
+  margin-top: 1.5em;
+}
+
+#tiebreaker .rating-options li {
+  width: 25%;
+}
+
+#tiebreaker .value-description {
+  font-size: 1.5em;
+}

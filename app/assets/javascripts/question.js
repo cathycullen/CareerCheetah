@@ -13,6 +13,7 @@ function bindResponseEditing() {
   bindUserCareerEditing();
   bindUserFactorEditing();
   bindUserCareerFactorResponseRating();
+  bindTieBreakerRating();
 }
 
 function bindResponseOptionSelectionSelection() {
@@ -165,9 +166,11 @@ function bindResponseSelectionEditing() {
   });
 };
 
-function bindResponseRating() {
-  $("input[name='cheetah-factor-rankings[]']").change(function () {
+
+function bindTieBreakerRating() {
+  $("input[name='tbreaker-cheetah-factor-rankings[]']").change(function () {
     var box = $(this);
+    var newRating = parseInt(box.attr("value"));
 
     if(box.is(':checked')){
       var data = {id: box.data('cheetah-factor-id'),
@@ -181,6 +184,59 @@ function bindResponseRating() {
         dataType: "JSON",
         context: box
       });
+    }
+  })
+}
+
+function bindResponseRating() {
+  $("input[name='cheetah-factor-rankings[]']").change(function () {
+    var box = $(this);
+    var originalRating = $(".current-step .question").data("original-rating");
+    var newRating = parseInt(box.attr("value"));
+
+    if(box.is(':checked')){
+      if(window.location.href.indexOf("repeat=true") != -1 &&
+         originalRating != undefined &&
+         originalRating != "" &&
+         parseInt(originalRating) != newRating ) {
+
+        var originalRating = parseInt(originalRating);
+        var tieRating = originalRating + Math.abs(originalRating - newRating) / 2;
+
+
+        var option1 = $("#tiebreaker .rating-option")[0];
+        $(option1).find(".value-description").text(originalRating);
+        $(option1).find("input").val(originalRating);
+
+        var option2 = $("#tiebreaker .rating-option")[1];
+        $(option2).find(".value-description").text(tieRating);
+        $(option2).find("input").val(tieRating);
+
+        var option3 = $("#tiebreaker .rating-option")[2];
+        $(option3).find(".value-description").text(newRating);
+        $(option3).find("input").val(newRating);
+
+        var p = $("#tiebreaker .tie-prompt").text();
+        p = p.replace("LAST_VAL", originalRating);
+        p = p.replace("NEW_VAL", newRating);
+        p = p.replace("RANGE", originalRating + " - " + tieRating + " - " + newRating);
+        $("#tiebreaker .tie-prompt").text(p);
+
+
+        $("#tiebreaker").fadeIn();
+      } else {
+        var data = {id: box.data('cheetah-factor-id'),
+                    repeat: box.data('repeat'),
+                    rating: box.attr('value')};
+
+        $.ajax({
+          type: "POST",
+          url: "/cheetah_factor_rankings",
+          data: data,
+          dataType: "JSON",
+          context: box
+        });
+      }
     }
   });
 };
