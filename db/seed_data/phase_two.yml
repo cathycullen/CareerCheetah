@@ -21,3 +21,7 @@ sections:
   - name: "Rate Factors Per Career"
     code: "leap"
     steps:
+      - step_type: ConclusionStep
+        template_name: "career_factors_code_check"
+        headline: "Congratulations!"
+        description: "You’ve made it through the first round.  It’s probably time to stretch your legs, take a break before we advance to the next round."

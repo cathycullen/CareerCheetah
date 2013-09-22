@@ -13,7 +13,7 @@ class SectionImporter
             import_step_for_section(section, step_data)
           end
         end
-        section.section_steps.create!(:type => "ConclusionStep") if section.slug != "obstacles"
+        section.section_steps.create!(:type => "ConclusionStep") unless ["obstacles", "rate-factors-per-career"].include? section.slug
       end
     end
 
@@ -34,6 +34,8 @@ class SectionImporter
         section.section_steps.create!(step_options.merge(:type => "ResponseSelectionSummaryStep"))
       elsif step_data['step_type'] == "ResponseDistributionStep"
         section.section_steps.create!(step_options.merge(:type => "ResponseDistributionStep"))
+      elsif step_data['step_type'] == "ConclusionStep"
+        section.section_steps.create!(step_options.merge(:type => "ConclusionStep"))
       end
     end
 

@@ -15,6 +15,8 @@ class Navigation::SectionStepStrategy
       full_step_path(next_step)
     elsif show_career_suggestions && @section.slug == "hunting-solo"
       career_suggestions_path(@section)
+    elsif @section.slug == "rate-factors-per-career"
+      career_rankings_path
     elsif next_section = @section.next_section
       full_section_path(@section.next_section)
     elsif next_phase = @section.phase.next_phase
