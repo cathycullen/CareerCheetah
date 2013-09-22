@@ -1,6 +1,24 @@
 class CheetahFactorRankingsController < ApplicationController
+  include Navigation::PathGeneration
   helper FactorRating
   layout "quiz"
+
+  def first_custom
+    program = Program.find_by(slug: params[:program_id])
+    section = Section.find_by(slug: params[:section_id])
+
+    factors = current_user.rateable_custom_cheetah_factors
+
+    if factors.empty?
+      redirect_to full_step_path(section.section_steps.last)
+    else
+      redirect_to program_phase_section_cheetah_factor_ranking_path(program,
+                                                                    section.phase,
+                                                                    section,
+                                                                    factors.first,
+                                                                    :custom_factors => true)
+    end
+  end
 
   def show
     @program = Program.find_by(slug: params[:program_id])

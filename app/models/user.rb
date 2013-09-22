@@ -66,6 +66,6 @@ class User < ActiveRecord::Base
   end
 
   def rateable_cheetah_factors
-    self.cheetah_factors.where("rating_prompt IS NOT NULL AND rating_prompt != ''").rank(:row_order)
+    self.cheetah_factors.where("career_rating_prompt IS NOT NULL AND career_rating_prompt != ''").rank(:row_order)
   end
 end
