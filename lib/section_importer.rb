@@ -13,7 +13,7 @@ class SectionImporter
             import_step_for_section(section, step_data)
           end
         end
-        section.section_steps.create!(:type => "ConclusionStep") unless ["obstacles", "rate-factors-per-career"].include? section.slug
+        section.section_steps.create!(:type => "ConclusionStep") unless ["obstacles", "rank-factors-per-career"].include? section.slug
       end
     end
 
