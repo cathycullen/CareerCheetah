@@ -1,4 +1,5 @@
 class RateCheetahFactorsController < ApplicationController
+  include Navigation::PathGeneration
   layout "quiz"
   before_filter :ensure_passion_factor_ranking_exists
 
@@ -50,7 +51,8 @@ class RateCheetahFactorsController < ApplicationController
     elsif params[:repeat] != "true"
       user_career_rate_cheetah_factors_path(current_user.rateable_user_careers.first, section_id: params[:section_id], repeat: true)
     else
-      career_rankings_path
+      section = Section.find_by(slug: params[:section_id])
+      full_step_path(section.section_steps.last)
     end
   end
 

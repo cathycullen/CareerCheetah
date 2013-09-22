@@ -1,7 +1,14 @@
-<div class="current-step section" data-section-code="<%=@section.code unless Rails.env == 'development'%>">
+<div class="current-step section" data-section-code="<%=@section.code unless Rails.env.development?%>">
+
   <div class="heading">
-    <h1>Congratulations!</h1>
-    <h2>You have completed the <%= @section.name %> portion of the hunt.</h2>
+    <h1><%=@section_step.headline || "Congratulations!"%></h1>
+    <h2>
+      <% if @section_step.description %>
+        <%= @section_step.description %>
+      <% else %>
+        You have completed the <%= @section.name %> portion of the hunt.
+      <% end %>
+    </h2>
     <% (@section_index+1).times do %>
       <%= image_tag('cheetah-badge.png', :size => "90x90") %>
     <% end %>
@@ -13,4 +20,5 @@
     </p>
     <%= text_field_tag :sectionCode, nil, :class => "sectionCode" %>
   <% end %>
+
 </div>
