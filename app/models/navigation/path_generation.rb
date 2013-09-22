@@ -37,7 +37,12 @@ module Navigation::PathGeneration
     end
 
     if factors.empty?
-      full_step_path(section.section_steps.last)
+      first_custom_program_phase_section_cheetah_factor_rankings_path(program,
+                                                        phase,
+                                                        section,
+                                                        factors.first,
+                                                        :repeat => repeat,
+                                                        :custom_factors => custom)
     else
       program_phase_section_cheetah_factor_ranking_path(program,
                                                         phase,
