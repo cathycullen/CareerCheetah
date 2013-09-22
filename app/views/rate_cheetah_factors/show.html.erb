@@ -7,7 +7,7 @@
 <% end %>
 
 <div class="current-step question career-rating">
-  <div class="question">
+  <div class="question" data-original-rating="<%=@user_career_cheetah_factor_ranking.original_rating%>">
     <p class="prompt"><%= @cheetah_factor.career_rating_prompt %> <span class="career-name"><%= @user_career.name %></span>?</p>
     <div class="option-group">
       <ul class="rating-options">
@@ -29,5 +29,28 @@
         <% end %>
       </ul>
     </div>
+
+    <div id="tiebreaker">
+      <p class="tie-prompt">Last time, you said LAST_VAL. This time you said NEW_VAL. Please think carefully about which of the below is most accurate answer: RANGE</p>
+
+      <ul class="rating-options">
+        <% 3.times do %>
+          <li class="option rating-option">
+            <%= label_tag nil, :class => "response-option" do %>
+              <span class="value-description"></span><br />
+                <%= radio_button_tag "tbreaker-cheetah-factor-career-rankings[]",
+                                     99,
+                                     false,
+                                     {"data-user-career-id" => @user_career.id,
+                                      "data-cheetah-factor-id" => @cheetah_factor.id,
+                                      "data-user-career-cheetah-factor-ranking-id" => "#{@user_career_cheetah_factor_ranking.id}",
+                                      "data-repeat" => params[:repeat]} %><br />
+
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
   </div>
 </div>
