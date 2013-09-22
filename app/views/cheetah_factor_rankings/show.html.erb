@@ -14,7 +14,7 @@
 <% end %>
 
 <div class="current-step question">
-  <div class="question">
+  <div class="question" data-original-rating="<%=@cheetah_factor_ranking.original_rating%>">
     <p class="prompt"><%= @cheetah_factor.rating_prompt %></p>
     <div class="option-group">
       <ul class="rating-options">
@@ -25,14 +25,37 @@
               <% current_value = params[:repeat] == "true" ? @cheetah_factor_ranking.final_rating : @cheetah_factor_ranking.original_rating %>
               <%= radio_button_tag "cheetah-factor-rankings[]",
                                    option[:value],
-                                   current_value == option[:value],
+                                   current_value == option[:value].to_f,
                                    {"data-cheetah-factor-id" => "#{@cheetah_factor.id}",
-                                    "data-repeat" => params[:repeat]} %><br />
+                                    "data-repeat" => params[:repeat]} %>
+              <br />
               <%= option[:description] %>
             <% end %>
           </li>
         <% end %>
       </ul>
+    </div>
+
+
+    <div id="tiebreaker">
+      <p class="tie-prompt">Last time, you said LAST_VAL. This time you said NEW_VAL. Please think carefully about which of the below is most accurate answer: RANGE</p>
+
+      <ul class="rating-options">
+        <% 3.times do %>
+          <li class="option rating-option">
+            <%= label_tag nil, :class => "response-option" do %>
+              <span class="value-description"></span><br />
+                <%= radio_button_tag "tbreaker-cheetah-factor-rankings[]",
+                                     99,
+                                     false,
+                                     {"data-cheetah-factor-id" => "#{@cheetah_factor.id}",
+                                      "data-repeat" => params[:repeat]} %>
+
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
     </div>
   </div>
 </div>
