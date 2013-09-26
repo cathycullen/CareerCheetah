@@ -1,5 +1,11 @@
 <h2><%= @user.name %></h2>
+<h3>Ranked Career Results</h3>
 
+  <% @user.rateable_user_careers.order(:total_weight).reverse.each do |user_career| %>
+    <li>
+      <%= user_career.name %>  Weight: <%= user_career.total_weight %>
+    </li>
+  <% end %>
 <h3>Predicted Careers</h3>
 <ul>
   <% @user.career_suggestions.order("weight DESC").first(30).each do |career_suggestion| %>
