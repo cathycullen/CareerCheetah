@@ -6,16 +6,22 @@
   <%= @previous %>
 <% end %>
 
+<% current_value = params[:repeat] ? @user_career_cheetah_factor_ranking.final_rating : @user_career_cheetah_factor_ranking.original_rating %>
+
 <div class="current-step question career-rating">
   <div class="question" data-original-rating="<%=@user_career_cheetah_factor_ranking.original_rating%>">
     <p class="prompt"><%= @cheetah_factor.career_rating_prompt %> <span class="career-name"><%= @user_career.name %></span>?</p>
+
+    <% if current_value && current_value.floor != current_value %>
+      <p>Your current rating is: <%=current_value%></p>
+    <% end %>
+
     <div class="option-group">
       <ul class="rating-options">
         <% career_rating_options.each do |option| %>
           <li class="option rating-option">
             <%= label_tag nil, :class => "response-option" do %>
               <span class="value-description"><%= option[:value_description]%></span><br />
-              <% current_value = params[:repeat] ? @user_career_cheetah_factor_ranking.final_rating : @user_career_cheetah_factor_ranking.original_rating %>
               <%= radio_button_tag "cheetah-factor-career-rankings[]",
                                    option[:value],
                                    current_value == option[:value],
@@ -28,6 +34,7 @@
           </li>
         <% end %>
       </ul>
+
     </div>
 
     <div id="tiebreaker">
