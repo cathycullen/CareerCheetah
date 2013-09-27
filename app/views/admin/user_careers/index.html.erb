@@ -1,0 +1,9 @@
+<%= link_to "All Users", admin_users_path %>
+<h3>Ranked Career Results for <%= @user.name %></h3>
+  <ol>
+		<% @user.rateable_user_careers.order(:total_weight).reverse.each do |user_career| %>
+		  <li>
+		    <%= user_career.name %>  Weight: <%= user_career.total_weight %>
+		  </li>
+  <% end %>
+  <ol>

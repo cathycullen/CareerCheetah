@@ -36,7 +36,10 @@ CareerCheetah::Application.routes.draw do
 
   namespace :admin do
     resources :programs
-    resources :users
+    resources :users do
+      resources :user_careers, only: [:index]
+      resources :career_suggestions, only: [:index]
+    end
   end
 
   root "sessions#new"
