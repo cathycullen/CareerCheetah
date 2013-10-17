@@ -1,8 +1,8 @@
 <% content_for :previous_url do %>
-  <%= previous_program_navigation_path({:phase_id => @phase.to_param}) %>
+  <%= previous_program_navigation_path({:phase_id => @phase.id}) %>
 <% end %>
 <% content_for :next_url do %>
-  <%= next_program_navigation_path({:phase_id => @phase.to_param}) %>
+  <%= next_program_navigation_path({:phase_id => @phase.id}) %>
 <% end %>
 
 <div class="current-step phase">
