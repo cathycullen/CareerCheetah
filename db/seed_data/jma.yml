@@ -1,0 +1,14 @@
+name: "JMA"
+phases:
+ - name: "Phase One"
+   sections:
+     - name: "Training"
+     - name: "Determining Fit"
+     - name: "Environment"
+     - name: "Skills"
+     - name: "Values"
+     - name: "Engagement"
+     - name: "People"
+     - name: "Passions"
+     - name: "Activities"
+     - name: "Pay, Perks, Prep"

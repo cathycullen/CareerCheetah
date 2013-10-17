@@ -14,7 +14,8 @@ class SectionStepsController < ApplicationController
     @program = Program.find_by(:slug => params[:program_id])
     @steps = @section.section_steps.rank(:row_order).to_a
     @percent_complete = ((@steps.index(@section_step)+1).to_f / @steps.count) * 100 -1
-    @sections_array = Section.all.rank(:row_order).to_a
+
+    @sections_array = @phase.sections.rank(:row_order).to_a
     @section_index = @sections_array.index(@section)
   end
 

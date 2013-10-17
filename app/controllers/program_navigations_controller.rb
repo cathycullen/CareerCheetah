@@ -1,7 +1,5 @@
 class ProgramNavigationsController < ApplicationController
-
   before_filter :load_context_object
-  # before_filter :verify_completion_code, :only => :next
 
   def next
     n = Navigation::ProgramNavigator.new(@context_object, current_user)
@@ -18,9 +16,9 @@ class ProgramNavigationsController < ApplicationController
     if params[:section_step_id]
       @context_object = SectionStep.find(params[:section_step_id])
     elsif params[:section_id]
-      @context_object = Section.find_by(:slug => params[:section_id])
+      @context_object = Section.find(params[:section_id])
     elsif params[:phase_id]
-      @context_object = Phase.find_by(:slug => params[:phase_id])
+      @context_object = Phase.find(params[:phase_id])
     end
   end
 

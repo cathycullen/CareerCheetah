@@ -1,23 +1,49 @@
-class SectionImporter
+class QuestionnaireImporter
   class << self
 
-    def import_sections_for_phase(phase, config_path)
-      section_data = YAML.load_file(File.join(Rails.root, config_path))
-      section_data['sections'].each do |section_data|
-        section = phase.sections.create!(:name => section_data['name'],
-                                         :headline => section_data['headline'],
-                                         :description => section_data['description'],
-                                         :code => section_data['code'])
-        if section_data['steps']
-          section_data['steps'].each do |step_data|
-            import_step_for_section(section, step_data)
-          end
+    def import_phases(program, program_data)
+      # Phases
+      program_data['phases'].each do |phase_data|
+        phase = program.phases.create!(name: phase_data['name'],
+                                       headline: phase_data['headline'],
+                                       description: phase_data['description'])
+
+        self.import_sections_for_phase(phase, phase_data)
+      end
+
+    end
+
+    def import_sections_for_phase(phase, phase_data)
+      base_sections_data = YAML.load_file(File.join(Rails.root, "db/seed_data/sections.yml"))
+
+      phase_data['sections'].each do |section_data|
+        section = base_sections_data['sections'].find do |section|
+          section['name'] == section_data['name']
         end
-        section.section_steps.create!(:type => "ConclusionStep") unless ["obstacles", "rank-factors-per-career"].include? section.slug
+
+        if section
+          self.import_section_for_phase(phase, section)
+        else
+          puts "No section by name: #{section_data['name']}"
+        end
       end
     end
 
+    def import_section_for_phase(phase, section_data)
+      section = phase.sections.create!(:name => section_data['name'],
+                                       :headline => section_data['headline'],
+                                       :description => section_data['description'],
+                                       :code => section_data['code'])
+      if section_data['steps']
+        section_data['steps'].each do |step_data|
+          import_step_for_section(section, step_data)
+        end
+      end
 
+      unless ["obstacles", "rank-factors-per-career"].include?(section.slug)
+        section.section_steps.create!(:type => "ConclusionStep")
+      end
+    end
 
     def import_step_for_section(section, step_data)
       step_options = {:template => step_data['template_name'],

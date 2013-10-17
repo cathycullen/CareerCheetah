@@ -5,7 +5,6 @@ class Section < ActiveRecord::Base
   has_many :section_steps, :dependent => :destroy
 
   validates_presence_of :name
-  validates_uniqueness_of :name
 
   ranks :row_order, :with_same => :phase_id
   acts_as_url :name, :url_attribute => :slug
