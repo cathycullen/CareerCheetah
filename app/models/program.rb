@@ -9,4 +9,12 @@ class Program < ActiveRecord::Base
   def to_param
     slug
   end
+
+  def jma?
+    slug == 'jma'
+  end
+
+  def cheetah?
+    slug == 'career-cheetah'
+  end
 end
