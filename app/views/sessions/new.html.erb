@@ -7,11 +7,11 @@
     <% end %>
 
     <header class="login-header">
-      <%= program_logo(default_program, :large) %>
+      <%= program_logo(:large) %>
     </div>
 
     <div class="login-form">
-    <p><%=welcome_prompt(default_program)%>. Please login:</p>
+    <p><%=welcome_prompt%>. Please login:</p>
       <%= form_tag sessions_path do %>
         <%= text_field_tag :email, "", :placeholder => "email" %>
         <%= text_field_tag :password, "", :type => "password", :placeholder => "password" %>

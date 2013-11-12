@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
   private
 
   def post_login_path
-    phase = default_program.phases.last
+    phase = current_program.phases.last
     program_phase_path(phase.program, phase)
   end
 
