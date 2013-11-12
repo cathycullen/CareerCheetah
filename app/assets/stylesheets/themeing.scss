@@ -1,0 +1,37 @@
+$light-orange: rgb(238, 129, 62);
+$dark-orange: #ff8a00;
+
+.career-cheetah .current-step h1 {
+  color: $light-orange;
+}
+
+.career-cheetah .sectionTitle {
+  color: $dark-orange;
+}
+
+.career-cheetah .rating-option .value-description {
+  color: $dark-orange;
+}
+
+.career-cheetah .progress .bar {
+  background-color: $dark-orange;
+}
+
+$light-green: rgb(176, 202, 108);
+$dark-green: rgb(130, 164, 92);
+
+.jma .current-step h1 {
+  color: $light-green;
+}
+
+.jma .sectionTitle {
+  color: $dark-green;
+}
+
+.jma .rating-option .value-description {
+  color: $dark-green;
+}
+
+.jma .progress .bar {
+  background-color: $dark-green;
+}

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CareerCheetah</title>
+  <title><%=program_name%></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="body">
+<body class="body <%=current_program.slug%>">
   <div class="nav">
     <%= link_to "logout", logout_path, :method => :delete if current_user %>
   </div>
   <header class="main-header">
-    <%= image_tag "cheetah-logo.png" %>
+    <%= program_logo %>
   </div>
 
   <%= yield %>
