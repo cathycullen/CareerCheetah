@@ -44,8 +44,11 @@ class CareerPredictor
       response_option = response_option_selection.response_option
       work_zones << response_option.work_zone
     end
-    if(!work_zones.empty?) then
-      work_zone =  work_zones.sort.reverse[0].to_i
+
+    if work_zones.empty?
+      4
+    else
+      work_zones.sort.reverse[0].to_i
     end
   end
 
