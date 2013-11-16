@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
   private
 
   def post_login_path
-    phase = current_program.phases.last
+    phase = current_program.phases.rank(:row_order).first
     program_phase_path(phase.program, phase)
   end
 

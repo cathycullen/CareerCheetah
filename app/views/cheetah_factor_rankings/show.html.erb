@@ -2,14 +2,14 @@
   <% if @previous_selection %>
     <%= program_phase_section_cheetah_factor_ranking_path(@program, @section.phase, @section, @previous_selection, repeat: params[:repeat], custom_factors: params[:custom_factors]) %>
   <% else %>
-    <%= program_phase_section_path(@section, @section.phase, @section) %>
+    <%= program_phase_section_path(@program, @section.phase, @section) %>
   <% end %>
 <% end %>
 <% content_for :next_url do %>
   <% if @next_selection %>
     <%= program_phase_section_cheetah_factor_ranking_path(@program, @section.phase, @section, @next_selection, repeat: params[:repeat], custom_factors: params[:custom_factors]) %>
   <% else %>
-    <%= program_phase_section_section_step_path(@section, @section.phase, @section, @section.section_steps.find_by(:type => "ConclusionStep")) %>
+    <%= program_phase_section_section_step_path(@program, @section.phase, @section, @section.section_steps.find_by(:type => "ConclusionStep")) %>
   <% end %>
 <% end %>
 
