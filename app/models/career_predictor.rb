@@ -44,7 +44,7 @@ class CareerPredictor
       response_option = response_option_selection.response_option
       work_zones << response_option.work_zone
     end
-    if(work_zones.size) then
+    if(!work_zones.emtpy?) then
       work_zone =  work_zones.sort.reverse[0].to_i
     end
   end
