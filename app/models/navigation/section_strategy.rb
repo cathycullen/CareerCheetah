@@ -11,7 +11,7 @@ class Navigation::SectionStrategy
 
   def next
     if @section.slug == "rank-factors-per-career"
-      career = @user.user_careers.rank(:row_order).first
+      career = @user.rateable_user_careers.rank(:row_order).first
       user_career_rate_cheetah_factors_path(career, :section_id => @section.to_param)
     elsif step = @section.section_steps.rank(:row_order).where("type != 'ConclusionStep'").first
       full_step_path(step)
