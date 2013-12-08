@@ -11,14 +11,13 @@
 
   <div class="career-result">
     <ol>
-      <% i = 1 %>
-        <div class="career-rankings">
-      <% @career_rankings.each do |career_ranking| %>
-        <li>
-          <%= current_user.user_careers.find(career_ranking[:career_id]).name %>  Weight: <%= career_ranking[:weight] %>
-        </li>
-      <% end %>
-    </div>
+      <div class="career-rankings">
+        <% @career_rankings.each do |career_ranking| %>
+          <li>
+            <%= current_user.user_careers.find(career_ranking[:career_id]).name %>  Weight: <%= career_ranking[:weight] %>
+          </li>
+        <% end %>
+      </div>
     </ol>
   </div>
 
